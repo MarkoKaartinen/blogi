@@ -1,22 +1,38 @@
 
 /**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
+ * First, we will load all of this project's Javascript utilities and other
+ * dependencies. Then, we will be ready to develop a robust and powerful
+ * application frontend using useful Laravel and JavaScript libraries.
  */
 
 require('./bootstrap');
 
+import VModal from 'vue-js-modal'
+
 window.Vue = require('vue');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+Vue.use(VModal, { dialog: true })
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('login-form', require('./components/LoginForm.vue'));
+Vue.component('register-form', require('./components/RegisterForm.vue'));
 
 const app = new Vue({
     el: '#app'
 });
+
+import SimpleMDE from 'simplemde';
+import {} from 'simplemde/dist/simplemde.min.css';
+let editors = document.getElementsByClassName('markdown-editor');
+
+if (editors.length) {
+    new SimpleMDE({
+        element: editors[0],
+        spellChecker: false,
+        autosave: {
+            enabled: false,
+            uniqueId: window.location,
+        },
+        placeholder: "Kirjoita tähän...",
+        promptURLs: true,
+    });
+}

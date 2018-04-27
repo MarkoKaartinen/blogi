@@ -2,12 +2,16 @@
 
 namespace App;
 
+use App\Traits\Uuids;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Uuids, SoftDeletes;
+
+    public $incrementing = false; //we use UUIDs
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nickname', 'name', 'email', 'password',
     ];
 
     /**
@@ -26,4 +30,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'last_login', 
+        'deleted_at'
+    ];
+
+    public function posts(){
+		return $this->hasMany('App\Post');
+	}
+
+	public function isAdmin(){
+        return $this->role == 'admin';
+    }
+
 }

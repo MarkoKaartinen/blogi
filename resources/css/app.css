@@ -1,3 +1,15 @@
+@import 'remixicon/fonts/remixicon.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .textcontent {
+        @apply prose prose-nord max-w-none prose-base prose-strong:font-bold prose-pre:text-base prose-pre:rounded-xl;
+    }
+}
+
+.content-image {
+    @apply rounded-xl border-2 border-nord-10;
+}

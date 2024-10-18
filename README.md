@@ -1,5 +1,7 @@
 # MarkoKaartinen.net - Blogi
 
+🚨🚨 **ISOSTI TYÖN ALLA!** 🚨🚨
+
 Tänne rakentuu jollain tahtia, joskus ja jotenkin uusi blogi MarkoKaartinen.net sivustolle
 
 - [MarkoKaartinen.net](https://markokaartinen.net)

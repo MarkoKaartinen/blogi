@@ -1,16 +1,16 @@
-<x-layout>
-    <div class="text-left pb-12 max-w-2xl mx-auto">
+<div>
+    <div class="text-left pb-12 max-w-3xl mx-auto">
         <h1 class="font-extrabold text-5xl mb-4">
             <span class="text-nord-9">M</span>arko<span class="text-nord-9">K</span>aartinen.net
         </h1>
         <p class="text-nord-9">Tervetuloa Internetin nurkkaukseen joka on minun ylläpitämä ja sisältö on minun tuottamaa. Täältä tulet löytämään melkein mitä vain pelaamiseen, Internettiin, tekniikkaan, elokuviin ja sarjoihin liittyvää. Sekä mitä nyt mieleen juolahtaa.</p>
     </div>
-    <div class="grid grid-cols-1 gap-12 max-w-2xl mx-auto">
+    <div class="grid grid-cols-1 gap-12 max-w-3xl mx-auto">
         <div class="h-1 w-20 rounded-full bg-nord-9"></div>
         @for($i = 0; $i < 10; $i++)
             <div class="">
                 <h2 class="text-2xl font-bold">
-                    <a class="text-nord-11 hover:text-nord-12 transition-colors duration-300"  href="/artikkeli">
+                    <a class="text-nord-11 hover:text-nord-12 transition-colors duration-300"  href="{{ route('article', [2024, 'testi-artikkeli']) }}" wire:navigate>
                         Lorem ipsum dolor sit amet
                     </a>
                 </h2>
@@ -50,4 +50,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</div>

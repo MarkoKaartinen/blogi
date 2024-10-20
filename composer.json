@@ -8,7 +8,9 @@
         "php": "^8.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "livewire/livewire": "^3.5",
         "spatie/laravel-markdown": "^2.5",
+        "spatie/yaml-front-matter": "^2.0",
         "wnx/commonmark-mark-extension": "^1.2"
     },
     "require-dev": {

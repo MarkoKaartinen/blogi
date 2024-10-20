@@ -7,9 +7,15 @@
 @layer components {
     .textcontent {
         @apply prose prose-nord max-w-none prose-base prose-strong:font-bold prose-pre:text-base prose-pre:rounded-xl;
+        @apply prose-pre:bg-theme-0 !important;
     }
 }
 
 .content-image {
     @apply rounded-xl border-2 border-nord-10;
+}
+
+.external-link:after {
+    content: "\2934";
+    @apply no-underline inline-flex pl-0.5 font-sans;
 }

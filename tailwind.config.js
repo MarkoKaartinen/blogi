@@ -46,8 +46,8 @@ export default {
                     css: {
                         '--tw-prose-body': theme('colors.nord[6]'),
                         '--tw-prose-headings': theme('colors.nord[6]'),
-                        '--tw-prose-lead': theme('colors.nord[9]'),
-                        '--tw-prose-links': theme('colors.nord[11]'),
+                        '--tw-prose-lead': theme('colors.nord[7]'),
+                        '--tw-prose-links': theme('colors.nord[14]'),
                         '--tw-prose-bold': theme('colors.nord[7]'),
                         '--tw-prose-counters': theme('colors.nord[9]'),
                         '--tw-prose-bullets': theme('colors.nord[9]'),

@@ -1,5 +1,5 @@
-<x-layout>
-    <div class="pb-12 max-w-2xl mx-auto text-center">
+<div>
+    <div class="pb-12 max-w-xl mx-auto text-center">
         <h1 class="font-extrabold text-5xl mb-4">
             Haku
         </h1>
@@ -53,4 +53,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</div>

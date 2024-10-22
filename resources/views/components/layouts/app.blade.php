@@ -16,11 +16,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
-<body class="font-mono  text-lg text-nord-6 bg-nord-0">
+<body class="font-mono  md:text-lg text-nord-6 bg-nord-0">
 
     <x-layouts.partials.header />
 
-    <div class="container mx-auto py-12">
+    <div class="container mx-auto py-6 md:py-12">
         {{ $slot }}
     </div>
 

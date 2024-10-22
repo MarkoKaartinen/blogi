@@ -1,12 +1,12 @@
-<div>
-    <div class="pb-12 max-w-xl mx-auto text-center">
+<div class="wrapper">
+    <div class="pb-6 md:pb-12 text-center">
         <h1 class="font-extrabold text-5xl mb-4">
             Haku
         </h1>
 
         <input wire:model.live.debounce="keywords" type="text" class="w-full block rounded bg-transparent text-nord-13 text-base border-nord-13 border-2 focus:outline-none px-3 py-2 font-mono text-center" placeholder="Kirjoita hakusana" />
 
-        <div class="h-1 w-20 rounded-full bg-nord-9 mt-12 mx-auto"></div>
+        <div class="h-1 w-20 rounded-full bg-nord-9 mt-6 md:mt-12 mx-auto"></div>
     </div>
     @php
     if($keywords == ''){
@@ -15,11 +15,11 @@
         $listArticles = $articles;
     }
     @endphp
-    <div class="grid grid-cols-1 gap-12 scroll-mt-16" id="articles">
+    <div class="grid grid-cols-1 gap-12 scroll-mt-20" id="articles">
 
         @foreach($listArticles as $article)
             <div class="" wire:key="article-list-{{ $article->year }}-{{ $article->slug }}">
-                <h2 class="text-2xl font-bold">
+                <h2 class="text-xl md:text-2xl font-bold">
                     <a class="text-nord-11 hover:text-nord-12 transition-colors duration-300" href="{{ route('article', [$article->year, $article->slug]) }}" wire:navigate>
                         {{ $article->title }}
                     </a>

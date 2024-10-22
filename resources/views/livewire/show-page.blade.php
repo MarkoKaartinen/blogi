@@ -1,6 +1,6 @@
 <div>
-    <div class="text-left max-w-3xl mx-auto">
-        <h1 class="font-extrabold text-5xl">
+    <div class="text-left wrapper">
+        <h1 class="font-extrabold text-3xl md:text-4xl lg:text-5xl">
             {{ $title }}
         </h1>
         @if($updated_at)

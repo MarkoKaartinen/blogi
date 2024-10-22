@@ -4,8 +4,12 @@
 
 @layer components {
     .textcontent {
-        @apply prose prose-nord max-w-none prose-base prose-strong:font-bold prose-pre:text-base prose-pre:rounded-xl prose-kbd:bg-nord-10 prose-kbd:text-nord-6;
-        @apply prose-pre:bg-theme-0 !important;
+        @apply prose prose-nord max-w-none prose-sm md:prose-base prose-strong:font-bold prose-pre:text-base prose-pre:rounded-xl prose-kbd:bg-nord-10 prose-kbd:text-nord-6;
+        @apply prose-pre:bg-theme-0 prose-a:break-words !important;
+    }
+
+    .wrapper {
+        @apply max-w-3xl mx-auto px-6 lg:px-0;
     }
 }
 

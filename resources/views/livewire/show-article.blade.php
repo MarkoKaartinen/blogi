@@ -1,6 +1,6 @@
-<div wire:key="article-{{ $article->year }}-{{ $article->slug }}">
+<div wire:key="article-{{ $article->year }}-{{ $article->slug }}" class="wrapper">
     <div class="">
-        <h1 class="font-extrabold text-5xl">{{ $article->title }}</h1>
+        <h1 class="font-extrabold text-3xl md:text-4xl lg:text-5xl">{{ $article->title }}</h1>
         @if($article->published_at)
             <div class="text-sm text-nord-8 uppercase mt-1 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 mr-1">
@@ -8,10 +8,13 @@
                     <path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clip-rule="evenodd" />
                 </svg>
 
-                <span>
+                <span class="hidden md:block">
                     {{ str($article->published_at->dayName)->ucfirst() }}na
                     {{ $article->published_at->format('j.') }} {{ $article->published_at->monthName }}ta {{ $article->published_at->format('Y') }}
                     KELLO {{ $article->published_at->format('H:i') }}
+                </span>
+                <span class="block md:hidden">
+                    {{ $article->published_at->format('j.n.Y \K\L\O H:i') }}
                 </span>
             </div>
         @endif
@@ -35,7 +38,7 @@
         $articleSeriesInfo = $this->getSeriesInfo();
         @endphp
 
-        <div class="float-right bg-theme-0 rounded-lg p-4 max-w-xs w-full text-sm mt-6 ml-6 mb-6">
+        <div class="lg:float-right bg-theme-0 rounded-lg p-4 max-w-xs w-full text-sm mt-6 lg:ml-6 lg:mb-6">
             @foreach($article->tagsWithType('series') as $series)
                 <div class="{{ !$loop->first ? 'mt-4' : '' }}">
                     <div>
@@ -70,15 +73,17 @@
     <div class="pt-6 flex flex-col gap-2">
         <div class="">
             @foreach($article->tagsWithType('category') as $category)
-                <a class="text-lg font-bold uppercase text-nord-13 transition-colors duration-300 hover:text-nord-12" href="{{ route('category', [$category->slug]) }}" wire:navigate>{{ $category->name }}</a>
+                <a class="md:text-lg font-bold uppercase text-nord-13 transition-colors duration-300 hover:text-nord-12" href="{{ route('category', [$category->slug]) }}" wire:navigate>{{ $category->name }}</a>
                 @if(!$loop->last)
                     /
                 @endif
             @endforeach
         </div>
-        <div>
+        <div class="overflow-clip -m-1 flex flex-wrap">
             @foreach($article->tagsWithType('tag') as $tag)
-                <a class="bg-nord-13 text-nord-0 text-sm font-bold rounded px-1.5 py-0.5 leading-none transition-colors duration-300 hover:bg-nord-12 lowercase" href="{{ route('tag', [$tag->slug]) }}" wire:navigate>#{{ $tag->name }}</a>
+                <div class="p-1">
+                    <a class="bg-nord-13 text-nord-0 text-sm font-bold rounded px-1.5 py-0.5 leading-none transition-colors duration-300 hover:bg-nord-12 lowercase break-inside-avoid" href="{{ route('tag', [$tag->slug]) }}" wire:navigate>#{{ $tag->name }}</a>
+                </div>
             @endforeach
         </div>
     </div>
@@ -86,7 +91,7 @@
     <div>
         <div class="h-1 w-20 rounded-full bg-nord-9 my-12"></div>
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 @if($previousArticle)
                     <a class="text-left group" href="{{ $previousArticle->url }}" wire:navigate>
@@ -97,7 +102,7 @@
             </div>
             <div>
                 @if($nextArticle)
-                    <a class="text-right group" href="{{ $nextArticle->url }}" wire:navigate>
+                    <a class="md:text-right group" href="{{ $nextArticle->url }}" wire:navigate>
                         <span class="block text-xs uppercase">Seuraava artikkeli</span>
                         <span class="block text-base text-nord-14 group-hover:text-nord-12 transition-colors duration-300">{{ $nextArticle->title }}</span>
                     </a>
@@ -118,9 +123,9 @@
             <div class="mt-8 grid grid-cols-1 gap-8">
                 @foreach($article->legacy_comments as $legacyComment)
                     <div class="">
-                        <div class="flex items-end mb-2">
+                        <div class="flex flex-col md:flex-row md:items-end mb-2">
                             <div class="font-bold text-base leading-none text-nord-12">{{ $legacyComment->name }}</div>
-                            <div class="text-xs text-nord-9 ml-2 leading-none">{{ $legacyComment->created_at->diffForHumans() }}</div>
+                            <div class="text-xs text-nord-9 mt-1 md:mt-0 md:ml-2 leading-none">{{ $legacyComment->created_at->diffForHumans() }}</div>
                         </div>
                         <div class="border-l-4 border-l-nord-10 pl-2">
                             <div class="whitespace-pre-line text-sm textcontent">{!! $legacyComment->body !!}</div>

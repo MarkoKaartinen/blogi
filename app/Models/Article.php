@@ -87,7 +87,7 @@ class Article extends Model implements Feedable
         return FeedItem::create()
             ->id($this->id)
             ->title($this->title)
-            ->summary($this->description ?? '')
+            ->summary($this->seo_description)
             ->updated($this->updated_at ?? $this->published_at)
             ->link($this->url)
             ->authorName('Marko Kaartinen')
@@ -109,7 +109,7 @@ class Article extends Model implements Feedable
         return [
             'id' => (string) $this->id,
             'title' => $this->title,
-            'description' => $this->description ?? '',
+            'description' => $this->seo_description,
             'published_at' => $this->published_at->timestamp,
             'body' => $this->body,
         ];
@@ -123,5 +123,20 @@ class Article extends Model implements Feedable
     public function searchableAs(): string
     {
         return 'articles_index';
+    }
+
+    protected function seoDescription(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->description ?? $this->parseDescription($this->body)
+        );
+    }
+
+    private function parseDescription($description): string
+    {
+        $description = strip_tags($description);
+        $description = str_replace("\n", '', $description);
+        $description = str_replace("\r", '', $description);
+        return str($description)->words(200);
     }
 }

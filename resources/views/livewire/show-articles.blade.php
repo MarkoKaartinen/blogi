@@ -1,7 +1,7 @@
-<div class="grid grid-cols-1 gap-12 scroll-mt-16" id="articles">
+<div class="grid grid-cols-1 gap-6 md:gap-12 scroll-mt-20" id="articles">
     @foreach($this->getArticles() as $article)
         <div class="" wire:key="article-list-{{ $article->year }}-{{ $article->slug }}">
-            <h2 class="text-2xl font-bold">
+            <h2 class="text-xl md:text-2xl font-bold">
                 <a class="text-nord-11 hover:text-nord-12 transition-colors duration-300" href="{{ route('article', [$article->year, $article->slug]) }}" wire:navigate>
                     {{ $article->title }}
                 </a>

@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'wordpress' => [
+        'url' => env('WORDPRESS_URL'),
+        'username' => env('WORDPRESS_USERNAME'),
+        'password' => env('WORDPRESS_PASSWORD'),
+    ],
 ];

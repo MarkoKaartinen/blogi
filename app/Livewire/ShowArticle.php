@@ -2,51 +2,70 @@
 
 namespace App\Livewire;
 
+use App\Models\Article;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 class ShowArticle extends Component
 {
-    public string $markdown;
-    public string $title;
-
     public null|Carbon $published_at = null;
     public null|Carbon $updated_at = null;
 
-    public null|array $categories = null;
-    public null|array $tags = null;
+    public Article $article;
 
-    public null|string $series = null;
+    public null|Article $previousArticle;
+    public null|Article $nextArticle;
 
     public function mount($year, $slug)
     {
-        $filePath = "articles/$year/$slug.md";
-        $file = Storage::disk('content')->get($filePath);
-        $content = YamlFrontMatter::parse($file);
-        $this->title = $content->matter('title');
-        $this->markdown = str($content->body())->trim();
+        $article = Article::where('year', $year)
+            ->where('slug', $slug)
+            ->with(['tags', 'legacy_comments'])
+            ->firstOrFail();
+        $this->article = $article;
 
-        if($content->matter('published_at')){
-            $this->published_at = Carbon::parse($content->matter('published_at'));
-        }
-        if($content->matter('updated_at')){
-            $this->updated_at = Carbon::parse($content->matter('updated_at'));
-        }
-        if($content->matter('categories')){
-            $this->categories = $content->matter('categories');
-        }
-        if($content->matter('tags')){
-            $this->tags = $content->matter('tags');
-        }
-        if($content->matter('series')){
-            $this->series = $content->matter('series');
-        }
+        $this->previousArticle = Article::where('published_at', '<', $article->published_at)
+            ->whereNotNull('published_at')
+            ->where('status', 'published')
+            ->orderBy('published_at', 'desc')
+            ->first();
+
+        $this->nextArticle = Article::where('published_at', '>', $article->published_at)
+            ->whereNotNull('published_at')
+            ->where('status', 'published')
+            ->orderBy('published_at')
+            ->first();
+
     }
 
     public function render()
     {
-        return view('livewire.article');
+        return view('livewire.show-article');
+    }
+
+    #[Computed]
+    public function getSeriesInfo(): array
+    {
+        $articleSeriesInfo = [];
+        if($this->article->tagsWithType('series')->count() > 0){
+            foreach ($this->article->tagsWithType('series') as $seriesTag){
+                $seriesArticles = Article::withAnyTags($seriesTag)->published()->orderBy('published_at')->get();
+                $position = 1;
+                $i = 1;
+                foreach ($seriesArticles as $seriesArticle){
+                    if($seriesArticle->id == $this->article->id){
+                        $position = $i;
+                    }
+                    $i++;
+                }
+                $articleSeriesInfo[$seriesTag->slug] = [
+                    'count' => $seriesArticles->count(),
+                    'position' => $position,
+                    'articles' => $seriesArticles,
+                ];
+            }
+        }
+        return $articleSeriesInfo;
     }
 }

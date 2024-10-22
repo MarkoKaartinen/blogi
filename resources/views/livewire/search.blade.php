@@ -4,53 +4,46 @@
             Haku
         </h1>
 
-        <input type="text" class="w-full block rounded bg-transparent text-nord-13 text-base border-nord-13 border-2 focus:outline-none px-3 py-2 font-mono text-center" placeholder="Kirjoita hakusana" />
+        <input wire:model.live.debounce="keywords" type="text" class="w-full block rounded bg-transparent text-nord-13 text-base border-nord-13 border-2 focus:outline-none px-3 py-2 font-mono text-center" placeholder="Kirjoita hakusana" />
 
         <div class="h-1 w-20 rounded-full bg-nord-9 mt-12 mx-auto"></div>
     </div>
-    <div class="grid grid-cols-2 gap-12">
+    @php
+    if($keywords == ''){
+        $listArticles = $random;
+    }else{
+        $listArticles = $articles;
+    }
+    @endphp
+    <div class="grid grid-cols-1 gap-12 scroll-mt-16" id="articles">
 
-        @for($i = 0; $i < 10; $i++)
-            <div class="">
+        @foreach($listArticles as $article)
+            <div class="" wire:key="article-list-{{ $article->year }}-{{ $article->slug }}">
                 <h2 class="text-2xl font-bold">
-                    <a class="text-nord-11 hover:text-nord-12 transition-colors duration-300"  href="/artikkeli">
-                        Lorem ipsum dolor sit amet
+                    <a class="text-nord-11 hover:text-nord-12 transition-colors duration-300" href="{{ route('article', [$article->year, $article->slug]) }}" wire:navigate>
+                        {{ $article->title }}
                     </a>
                 </h2>
                 <div class="flex items-center space-x-3 mt-1">
-                    <div class="text-xs uppercase text-nord-8">Torstaina 17.10.2024 klo 17:47</div>
-
-                    <div class="flex">
-                        <a class="text-xs uppercase text-nord-13 transition-colors duration-300 hover:text-nord-12" href="/kategoria">Kategoria</a>
+                    <div class="text-xs uppercase text-nord-8">
+                        {{ $article->published_at->dayName }} {{ $article->published_at->format("j.n.Y \k\l\o H:i") }}
                     </div>
                 </div>
-                <div class="text-sm pt-2 line-clamp-3">Nulla cupidatat esse magna esse aliqua ex eiusmod tempor fugiat consequat minim et. Id irure nisi est ut in qui sit non cupidatat do occaecat aliqua. Reprehenderit laborum nulla labore commodo in in laborum culpa veniam ea adipisicing amet quis. Deserunt ullamco eiusmod quis dolore dolor laborum irure incididunt elit cillum dolor.</div>
-                <div class="flex pt-1">
-                    <a class="text-nord-11 text-sm hover:text-nord-12 transition-colors duration-300" href="/artikkeli">Lue lisää <i class="ri-arrow-right-double-fill"></i></a>
+                <div class="text-sm pt-2 line-clamp-3">{{ $article->description }}</div>
+                <div class="flex pt-2">
+                    <a class="text-nord-11 text-sm hover:text-nord-12 transition-colors duration-300 inline-flex items-center" href="{{ route('article', [$article->year, $article->slug]) }}" wire:navigate>
+                        <span>Lue lisää</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="ml-1 size-4">
+                            <path fill-rule="evenodd" d="M12.78 7.595a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06l3.25 3.25Zm-8.25-3.25 3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06Z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
                 </div>
-
-                <div class="pt-2">
-                    @for($j = 0; $j < 6; $j++)
-                        <a class="bg-nord-13 text-nord-0 text-xs font-bold rounded px-1.5 py-0.5 leading-none transition-colors duration-300 hover:bg-nord-12" href="/tagi">#tagi</a>
-                    @endfor
-                </div>
             </div>
+        @endforeach
 
-        @endfor
-        <div class="flex items-center justify-between col-span-2">
-            <div class="flex items-center">
-                <button class="text-sm uppercase border border-nord-4 font-bold block leading-none px-2 py-2 text-nord-4 rounded transition-colors duration-300 hover:bg-nord-6 hover:text-nord-0" type="button">
-                    Edellinen
-                </button>
-            </div>
-
-            <div class="leading-none text-lg font-bold">4 / 10</div>
-
-            <div class="flex items-center">
-                <button class="text-sm uppercase border border-nord-4 font-bold block leading-none px-2 py-2 text-nord-4 rounded transition-colors duration-300 hover:bg-nord-6 hover:text-nord-0" type="button">
-                    Seuraava
-                </button>
-            </div>
-        </div>
+        @if($keywords != '')
+            {{ $articles->links(view: 'pagination', data: ['scrollTo' => '#articles']) }}
+        @endif
     </div>
+
 </div>

@@ -2,8 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Redirect;
+use App\Support\MarkdownHandler;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -15,11 +16,12 @@ class ShowPage extends Component
 
     public function mount($page)
     {
-        $filePath = "pages/$page.md";
-        if(!Storage::disk('content')->exists($filePath)){
-            abort(404);
+
+        $file = MarkdownHandler::getPage($page);
+        if(!$file) {
+            //since this is kinda catchall web route, check for redirects
+            return $this->checkRedirect($page);
         }
-        $file = Storage::disk('content')->get($filePath);
 
         $content = YamlFrontMatter::parse($file);
         $this->title = $content->matter('title');
@@ -35,6 +37,17 @@ class ShowPage extends Component
 
     public function render()
     {
-        return view('livewire.page');
+        return view('livewire.show-page');
+    }
+
+    public function checkRedirect($page)
+    {
+        $redirect = Redirect::where('old', $page)->first();
+        if($redirect instanceof Redirect){
+            $redirect->increment('hits');
+            return $this->redirect($redirect->new, navigate: true);
+        }
+
+        abort(404);
     }
 }

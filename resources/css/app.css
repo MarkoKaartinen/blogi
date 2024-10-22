@@ -1,12 +1,10 @@
-@import 'remixicon/fonts/remixicon.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
     .textcontent {
-        @apply prose prose-nord max-w-none prose-base prose-strong:font-bold prose-pre:text-base prose-pre:rounded-xl;
+        @apply prose prose-nord max-w-none prose-base prose-strong:font-bold prose-pre:text-base prose-pre:rounded-xl prose-kbd:bg-nord-10 prose-kbd:text-nord-6;
         @apply prose-pre:bg-theme-0 !important;
     }
 }
@@ -18,4 +16,22 @@
 .external-link:after {
     content: "\2934";
     @apply no-underline inline-flex pl-0.5 font-sans;
+}
+
+.textcontent .wp-block-gallery > ul,
+.textcontent ul.wp-block-gallery,
+.textcontent .gallery {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-0;
+}
+.textcontent .wp-block-gallery > ul li,
+.textcontent ul.wp-block-gallery li,
+.textcontent .gallery .gallery-item {
+    @apply p-0 list-none m-0;
+}
+.textcontent .wp-block-gallery figure {
+    @apply m-0;
+}
+.textcontent .wp-block-gallery img,
+.textcontent .gallery img {
+    @apply aspect-square object-cover object-center m-0;
 }

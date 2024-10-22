@@ -4,13 +4,16 @@ slug: testi-artikkeli
 status: published
 published_at: 2024-10-16 12:00
 updated_at: 2024-10-16 14:42
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur tempus sem a pulvinar. Nullam bibendum maximus mauris, at bibendum leo consequat vitae. Nulla sed metus viverra, blandit lectus quis, finibus odio. Sed congue mauris ex, id ornare urna feugiat a.
 categories:
-- kategoria
-- toinen-kategoria
+- Kategoria
+- Toinen kategoria
 tags:
-- tagi1
-- tagi2
-series: Älykoti
+- Tagi1
+- Tagi2
+- Ääkkönen
+series: 
+- Älykoti
 ---
 
 {: class="lead"}

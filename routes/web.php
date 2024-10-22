@@ -2,30 +2,21 @@
 
 use App\Livewire\ShowArticle;
 use App\Livewire\Home;
+use App\Livewire\ShowCategory;
 use App\Livewire\ShowPage;
 use App\Livewire\Search;
+use App\Livewire\ShowSeries;
+use App\Livewire\ShowTag;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/haku', Search::class)->name('search');
 
+Route::get('/kategoria/{slug}', ShowCategory::class)->name('category');
+Route::get('/avainsana/{slug}', ShowTag::class)->name('tag');
+Route::get('/sarja/{slug}', ShowSeries::class)->name('series');
+
+Route::feeds();
 
 Route::get('/{year}/{slug}', ShowArticle::class)->name('article');
 Route::get('/{page}', ShowPage::class)->name('page');
-
-Route::get('/kategoria', function () {
-    return view('category');
-});
-
-Route::get('/tagi', function () {
-    return view('tag');
-});
-Route::get('/testi', function(){
-    $files = \Illuminate\Support\Facades\Storage::disk('content')->allFiles('articles');
-    foreach ($files as $file){
-        $file = \Illuminate\Support\Facades\Storage::disk('content')->get($file);
-        $content = \Spatie\YamlFrontMatter\YamlFrontMatter::parse($file);
-        dump($content);
-    }
-    dd($files);
-});

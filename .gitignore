@@ -5,6 +5,7 @@
 /public/storage
 /storage/*.key
 /storage/pail
+/storage/content
 /vendor
 .env
 .env.backup
@@ -20,3 +21,4 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
+.DS_Store

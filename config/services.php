@@ -40,4 +40,17 @@ return [
         'username' => env('WORDPRESS_USERNAME'),
         'password' => env('WORDPRESS_PASSWORD'),
     ],
+
+    'mastodon' => [
+        'token' => env('MASTODON_TOKEN'),
+        'instance' => env('MASTODON_INSTANCE'),
+        'user_id' => env('MASTODON_USER_ID'),
+        'profile_url' => env('MASTODON_PROFILE_URL'),
+    ],
+
+    'plausible' => [
+        'url' => env('PLAUSIBLE_URL'),
+        'site_id' => env('PLAUSIBLE_SITE_ID'),
+        'key' => env('PLAUSIBLE_KEY'),
+    ]
 ];

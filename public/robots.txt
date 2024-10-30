@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://markokaartinen.net/sitemap_index.xml

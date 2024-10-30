@@ -180,32 +180,23 @@ return [
             Article::class => [
                 'collection-schema' => [
                     'fields' => [
-                        [
-                             'name' => 'id',
-                             'type' => 'string',
-                        ],
-                        [
-                            'name' => 'title',
-                            'type' => 'string',
-                        ],
-                        [
-                            'name' => 'description',
-                            'type' => 'string',
-                        ],
-                        [
-                            'name' => 'body',
-                            'type' => 'string',
-                        ],
-                        [
-                             'name' => 'published_at',
-                             'type' => 'int64',
-                        ],
+                        ['name' => 'id', 'type' => 'string'],
+                        ['name' => 'year', 'type' => 'int32'],
+                        ['name' => 'slug', 'type' => 'string'],
+                        ['name' => 'title', 'type' => 'string'],
+                        ['name' => 'description', 'type' => 'string'],
+                        ['name' => 'body', 'type' => 'string'],
+                        ['name' => 'url', 'type' => 'string'],
+                        ['name' => 'tags', 'type' => 'string[]'],
+                        ['name' => 'series', 'type' => 'string[]'],
+                        ['name' => 'categories', 'type' => 'string[]'],
+                        ['name' => 'published_at', 'type' => 'int64'],
                     ],
                     'default_sorting_field' => 'published_at',
                 ],
                 'search-parameters' => [
-                    'query_by' => 'title,description,body'
-                ]
+                    'query_by' => 'title,description,body,categories,series,tags',
+                ],
             ]
             // User::class => [
             //     'collection-schema' => [

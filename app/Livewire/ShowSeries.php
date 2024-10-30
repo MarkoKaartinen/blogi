@@ -3,20 +3,27 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use App\Support\SEO;
 use Livewire\Component;
-use Spatie\Tags\Tag;
+use App\Models\Tag;
 
 class ShowSeries extends Component
 {
     public Tag $series;
-    public $articleCount = 0;
 
     public function mount($slug)
     {
         $this->series = Tag::where('slug->fi', $slug)
             ->where('type', 'series')
+            ->withCount('articles')
             ->firstOrFail();
-        $this->articleCount = Article::withAnyTags($this->series)->count();
+
+        SEO::set(
+            title: $this->series->name . ' - Sarja',
+            description: 'Tällä sivulla on listattuna kaikki sarjan '.$this->series->name.' artikkelit.',
+            url: route('series', [$this->series->slug]),
+            titleSuffix: true
+        );
     }
 
     public function render()

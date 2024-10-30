@@ -19,6 +19,8 @@ series:
 {: class="lead"}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur tempus sem a pulvinar. Nullam bibendum maximus mauris, at bibendum leo consequat vitae. Nulla sed metus viverra, blandit lectus quis, finibus odio. Sed congue mauris ex, id ornare urna feugiat a. Vivamus molestie congue faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis ante placerat mi interdum, sed placerat sem ornare. Nam nec metus rutrum, maximus erat sed, consectetur dui. Fusce tincidunt lectus non justo consequat, non facilisis orci sodales. Cras eu scelerisque velit, pretium elementum eros.
 
+![Kuvan alt teksti](/kuva/2024/testi.jpeg "Kuvaus tälle kuvalle")
+
 ## Calcavit prolem flamma
 
 Lorem markdownum in posse invidiae et retinens, ab meorum: nares fabricata

@@ -3,10 +3,12 @@
 /public/build
 /public/hot
 /public/storage
+/public/*.xml
 /storage/*.key
 /storage/pail
 /storage/content
 /vendor
+!storage/images
 .env
 .env.backup
 .env.production

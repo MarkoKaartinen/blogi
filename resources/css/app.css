@@ -1,3 +1,5 @@
+@import "/node_modules/glightbox/dist/css/glightbox.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,6 +13,14 @@
     .wrapper {
         @apply max-w-3xl mx-auto px-6 lg:px-0;
     }
+
+    .searchHighlight mark {
+        @apply bg-nord-13 px-1;
+    }
+
+    .mastodonprose-extras {
+        @apply max-w-none prose-li:marker:text-nord-4 prose-blockquote:border-l-nord-4 prose-a:no-underline prose-a:font-bold hover:prose-a:underline;
+    }
 }
 
 .content-image {
@@ -20,6 +30,18 @@
 .external-link:after {
     content: "\2934";
     @apply no-underline inline-flex pl-0.5 font-sans;
+}
+
+.textcontent .content-figure {
+    @apply bg-theme-0 rounded-xl border-nord-10 border-2 overflow-clip;
+}
+
+.textcontent .figure-image {
+    @apply mb-0 mt-0 w-full border-b-2 border-nord-10;
+}
+
+.textcontent .figure-caption {
+    @apply bg-theme-0 rounded-b-xl px-3 py-2  mt-0 text-nord-4;
 }
 
 .textcontent .wp-block-gallery > ul,
@@ -38,4 +60,8 @@
 .textcontent .wp-block-gallery img,
 .textcontent .gallery img {
     @apply aspect-square object-cover object-center m-0;
+}
+
+.glightbox-clean .gslide-description {
+    @apply bg-nord-0 text-nord-6;
 }

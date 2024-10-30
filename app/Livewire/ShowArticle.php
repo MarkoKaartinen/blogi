@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use App\Support\SEO;
 use Carbon\Carbon;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -24,6 +25,14 @@ class ShowArticle extends Component
             ->with(['tags', 'legacy_comments'])
             ->firstOrFail();
         $this->article = $article;
+
+        SEO::set(
+            title: $article->title,
+            description: $article->seo_description,
+            image: route('article.og', [$article->slug]),
+            url: $article->url,
+            titleSuffix: true
+        );
 
         $this->previousArticle = Article::where('published_at', '<', $article->published_at)
             ->whereNotNull('published_at')

@@ -106,12 +106,26 @@ class Article extends Model implements Feedable
 
     public function toSearchableArray(): array
     {
+        $this->load('tags');
         return [
             'id' => (string) $this->id,
+            'year' => $this->year,
+            'slug' => $this->slug,
             'title' => $this->title,
             'description' => $this->seo_description,
             'published_at' => $this->published_at->timestamp,
             'body' => $this->body,
+            'url' => $this->url,
+            'series' => $this->tagsWithType('series')->pluck('name')->toArray(),
+            'categories' => $this->tagsWithType('category')->pluck('name')->toArray(),
+            'tags' => $this->tagsWithType('tag')->pluck('name')->toArray(),
+        ];
+    }
+
+    public function typesenseSearchParameters(): array
+    {
+        return [
+            'highlight_full_fields' => 'description,title',
         ];
     }
 

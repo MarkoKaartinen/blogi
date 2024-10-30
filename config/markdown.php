@@ -100,6 +100,7 @@ return [
         \Wnx\CommonmarkMarkExtension\MarkExtension::class,
         \League\CommonMark\Extension\ExternalLink\ExternalLinkExtension::class,
         \League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension::class,
+        \App\Support\MarkdownImageExtension::class,
     ],
 
     /*

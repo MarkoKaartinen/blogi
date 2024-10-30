@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Redirect;
 use App\Support\MarkdownHandler;
+use App\Support\SEO;
 use Carbon\Carbon;
 use Livewire\Component;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -26,6 +27,15 @@ class ShowPage extends Component
         $content = YamlFrontMatter::parse($file);
         $this->title = $content->matter('title');
         $this->markdown = str($content->body())->trim();
+
+
+        SEO::set(
+            title: $this->title,
+            description: $content->matter('description'),
+            image: route('page.og', [$page]),
+            url: route('page', [$page]),
+            titleSuffix: true
+        );
 
         if($content->matter('show_updated_at')){
             if($content->matter('updated_at')){

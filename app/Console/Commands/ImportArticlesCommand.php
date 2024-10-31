@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Article;
 use App\Support\MarkdownHandler;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 class ImportArticlesCommand extends Command
@@ -51,5 +52,7 @@ class ImportArticlesCommand extends Command
                 }
             }
         }
+
+        Cache::flush();
     }
 }

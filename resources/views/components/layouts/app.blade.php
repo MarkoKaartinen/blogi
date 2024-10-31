@@ -19,6 +19,10 @@
 
     @include('feed::links')
 
+    @production
+        <script defer data-domain="markokaartinen.net" data-spa="auto" src="https://analytics.elysium.fi/js/script.js"></script>
+    @endproduction
+
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

@@ -76,7 +76,7 @@ class Guestbook extends Component
     public function render()
     {
         return view('livewire.guestbook', [
-            'messages' => GuestbookMessage::latest()->paginate(10)
+            'messages' => GuestbookMessage::latest()->paginate(20)
         ]);
     }
 }

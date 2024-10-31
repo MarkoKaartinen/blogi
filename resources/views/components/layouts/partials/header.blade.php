@@ -1,3 +1,12 @@
+@php
+$navItems = [
+    ['name' => 'blogi', 'url' => route('blog')],
+    ['name' => 'vieraskirja', 'url' => route('guestbook')],
+    ['name' => 'nyt', 'url' => route('page', ['nyt'])],
+    ['name' => 'tietoa', 'url' => route('page', ['tietoa'])],
+    ['name' => 'haku', 'url' => route('search')],
+];
+@endphp
 <div class="h-6 md:h-12"></div>
 <div class="sticky top-0 w-full  bg-nord-0 z-[100]">
     <div class="container mx-auto flex items-center justify-between py-2 px-6 lg:px-0">
@@ -8,11 +17,9 @@
         </div>
         <div>
             <ul class="hidden md:flex space-x-4">
-                <li><a class="text-base hover:font-bold hover:text-nord-11 transition-colors duration-300" href="{{ route('blog') }}" wire:navigate><span class="text-nord-11">/</span>blogi</a></li>
-                <li><a class="text-base hover:font-bold hover:text-nord-11 transition-colors duration-300" href="{{ route('guestbook') }}" wire:navigate><span class="text-nord-11">/</span>vieraskirja</a></li>
-                <li><a class="text-base hover:font-bold hover:text-nord-11 transition-colors duration-300" href="{{ route('page', ['nyt']) }}" wire:navigate><span class="text-nord-11">/</span>nyt</a></li>
-                <li><a class="text-base hover:font-bold hover:text-nord-11 transition-colors duration-300" href="{{ route('page', ['tietoa']) }}" wire:navigate><span class="text-nord-11">/</span>tietoa</a></li>
-                <li><a class="text-base hover:font-bold hover:text-nord-11 transition-colors duration-300" href="{{ route('search') }}" wire:navigate><span class="text-nord-11">/</span>haku</a></li>
+                @foreach($navItems as $navItem)
+                    <li><a class="text-base hover:font-bold hover:text-nord-11 transition-colors duration-300" href="{{ $navItem['url'] }}" wire:navigate><span class="text-nord-11">/</span>{{ $navItem['name'] }}</a></li>
+                @endforeach
             </ul>
             <div class="block md:hidden relative" @click.outside="open = false" x-data="{ open: false }">
                 <div>
@@ -35,11 +42,9 @@
                      x-transition:leave-start="transform opacity-100 scale-100"
                      x-transition:leave-end="transform opacity-0 scale-95"
                 >
-                    <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ route('blog') }}" wire:navigate><span class="text-nord-11">/</span>blogi</a>
-                    <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ route('guestbook') }}" wire:navigate><span class="text-nord-11">/</span>vieraskirja</a>
-                    <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ route('page', ['nyt']) }}" wire:navigate><span class="text-nord-11">/</span>nyt</a>
-                    <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ route('page', ['tietoa']) }}" wire:navigate><span class="text-nord-11">/</span>tietoa</a>
-                    <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ route('search') }}" wire:navigate><span class="text-nord-11">/</span>haku</a>
+                    @foreach($navItems as $navItem)
+                        <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ $navItem['url'] }}" wire:navigate><span class="text-nord-11">/</span>{{ $navItem['name'] }}</a>
+                    @endforeach
                 </div>
             </div>
         </div>

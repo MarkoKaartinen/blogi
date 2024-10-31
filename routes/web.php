@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ShowOgImageController;
 use App\Livewire\Blog;
 use App\Livewire\Guestbook;
@@ -37,3 +38,5 @@ Route::get('/og/sivu/{slug}.png', [ShowOgImageController::class, 'page'])->name(
 
 Route::get('/{year}/{slug}', ShowArticle::class)->name('article');
 Route::get('/{page}', ShowPage::class)->name('page');
+
+Route::get('/{year}/{month}/{day}/{slug}', [RedirectController::class, 'yearMonthDay']);

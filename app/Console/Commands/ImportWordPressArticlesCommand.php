@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\LegacyComment;
 use App\Models\Redirect;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -27,7 +28,7 @@ class ImportWordPressArticlesCommand extends Command
 
         $continue = confirm(
             label: 'Oletko nyt ihan varma, että haluat ajaa tämän komennon?',
-            default: false,
+            default: true,
             yes: 'Kyllä',
             no: 'Ei, peruuta!'
         );
@@ -78,6 +79,7 @@ class ImportWordPressArticlesCommand extends Command
             $year = $published_at->format('Y');
 
             $content = $post->content->rendered;
+
             $content = Str::of($content)
                 ->replace('https://markokaartinen.net/wp-content', 'https://cdn.markokaartinen.net')
                 ->replace('https://markokaartinen.net/app/uploads', 'https://cdn.markokaartinen.net/uploads')
@@ -153,6 +155,9 @@ $content";
                 'legacy' => true,
             ]);
 
+            $article->created_at = $published_at;
+            $article->save();
+
             if(count($tagsArr) > 0){
                 $article->syncTagsWithType($tagsArr, 'tag');
             }
@@ -162,7 +167,6 @@ $content";
             if(count($seriesArr) > 0){
                 $article->syncTagsWithType($seriesArr, 'series');
             }
-
 
             if(is_array($post->mcomments) && count($post->mcomments) > 0){
                 foreach ($post->mcomments as $comment){
@@ -179,12 +183,14 @@ $content";
             Redirect::updateOrCreate([
                 'old' => $slug,
             ], [
-                'new' => $article->url
+                'new' => $article->url,
+                'old_url' => $post->link,
             ]);
 
             $progress->advance();
-
         }
+
+        Cache::flush();
 
         $progress->finish();
 

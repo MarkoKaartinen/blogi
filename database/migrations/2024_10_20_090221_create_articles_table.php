@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('file');
             $table->string('status')->default('draft');
             $table->boolean('legacy')->default(false);
+            $table->string('mastodon_post_id')->nullable()->default(null);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

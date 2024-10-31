@@ -28,7 +28,12 @@ class Article extends Model implements Feedable
         'status',
         'updated_at',
         'published_at',
-        'legacy'
+        'legacy',
+        'created_at',
+        'mastodon_post_id',
+        'file_content',
+        'seo_description',
+        'url'
     ];
 
     protected static function booted(): void
@@ -109,7 +114,7 @@ class Article extends Model implements Feedable
         $this->load('tags');
         return [
             'id' => (string) $this->id,
-            'year' => $this->year,
+            'year' => (int) $this->year,
             'slug' => $this->slug,
             'title' => $this->title,
             'description' => $this->seo_description,

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Article;
 use App\Support\SEO;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 use App\Models\Tag;
 
@@ -13,10 +14,12 @@ class ShowSeries extends Component
 
     public function mount($slug)
     {
-        $this->series = Tag::where('slug->fi', $slug)
-            ->where('type', 'series')
-            ->withCount('articles')
-            ->firstOrFail();
+        $this->series = Cache::remember('series_'.$slug, 3600, function() use ($slug){
+            return Tag::where('slug->fi', $slug)
+                ->where('type', 'series')
+                ->withCount('articles')
+                ->firstOrFail();
+        });
 
         SEO::set(
             title: $this->series->name . ' - Sarja',

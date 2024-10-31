@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Redirect extends Model
 {
-    protected $fillable = ['old', 'new', 'hits'];
+    protected $fillable = ['old', 'new', 'hits', 'old_url'];
 }

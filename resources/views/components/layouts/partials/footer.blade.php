@@ -1,4 +1,4 @@
-<div class="container mx-auto flex flex-col md:flex-row items-center justify-between pb-6 md:pb-12 gap-6">
+<div class="container mx-auto flex flex-col items-center justify-between pb-6 md:pb-12 gap-6">
     <div class="flex items-center gap-4">
         <div>
             <a class="text-brand-mastodon hover:text-opacity-80" href="https://kaartinen.social/@marko" rel="me">

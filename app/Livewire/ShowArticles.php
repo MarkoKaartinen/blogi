@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -27,18 +28,38 @@ class ShowArticles extends Component
     #[Computed]
     public function getArticles()
     {
+
+
         $tag = $this->tag;
         $tagType = $this->tagType;
-        $articles = Article::published()
-            ->when(in_array($tagType, ['series', 'category', 'tag']) && $tag != null, function($q) use ($tag, $tagType){
-                $q->withAnyTags([$tag], $tagType);
-            })
-            ->with(['tags'])
-            ->orderBy('published_at', $this->order);
+        $paginate = $this->paginate;
+        $limit = $this->limit;
+        $order = $this->order;
 
-        if(!$this->paginate){
-            return $articles->limit($this->limit)->get();
+        $cacheKey = 'show_articles';
+        if($tagType != null && $tag != null){
+            $cacheKey .= '_'.$tagType.'_'.$tag;
         }
-        return $articles->paginate($this->limit);
+        $cacheKey .= '_'.$order;
+        $cacheKey .= '_'.$limit;
+        if($paginate){
+            $cacheKey .= '_'.$this->getPage();
+        }
+
+        return Cache::remember($cacheKey, 3600, function() use ($tag, $tagType, $paginate, $limit, $order){
+            $articles = Article::published()
+                ->when(in_array($tagType, ['series', 'category', 'tag']) && $tag != null, function($q) use ($tag, $tagType){
+                    $q->withAnyTags([$tag], $tagType);
+                })
+                ->with(['tags'])
+                ->orderBy('published_at', $order);
+
+            if(!$paginate){
+                return $articles->limit($limit)->get();
+            }
+            return $articles->paginate($limit);
+        });
+
+
     }
 }

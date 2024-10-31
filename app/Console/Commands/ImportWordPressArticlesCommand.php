@@ -28,7 +28,7 @@ class ImportWordPressArticlesCommand extends Command
 
         $continue = confirm(
             label: 'Oletko nyt ihan varma, että haluat ajaa tämän komennon?',
-            default: true,
+            default: false,
             yes: 'Kyllä',
             no: 'Ei, peruuta!'
         );

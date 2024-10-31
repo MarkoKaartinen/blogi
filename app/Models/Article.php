@@ -73,6 +73,11 @@ class Article extends Model implements Feedable
             ->where('published_at', '<=', now());
     }
 
+    public function scopeUnpublished(Builder $query): Builder
+    {
+        return $query->where('status', 'draft');
+    }
+
     protected function fileContent(): Attribute
     {
         return Attribute::make(

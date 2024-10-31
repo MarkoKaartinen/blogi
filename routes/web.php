@@ -11,6 +11,7 @@ use App\Livewire\ShowAllTags;
 use App\Livewire\ShowArticle;
 use App\Livewire\Home;
 use App\Livewire\ShowCategory;
+use App\Livewire\ShowDraft;
 use App\Livewire\ShowPage;
 use App\Livewire\Search;
 use App\Livewire\ShowSeries;
@@ -35,6 +36,10 @@ Route::get('/kuva/{year}/{file}', ImageController::class)->name('image');
 Route::feeds();
 Route::get('/og/artikkeli/{slug}.png', [ShowOgImageController::class, 'article'])->name('article.og');
 Route::get('/og/sivu/{slug}.png', [ShowOgImageController::class, 'page'])->name('page.og');
+
+if(!app()->isProduction()){
+    Route::get('/luonnos/{year}/{slug}', ShowDraft::class);
+}
 
 Route::get('/{year}/{slug}', ShowArticle::class)->name('article');
 Route::get('/{page}', ShowPage::class)->name('page');

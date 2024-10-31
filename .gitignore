@@ -6,7 +6,7 @@
 /public/*.xml
 /storage/*.key
 /storage/pail
-/storage/content
+!/storage/content
 /vendor
 !storage/images
 .env

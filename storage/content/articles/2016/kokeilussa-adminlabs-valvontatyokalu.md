@@ -1,0 +1,70 @@
+---
+title: 'Kokeilussa AdminLabs valvontatyökalu'
+slug: kokeilussa-adminlabs-valvontatyokalu
+status: published
+published_at: 2016-08-15 17:27
+updated_at: 2016-09-26 14:49
+description: |
+    Minulle tarjottiin mahdollisuutta päästä kokeilemaan AdminLabs valvontatyökalua ja tietenkin suostuin siihen. Tässä siis omia kokemuksia työkalusta.
+legacy: true
+categories:
+- Kokeilussa
+tags:
+- Esittelyssä
+- kokeilussa
+- palvelimet
+- palvelin
+- palvelu
+- Sivusto
+- sivut
+- valvonta
+- valvontatyökalu
+- verkko
+- verkkopalvelu
+- verkkosivu
+- verkkosivut
+- ylläpito
+---
+
+<p>Minulle tarjottiin mahdollisuutta päästä kokeilemaan <a href="https://www.adminlabs.com" target="_blank">AdminLabs</a> valvontatyökalua ja tietenkin suostuin siihen. AdminLabs on kaikessa yksinkertaisuudessaan työkalu verkkosivujen tai verkkopalveluiden valvontaan. Saat siis infoa siitä onko sivustosi/palvelusi pystyssä vai ei.</p>
+<p>Testaankin tässä jutussa tuota työkalua ja kerron teille hieman omia kokemuksiani. Vaikka minulle annettiin krediittejä kokeilemista varten niin mielipiteet ja kokemukset ovat omiani.</p>
+<h2>Verkkotyökalut</h2>
+<p>Hallinnan puolella lähdin ensin tutustumaan verkkotyökaluihin ja päätin tutkia monitorointia hieman sen jälkeen. Verkkotyökaluista löytyykin kattava valikoima erilaisia yksinkertaisia työkaluja joita kieltämättä itsekin tarvitsen silloin tällöin. Siellä saat pingattua osoitetta ja tarkistettua onko tietty portti auki vaiko ei. Saat myös kaiveltua tietoja domainin takaa kuten dns ja whois tietoja. Saat myös kaiveltua oman ip:n ja selaimen infojakin. Näiden työkalujen käyttö ei kuluta krediittejä eli niiden käyttäminen on ilmaista.</p>
+<p><a href="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.33.50.png"><img loading="lazy" decoding="async" class="alignnone size-medium wp-image-6437" src="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.33.50-1000x349.png" alt="AdminLabs ping työkalu" width="1000" height="349" srcset="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.33.50-1000x349.png 1000w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.33.50-600x209.png 600w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.33.50-1600x559.png 1600w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.33.50-1050x367.png 1050w" sizes="(max-width: 1000px) 100vw, 1000px" /></a></p>
+<p>Alla vielä lista työkaluista mitä löytyy:</p>
+<ul>
+<li>Ping test</li>
+<li>Port check</li>
+<li>DNS lookup</li>
+<li>Whois lookup</li>
+<li>Reverse DNS lookup</li>
+<li>Show my IP</li>
+<li>Traceroute test</li>
+<li>Country by IP lookup</li>
+<li>Certificate information</li>
+</ul>
+<h2>Monitorointi</h2>
+<p>Tämä on AdminLabsin tärkein osio ja palvelu. Voit luoda monitoroida urlia, pingiä tai sitten porttia, voit myös valita osoitteen mitä monitoroidaan, aikavälin milloin monitoroidaan sekä sijainnin mistä tutkitaan antamiasi tietoja. Yksinkertaisimmillaan et muuta infoa tarvitse ja saat sivusi seurantaan hyvinkin nopeasti. Alla vielä kuvankaappaus siitä mitä kaikkea lisäyksessä voisi laittaa.</p>
+<p><a href="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-11-07.36.14.png"><img loading="lazy" decoding="async" class="alignnone wp-image-6420 size-medium" src="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-11-07.36.14-e1470890338975-1000x602.png" alt="AdminLabs lisäys" width="1000" height="602" srcset="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-11-07.36.14-e1470890338975-1000x602.png 1000w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-11-07.36.14-e1470890338975-600x361.png 600w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-11-07.36.14-e1470890338975-1600x964.png 1600w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-11-07.36.14-e1470890338975-1050x632.png 1050w" sizes="(max-width: 1000px) 100vw, 1000px" /></a></p>
+<p>Monitorin lisäyksen jälkeen AdminLabs hoitaa puolestasi ilmoitukset jos osoitteessa on ongelmia ja saat halutessasi ilmoituksen kännykkään, sähköpostiin tai sitten Pushover palvelun kautta. Alla onkin juuri lisäämäni monitorit parille eri palvelimelleni.</p>
+<p><a href="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-list-1470890868366.png"><img loading="lazy" decoding="async" class="alignnone wp-image-6424 size-medium" src="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-list-1470890868366-1000x542.png" alt="AdminLabs monitorit" width="1000" height="542" srcset="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-list-1470890868366-1000x542.png 1000w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-list-1470890868366-600x325.png 600w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-list-1470890868366-1600x867.png 1600w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-list-1470890868366-1050x569.png 1050w" sizes="(max-width: 1000px) 100vw, 1000px" /></a></p>
+<p>Voit hallita lisättyjä seurantoja helposti ja voit jopa poistaa ne halutessasi. Voit hallita samoja asioita mitä lisäyksessä syötit. Saat myös monitori kohtaista tilastoa skannauksista ja uptimestä. Voit myös lisätä muita käyttäjiä saamaan ilmoituksia jos sivusi on alhaalla.</p>
+<h3>Tilasivu</h3>
+<p>Voit myös luoda simppelin tilasivun näytettäväksi esimerkiksi omilla kotisivuilla. Alle kaappasinkin kuvan siitä mitä kaikkea tilasivulla voi näyttää ja voipa sen rajoittaa näytettäväksi tietyillä ip-osoittellekkin.</p>
+<p><a href="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-add-status-page-1470891290685.png"><img loading="lazy" decoding="async" class="alignnone size-medium wp-image-6425" src="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-add-status-page-1470891290685-1000x741.png" alt="AdminLabs tilasivu" width="1000" height="741" srcset="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-add-status-page-1470891290685-1000x741.png 1000w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-add-status-page-1470891290685-600x444.png 600w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-add-status-page-1470891290685-1600x1185.png 1600w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-dashboard-adminlabs-com-monitor-add-status-page-1470891290685-1050x778.png 1050w" sizes="(max-width: 1000px) 100vw, 1000px" /></a></p>
+<p>Luomasi tilasivu näyttää sitten valinnoista riippuen esimerkiksi tältä:</p>
+<p><a href="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1470891421197.png"><img loading="lazy" decoding="async" class="alignnone size-medium wp-image-6426" src="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1470891421197-1000x154.png" alt="AdminLabs tilasivu" width="1000" height="154" srcset="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1470891421197-1000x154.png 1000w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1470891421197-600x92.png 600w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1470891421197-1600x247.png 1600w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1470891421197-1050x162.png 1050w" sizes="(max-width: 1000px) 100vw, 1000px" /></a></p>
+<p>Tässä vielä sama tilasivu sen jälkeen, kun palvelimet ovat pyörineet pari päivää ja tuo huoltoikkuna mennyt ohitse.</p>
+<p><a href="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1471233247257.png"><img loading="lazy" decoding="async" class="alignnone wp-image-6429 size-medium" src="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1471233247257-1000x115.png" alt="AdminLabs tilasivu" width="1000" height="115" srcset="https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1471233247257-1000x115.png 1000w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1471233247257-600x69.png 600w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1471233247257-1600x184.png 1600w, https://cdn.markokaartinen.net/uploads/2016/08/screencapture-status-adminlabs-com-status-show-id-b9e374d4-5f7d-11e6-94db-000c296ced1f-preview-1-1471233247257-1050x121.png 1050w" sizes="(max-width: 1000px) 100vw, 1000px" /></a></p>
+<h3>Huollot</h3>
+<p>Voit lisätä huoltoikkunoita näytettäväksi mm. tilasivulla ja tämä vaikuttaa myös monitorointiin sillä voit asetuksista valita vaikuttaako katkos huoltoikkunan ajalla seurantaan. Nämä katkokset näkyy myös halutessasi tilasivulla.</p>
+<p><a href="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.00.53.png"><img loading="lazy" decoding="async" class="alignnone wp-image-6431 size-medium" src="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.00.53-1000x329.png" alt="AdminLabs huolto" width="1000" height="329" srcset="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.00.53-1000x329.png 1000w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.00.53-600x197.png 600w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.00.53-1600x526.png 1600w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.00.53-1050x345.png 1050w" sizes="(max-width: 1000px) 100vw, 1000px" /></a></p>
+<p>Tämä on hyvin simppeli ja toimiva osa järjestelmää. Voit lisätä huoltoja näppärästi ja mikäli menee väärin niin poistaa sen. Ainoan nootin antaisin kuitenkin tuosta huollon alku- ja loppuajan lisäämisestä. Siinä tulee kiva työkalu, mutta se on hieman työläs lisätä sillä valitaan päivä, tunnit ja minuutit erikseen ja kaikki valinnat on ok painikkeen kautta. Itselle tuo oli hieman kömpelö tapa valita aika. Sekunnit se myös tuntuu ottavan jostain vaikka niitä ei valita ja niitä et saa muokattua &#8211; ihan sekunnin tarkkaa ei tosin ole, mutta jos ne näytetään hallinnassa niin pitäisi niitä voida muokatakin.</p>
+<p><a href="https://cdn.markokaartinen.net/uploads/2016/08/ajanvalinta.png"><img loading="lazy" decoding="async" class="alignnone wp-image-6432 size-medium" src="https://cdn.markokaartinen.net/uploads/2016/08/ajanvalinta-1000x570.png" alt="AdminLabs ajanvalinta" width="1000" height="570" srcset="https://cdn.markokaartinen.net/uploads/2016/08/ajanvalinta-1000x570.png 1000w, https://cdn.markokaartinen.net/uploads/2016/08/ajanvalinta-600x342.png 600w, https://cdn.markokaartinen.net/uploads/2016/08/ajanvalinta-1600x912.png 1600w, https://cdn.markokaartinen.net/uploads/2016/08/ajanvalinta-1050x599.png 1050w, https://cdn.markokaartinen.net/uploads/2016/08/ajanvalinta.png 1819w" sizes="(max-width: 1000px) 100vw, 1000px" /></a></p>
+<h3>Historia / katkokset</h3>
+<p>Pitäähän tietysti jonkinlaista tilastoakin saada ulos. Historia sivulta saat näppärästi listattuna päiväkohtaiset tiedot ja kuukausitasolla yhteenvedon skannauksien määrästä, monitoroidusta ajasta sekä palvelutasosta. Katkokset sivulla taas saisit infot katkoksista kuukausittain joko kaikista tai valitsemastasi monitorista.</p>
+<p><a href="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.15.19.png"><img loading="lazy" decoding="async" class="alignnone wp-image-6433 size-medium" src="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.15.19-1000x248.png" alt="AdminLabs tilastot" width="1000" height="248" srcset="https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.15.19-1000x248.png 1000w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.15.19-600x149.png 600w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.15.19-1600x397.png 1600w, https://cdn.markokaartinen.net/uploads/2016/08/Screenshot-2016-08-15-07.15.19-1050x260.png 1050w" sizes="(max-width: 1000px) 100vw, 1000px" /></a></p>
+<h2>Lopuksi</h2>
+<p>Loppujen lopuksi AdminLabs on erittäin toimiva palvelu ja simppelin käyttöliittymän ansiosta sitä on helppo käyttää. Kerran kun olet monitoroinnin laittanut toimintaan niin sen voit periaatteessa unohtaa sillä saat ilmoitukset katkoksista haluamallasi tavalla sekä saat halutessasi sähköpostiisi päivittäisen raportin toiminnasta. Ainoa osa mitä pitää itse aktiivisesti päivittää on huoltojen hallinta, mutta nämäkin yleensä tiedetään reilusti etukäteen, jolloin ne voi rauhassa syöttää palveluun. Halutessasi saat tilasivun esim. iframella upotettua omille sivuille.</p>
+<p>Lähtisin jo suosittelemaan tätä palvelua sekin takia, koska tämän takana on suomalaista porukkaa. Kerrassaan hyvää työtä ovat tehneet tämän palvelun suhteen. Tutustu AdminLabsiin tarkemmin heidän <a href="https://www.adminlabs.com" target="_blank">verkkosivuillaan</a> ja voit muuten kokeilla sitä ilmaiseksikin!</p>
+<p><em>Tuttuun tapaan mikäli unohdin jotain tai haluat ilmaista oman mielipiteesi niin alhaalla on kommenttiloota.</em></p>

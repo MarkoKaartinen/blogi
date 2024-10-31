@@ -24,6 +24,7 @@ class ShowArticle extends Component
         $cacheKey = 'article_'.$year.'_'.$slug;
         $article = Cache::remember($cacheKey, 3600, function() use ($year, $slug){
             return Article::where('year', $year)
+                ->published()
                 ->where('slug', $slug)
                 ->with(['tags', 'legacy_comments'])
                 ->first();

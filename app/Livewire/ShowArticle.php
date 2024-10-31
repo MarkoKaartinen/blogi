@@ -30,7 +30,6 @@ class ShowArticle extends Component
         });
 
         if(!$article instanceof Article){
-            dd(request());
             abort(404);
         }
 

@@ -39,6 +39,10 @@
 
         <div class="h-1 w-20 rounded-full bg-nord-9 my-6 md:my-12"></div>
 
+        @if(count($messages) == 0)
+            <p>Vieraskirjassa ei ole vielä viestejä. Ole rohkeasti ensimmäinen!</p>
+        @endif
+
         <div class="scroll-mt-20" id="messages">
             @foreach($messages as $msg)
                 <div class="my-6 bg-nord-1 border-2 border-nord-10 rounded-2xl overflow-clip">

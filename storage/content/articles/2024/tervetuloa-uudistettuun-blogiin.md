@@ -1,7 +1,8 @@
 ---
 title: Tervetuloa uudistettuun blogiin!
 slug: tervetuloa-uudistettuun-blogiin
-status: draft
+status: published
+published_at: 2024-11-01 11:46
 description: Päätin tehdä MarkoKaartinen.net blogille isoimman uudistuksen pitkään, pitkään aikaan. Se nimittäin koodattiin itse ja sisältö tulee Markdownista ja sqlite tietokannasta.
 categories:
 - Blogi

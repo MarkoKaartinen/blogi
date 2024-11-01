@@ -70,6 +70,10 @@
         @endif
     </div>
 
+    @if($article->igdb_id)
+        <livewire:game-box :igdb-id="$article->igdb_id" />
+    @endif
+
     <div class="pt-6 flex flex-col gap-2">
         <div class="">
             @foreach($article->tagsWithType('category') as $category)

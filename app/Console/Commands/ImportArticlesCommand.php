@@ -37,6 +37,7 @@ class ImportArticlesCommand extends Command
                     'description' => $content->matter('description'),
                     'file' => $filepath,
                     'status' => $content->matter('status'),
+                    'igdb_id' => $content->matter('igdb_id'),
                     'published_at' => $content->matter('published_at'),
                     'updated_at' => $content->matter('updated_at'),
                 ]);

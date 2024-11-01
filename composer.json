@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.5",
+        "marcreichel/igdb-laravel": "^4.3",
         "meilisearch/meilisearch-php": "^1.11",
         "predis/predis": "^2.0",
         "simonhamp/the-og": "^0.5.8",

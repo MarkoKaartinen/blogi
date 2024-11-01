@@ -35,13 +35,13 @@ class SendMastodonMessageJob implements ShouldQueue
             $message .= "\n\n".collect($tags)->implode(' ');
         }
 
-        $payload = [
-            'status' => $message,
-        ];
-
         $url = config('services.mastodon.instance').'/api/v1/statuses';
         $response = Http::withToken(config('services.mastodon.token'))
-            ->post($url, $payload);
+            ->post($url, [
+                'status' => $message,
+                'visibility' => 'public',
+                'language' => 'fi',
+            ]);
 
         if($response->successful()){
             $status_id = $response->object()->id;

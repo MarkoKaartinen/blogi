@@ -12,6 +12,10 @@ class ImageController extends Controller
     {
         $filepath = "$year/$file";
 
+        if(!Storage::disk('media')->exists($filepath)){
+            abort(404);
+        }
+
         $image = Image::updateOrCreate([
             'year' => $year,
             'filename' => $file,
@@ -34,7 +38,7 @@ class ImageController extends Controller
         if(request()->get('size')){
             $size = request()->get('size');
         }
-        
+
         if(!$media->hasGeneratedConversion($size)){
             return response()->file(Storage::disk('media')->path($filepath));
         }

@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\Middleware\WithoutOverlapping;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class SendMastodonMessageJob implements ShouldQueue
@@ -41,6 +42,13 @@ class SendMastodonMessageJob implements ShouldQueue
         $url = config('services.mastodon.instance').'/api/v1/statuses';
         $response = Http::withToken(config('services.mastodon.token'))
             ->post($url, $payload);
+
+        if($response->successful()){
+            $status_id = $response->object()->id;
+            $this->article->mastodon_post_id = $status_id;
+            $this->article->save();
+            Cache::flush();
+        }
     }
 
     public function middleware(): array

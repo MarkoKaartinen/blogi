@@ -106,7 +106,7 @@ class Article extends Model implements Feedable
 
     public function getFeedItems()
     {
-        return Article::published()->limit(20)->get();
+        return Article::published()->latest()->limit(20)->get();
     }
 
     public function legacy_comments(): HasMany

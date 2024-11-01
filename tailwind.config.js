@@ -18,6 +18,7 @@ export default {
                 brand: {
                     mastodon: '#6364FF',
                     rss: '#FFA500',
+                    igdb: '#9147FF',
                 },
                 theme: {
                     0: '#232730',

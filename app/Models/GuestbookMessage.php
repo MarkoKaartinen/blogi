@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GuestbookMessage extends Model
 {
-    protected $fillable = ['nickname', 'message', 'homepage'];
+    protected $fillable = ['nickname', 'message', 'homepage', 'reply', 'replied_at'];
 
     protected function casts(): array
     {

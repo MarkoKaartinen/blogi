@@ -20,18 +20,34 @@ class ImageController extends Controller
         $media = $image->getFirstMedia('image');
 
         if($image->wasRecentlyCreated || !$media instanceof Media){
-            $image->addMediaFromDisk($filepath, 'images')
+            $image->addMediaFromDisk($filepath, 'media')
                 ->preservingOriginal()
                 ->toMediaCollection('image');
             $media = $image->getFirstMedia('image');
+        }
+
+        if(!$media instanceof Media){
+            return response()->file(Storage::disk('media')->path($filepath));
         }
 
         $size = 'large';
         if(request()->get('size')){
             $size = request()->get('size');
         }
+        
+        if(!$media->hasGeneratedConversion($size)){
+            return response()->file(Storage::disk('media')->path($filepath));
+        }
 
-        return response()
-            ->file($media->getAvailablePath([$size]));
+        $s3path = str($media->getAvailablePath([$size]))
+            ->replace(config('filesystems.disks.s3-media.root'), '')
+            ->toString();
+        $s3storage = Storage::disk('s3-media');
+
+        if(!$s3storage->exists($s3path)){
+            return response()->file(Storage::disk('media')->path($filepath));
+        }
+
+        return response($s3storage->get($s3path), headers: ['Content-Type' => $s3storage->mimeType($s3path)]);
     }
 }

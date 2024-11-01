@@ -31,7 +31,7 @@ Route::get('/avainsanat', ShowAllTags::class)->name('tags.all');
 Route::get('/sarjat', ShowAllSeries::class)->name('series.all');
 Route::get('/kategoriat', ShowAllCategories::class)->name('categories.all');
 
-Route::get('/kuva/{year}/{file}', ImageController::class)->name('image');
+Route::get('/media/{year}/{file}', ImageController::class)->name('media');
 
 Route::feeds();
 Route::get('/og/artikkeli/{slug}.png', [ShowOgImageController::class, 'article'])->name('article.og');

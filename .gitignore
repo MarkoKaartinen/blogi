@@ -7,7 +7,7 @@
 /storage/pail
 !/storage/content
 /vendor
-!storage/images
+!storage/media
 .env
 .env.backup
 .env.production

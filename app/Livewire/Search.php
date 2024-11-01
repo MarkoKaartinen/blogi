@@ -37,8 +37,10 @@ class Search extends Component
     public function render()
     {
         return view('livewire.search', [
-            'articles' => Article::search($this->keywords)
-                ->paginateRaw(10),
+            'articles' => Article::search($this->keywords, function($meilisearch, $query, $options){
+                $options['attributesToHighlight'] = ['title', 'description'];
+                return $meilisearch->search($query, $options);
+            })->paginateRaw(10),
         ]);
     }
 }

@@ -118,12 +118,12 @@ class Article extends Model implements Feedable
     {
         $this->load('tags');
         return [
-            'id' => (string) $this->id,
+            'id' => (int) $this->id,
             'year' => (int) $this->year,
             'slug' => $this->slug,
             'title' => $this->title,
             'description' => $this->seo_description,
-            'published_at' => $this->published_at->timestamp,
+            'published_at' => $this->published_at,
             'body' => $this->body,
             'url' => $this->url,
             'series' => $this->tagsWithType('series')->pluck('name')->toArray(),
@@ -146,7 +146,7 @@ class Article extends Model implements Feedable
 
     public function searchableAs(): string
     {
-        return 'articles_index';
+        return 'mknet_articles_index';
     }
 
     protected function seoDescription(): Attribute

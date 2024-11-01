@@ -14,8 +14,8 @@
         @apply max-w-3xl mx-auto px-6 lg:px-0;
     }
 
-    .searchHighlight mark {
-        @apply bg-nord-13 px-1;
+    .searchHighlight em {
+        @apply bg-nord-13 px-1 text-nord-11;
     }
 
     .mastodonprose-extras {

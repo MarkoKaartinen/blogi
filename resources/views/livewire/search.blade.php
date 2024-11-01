@@ -21,19 +21,15 @@
             <div class="grid grid-cols-1 gap-12 scroll-mt-20" id="articles">
                 @foreach($hits as $hit)
                     @php
-                        $article = $hit['document'];
+                        $article = $hit;
                         $published_at = \Carbon\Carbon::parse($article['published_at'])->setTimezone('Europe/Helsinki');
                         $description = $article['description'];
                         $title = $article['title'];
-                        if(isset($hit['highlights']) && is_array($hit['highlights'])){
-                            foreach ($hit['highlights'] as $highlight){
-                                if($highlight['field'] == 'description'){
-                                    $description = $highlight['value'];
-                                }
-                                if($highlight['field'] == 'title'){
-                                    $title = $highlight['value'];
-                                }
-                            }
+                        if(isset($hit['_formatted']['title'])){
+                            $title = $hit['_formatted']['title'];
+                        }
+                        if(isset($hit['_formatted']['description'])){
+                            $description = $hit['_formatted']['description'];
                         }
                     @endphp
                     <div class="" wire:key="article-search-list-{{ $article['year'] }}-{{ $article['slug'] }}">

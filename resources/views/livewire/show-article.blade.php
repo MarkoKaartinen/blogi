@@ -33,6 +33,10 @@
         @endif
     </div>
 
+    @if($article->mastodon_post_id != null)
+        <livewire:mastodon-reactions :status="$article->mastodon_post_id" />
+    @endif
+
     @if($article->tagsWithType('series')->count() > 0)
         @php
         $articleSeriesInfo = $this->getSeriesInfo();

@@ -37,6 +37,9 @@ class ShowOgImageController extends Controller
     public function page($slug)
     {
         $file = MarkdownHandler::getPage($slug);
+        if($file === false){
+            $file = MarkdownHandler::getPage('koti');
+        }
         $content = YamlFrontMatter::parse($file);
 
         $theme = $this->theme();

@@ -13,7 +13,7 @@ class SEO
             $description = 'MarkoKaartinen.net on yhden nörtin projekti ja sisältää sekalaista settiä niin tekniikasta kuin muusta nörtteilystä.';
         }
         if($image == ''){
-            $image = route('page.og', ['home']);
+            $image = route('page.og', ['koti']);
         }
         if($url == ''){
             $url = route('home');

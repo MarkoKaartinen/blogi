@@ -20,7 +20,7 @@
     @include('feed::links')
 
     @production
-        <script defer data-domain="markokaartinen.net" data-spa="auto" src="https://analytics.elysium.fi/js/script.js"></script>
+        <script defer data-api="/pla/event" data-domain="markokaartinen.net" data-spa="auto" src="/pla/script.js"></script>
     @endproduction
 
     <!-- Styles / Scripts -->

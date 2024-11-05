@@ -33,7 +33,8 @@ class Article extends Model implements Feedable
         'mastodon_post_id',
         'file_content',
         'seo_description',
-        'url'
+        'url',
+        'igdb_id',
     ];
 
     protected static function booted(): void

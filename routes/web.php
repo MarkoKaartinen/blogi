@@ -40,7 +40,7 @@ Route::get('/og/artikkeli/{slug}.png', [ShowOgImageController::class, 'article']
 Route::get('/og/sivu/{slug}.png', [ShowOgImageController::class, 'page'])->name('page.og');
 
 if(!app()->isProduction()){
-    Route::get('/luonnos/{year}/{slug}', ShowDraft::class);
+    Route::get('/luonnos/{year}/{slug}', ShowDraft::class)->name('draft');
 }
 
 Route::get('/{year}/{slug}', ShowArticle::class)->name('article');

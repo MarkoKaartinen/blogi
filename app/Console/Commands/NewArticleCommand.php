@@ -41,5 +41,6 @@ tags:
 
         Storage::disk('content')->put($filepath, $markdown);
         info('Uusi artikkeli luotu! ('.$filepath.')');
+        info('Luonnos: '.route('draft', [$year, $slug]));
     }
 }

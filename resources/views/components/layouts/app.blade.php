@@ -17,9 +17,9 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=jetbrains-mono:400,400i,500,600,700,700i,800" rel="stylesheet" />
 
-    @include('feed::links')
+    <link rel="alternate" type="application/atom+xml" href="{{ route("feed") }}" title="MarkoKaartinen.net">
 
-    @production
+@production
         <script defer data-api="/pla/event" data-domain="markokaartinen.net" data-spa="auto" src="/pla/script.js"></script>
     @endproduction
 

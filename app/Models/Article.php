@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Scout\Searchable;
-use Spatie\Feed\Feedable;
 use Spatie\Tags\HasTags;
-use Spatie\Feed\FeedItem;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
-class Article extends Model implements Feedable
+class Article extends Model
 {
     use HasTags, Searchable;
 
@@ -92,23 +90,6 @@ class Article extends Model implements Feedable
         return Attribute::make(
             get: fn() => $this->content()
         );
-    }
-
-    public function toFeedItem(): FeedItem
-    {
-        return FeedItem::create()
-            ->id($this->id)
-            ->title($this->title)
-            ->summary($this->seo_description)
-            ->updated($this->updated_at ?? $this->published_at)
-            ->link($this->url)
-            ->authorName('Marko Kaartinen')
-            ->authorEmail('markokaartinen@gmail.com');
-    }
-
-    public function getFeedItems()
-    {
-        return Article::published()->latest()->limit(20)->get();
     }
 
     public function legacy_comments(): HasMany

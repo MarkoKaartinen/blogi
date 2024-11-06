@@ -49,6 +49,7 @@ class Article extends Model implements Feedable
         return [
             'published_at' => 'datetime',
             'updated_at' => 'datetime',
+            'created_at' => 'datetime',
         ];
     }
 

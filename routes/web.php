@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\ShowFeedController;
 use App\Http\Controllers\ShowOgImageController;
 use App\Livewire\Blog;
 use App\Livewire\Guestbook;
@@ -33,7 +34,9 @@ Route::get('/kategoriat', ShowAllCategories::class)->name('categories.all');
 
 Route::get('/media/{year}/{file}', ImageController::class)->name('media');
 
+Route::get('/testfeed', ShowFeedController::class)->name('feed');
 Route::feeds();
+
 Route::get('/og/artikkeli/{slug}.png', [ShowOgImageController::class, 'article'])->name('article.og');
 Route::get('/og/sivu/{slug}.png', [ShowOgImageController::class, 'page'])->name('page.og');
 

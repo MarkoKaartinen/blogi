@@ -14,7 +14,7 @@ class ShowComments extends Component
     public ?string $mastodonStatus;
     public int $articleId;
 
-    public array $comments;
+    public array $comments = [];
     public array $mastodonReplies;
 
     public function mount()

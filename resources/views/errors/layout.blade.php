@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=jetbrains-mono:400,400i,500,600,700,700i,800" rel="stylesheet" />
 
-    @include('feed::links')
+    <link rel="alternate" type="application/atom+xml" href="{{ route("feed") }}" title="MarkoKaartinen.net">
 
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])

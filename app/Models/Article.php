@@ -92,6 +92,11 @@ class Article extends Model
         );
     }
 
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function legacy_comments(): HasMany
     {
         return $this->hasMany(LegacyComment::class)->orderBy('created_at');

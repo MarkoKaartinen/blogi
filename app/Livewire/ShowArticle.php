@@ -26,7 +26,7 @@ class ShowArticle extends Component
             return Article::where('year', $year)
                 ->published()
                 ->where('slug', $slug)
-                ->with(['tags', 'legacy_comments'])
+                ->with(['tags'])
                 ->first();
         });
 

@@ -27,7 +27,7 @@ class GuestbookMessageResource extends Resource
 
     protected static ?string $slug = 'guestbook';
 
-    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center';
 
     protected static ?string $label = 'Vieraskirja';
     protected static ?string $modelLabel = 'Viesti';

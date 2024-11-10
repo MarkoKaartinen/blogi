@@ -19,7 +19,7 @@ tags:
 {: class="lead"}
 On jo aikakin alkaa päivittämään tietokonerautaa. On siis laitettava vuonna 2022 hankittu pelikannettava kiertoon. Tämä on ensimmäinen osa tälle artikkelisarjalle, joka tulee päivittymään täällä blogissa!
 
-Hommahan aloitetaan sillä, että pistetään tietysti peliläppäri myyntiin. Tämä onkin ollut jo reilun viikon [Torissa](https://www.tori.fi/15499397) myynnissä ja hinta on laskenut sillä välin. Paljon on klikkejä ja katseluita, mutta ei vielä myytyä konetta.
+Hommahan aloitetaan sillä, että pistetään tietysti peliläppäri myyntiin. Tämä onkin ollut jo reilun viikon [Torissa](https://www.tori.fi/profile/ads?userId=2145755174) myynnissä ja hinta on laskenut sillä välin. Paljon on klikkejä ja katseluita, mutta ei vielä myytyä konetta.
 
 Arvelinkin, että tämän myynti voi kestää ja katsotaan nyt mikä hinta sille lopulta asettuu. Tuo nimittäin tulee rahoittamaan hyvän osan uudesta koneesta (toivottavasti).
 

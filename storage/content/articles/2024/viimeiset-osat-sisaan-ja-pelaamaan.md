@@ -3,7 +3,7 @@ title: Viimeiset osat sisään ja pelaamaan
 slug: viimeiset-osat-sisaan-ja-pelaamaan
 status: published
 published_at: 2024-12-05 11:05
-description: 
+description: Koneeseen tuli viimeiset osat ja saadaan ne asennettua. Nyt päästäänkin sitten lopettamaan tämä sarja ja pelaamaan.
 categories:
 - Tietokoneet
 series:

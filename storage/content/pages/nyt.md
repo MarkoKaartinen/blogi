@@ -1,7 +1,7 @@
 ---
 title: Mitä nyt tapahtuu
 description: Tämä on Nyt -sivu, jossa kerron mitä elämässä tapahtuu tällä hetkellä.
-updated_at: 2024-10-30 12:48
+updated_at: 2024-12-10 09:55
 show_updated_at: true
 ---
 
@@ -16,7 +16,7 @@ Asustelen kahdestaan rouvan kanssa vuokrarivarissa Kuopiossa 🇫🇮.
 
 ## 🎮 Pelit
 
-Tällä hetkellä pelailen [No Man's Sky:tä](https://www.nomanssky.com/) [Playstation 5:lla](https://www.playstation.com/fi-fi/ps5/).
+Tällä hetkellä pelailen [No Man's Sky:tä](https://www.nomanssky.com/) [PC:llä](https://markokaartinen.net/sarja/pelikone-lapparin-tilalle).
 
 Käytössä on myös [Asus ROG Ally Z1 Extreme](https://rog.asus.com/fi/gaming-handhelds/rog-ally/rog-ally-2023/) [Bazzitella](https://bazzite.gg/), jota pelailen lähinnä sohvannurkasta ja erilaisia indiepelejä kuten [Tape to tape](https://tapetotapegame.com/), [Balatro](https://www.playbalatro.com/) ja [Stardew valley](https://www.stardewvalley.net/).
 
@@ -24,9 +24,9 @@ Tätä kirjoittaessa olen myymässä myös pelikannettavaa ja jos sen saan myyty
 
 ## 🎬 Elokuvat & Sarjat
 
-Rouvan kanssa on ns. normaalien suomalaisten TV sarjojen (Farmi, Huutokauppa Keisari, Kape yms.) lisäksi menossa [Game of Thrones](https://www.imdb.com/title/tt0944947/).
+Rouvan kanssa on ns. normaalien suomalaisten TV sarjojen (Farmi, Huutokauppa Keisari, Kape yms.) lisäksi menossa [Modern Family](https://www.imdb.com/title/tt1442437/).
 
-Itse olen katsonut [Americans](https://www.imdb.com/title/tt2149175/) sarjaa. Kohta pitäisi uusi etsiä katsottavaksi.
+Itse olen katsonut [Good Wife](https://www.imdb.com/title/tt1442462/) sarjaa. Sen jälkeen olisi ajatus katsoa [Good Fight](https://www.imdb.com/title/tt5853176/).
 
 ## 🍕 Ruoka
 
@@ -46,7 +46,9 @@ Samoin eri fediversumin projut pyörii vielä eli [Kaartinen.social](https://kaa
 
 ## 🗺️ Matkustus
 
-Tällä hetkellä ei ole matkaa varattuna eikä isompia matkoja kiikarissa. Alkuvuodesta pitänee taas alkaa kyttäämään minnepäin Kreikkaa sitä loppukesästä lähtisi.
+Tuli käytyä Ruotsissa! Noh kai se Haaparannassa käynti lasketaan.
+
+Muita isompia matkoja ei ole tällä hetkellä kiikarissa. Alkuvuodesta pitänee taas alkaa kyttäämään minnepäin Kreikkaa sitä loppukesästä lähtisi.
 
 ## 💻 Työ
 

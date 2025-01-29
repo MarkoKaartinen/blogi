@@ -16,7 +16,7 @@ Asustelen kahdestaan rouvan kanssa vuokrarivarissa Kuopiossa 🇫🇮.
 
 ## 🎮 Pelit
 
-Tällä hetkellä pelailen [Red Dead Redemption 2:sta](https://www.rockstargames.com/reddeadredemption2) [PC:llä](https://markokaartinen.net/sarja/pelikone-lapparin-tilalle).
+Tällä hetkellä pelailen [Red Dead Redemption 2:sta](https://www.rockstargames.com/reddeadredemption2) [PC:llä](https://markokaartinen.net/sarja/pelikone-lapparin-tilalle) sekä [Witcher 3:sta](https://www.thewitcher.com/us/en/witcher3) PS5:llä..
 
 Käytössä on myös [Asus ROG Ally Z1 Extreme](https://rog.asus.com/fi/gaming-handhelds/rog-ally/rog-ally-2023/) [Bazzitella](https://bazzite.gg/), jota pelailen lähinnä sohvannurkasta ja erilaisia indiepelejä kuten [Tape to tape](https://tapetotapegame.com/), [Balatro](https://www.playbalatro.com/) ja [Stardew valley](https://www.stardewvalley.net/).
 

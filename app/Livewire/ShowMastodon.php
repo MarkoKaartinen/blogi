@@ -18,7 +18,7 @@ class ShowMastodon extends Component
     public function getPosts()
     {
         return Cache::remember('mastodon_posts', 1800, function(){
-            $url = config('services.mastodon.instance').'/api/v1/accounts/'.config('services.mastodon.user_id').'/statuses';
+            $url = config('services.mastodon.instance').'/api/v1/accounts/'.config('services.mastodon.user_id').'/statuses?exclude_replies=true';
             $response = Http::get($url);
 
             return collect($response->object())

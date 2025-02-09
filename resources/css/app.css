@@ -10,6 +10,13 @@
         @apply prose-pre:bg-theme-0 prose-a:break-words !important;
     }
 
+    .mastodoncontent p:first-child {
+        @apply mt-0;
+    }
+    .mastodoncontent p:last-child {
+        @apply mb-0;
+    }
+
     .wrapper {
         @apply max-w-3xl mx-auto px-6 lg:px-0;
     }

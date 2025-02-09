@@ -17,7 +17,27 @@
                 </a>
             </div>
 
-            <div class="text-sm textcontent -my-4">{!! $post->content !!}</div>
+            <div x-data="{
+                showMore: false,
+                showMoreClicked: false,
+                init() {
+                  this.$nextTick(() => {
+                    if (this.$refs.description.scrollHeight === this.$refs.description.clientHeight) {
+                       this.showMore = true
+                    }
+                  });
+                }
+              }">
+                <div class="text-sm textcontent mastodoncontent" x-ref="description" :class="{ 'line-clamp-4': !showMore }">{!! $post->content !!}</div>
+                <div class="pt-2">
+                    <button x-show="!showMore" @click.prevent="showMore = true; showMoreClicked = true" class=" text-sm text-nord-11 hover:text-nord-12 transition-colors duration-300">
+                        Lue lisää...
+                    </button>
+                    <button x-show="showMoreClicked" @click.prevent="showMore = false; showMoreClicked = false" class=" text-sm text-nord-11 hover:text-nord-12 transition-colors duration-300">
+                        Lue vähemmän...
+                    </button>
+                </div>
+            </div>
             @if(isset($post->poll))
                 <div class="mt-2 space-y-1">
                     @foreach($post->poll->options as $option)

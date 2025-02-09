@@ -4,7 +4,7 @@ description: Tietoa minusta ja mistä minut oikein löytää Internetin syövere
 ---
 
 {: class="lead"}
-Moikka! Olen Kaartisen Marko ja ikää on `2024 - 1987 = X` vuotta. Asustelen Kuopiossa ja rakennan pääasiallisesti Internettiä eli koodailen verkkosivuja ja -sovelluksia.
+Moikka! Olen Kaartisen Marko ja ikää on `$age = date('Y') - 1987` vuotta. Asustelen Kuopiossa ja rakennan pääasiallisesti Internettiä eli koodailen verkkosivuja ja -sovelluksia.
 
 MarkoKaartinen.net on pisimpiä projektejani ja täällä onkin artikkeleita aina vuodelta 2007 tähän päivään. Ennen blogi pyöri WordPressin päällä, mutta vuonna 2024 koodailin Laravelin päälle tämän version mitä nyt lueskelet.
 

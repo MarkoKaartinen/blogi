@@ -10,11 +10,11 @@
                 <meta charset="utf-8"/>
                 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <link rel="stylesheet" href="/build/atom/style.css"/>
+                <link rel="stylesheet" href="/atom/style.css"/>
             </head>
             <body>
                 <main class="layout-content">
-                    <h1 class="flex items-start">
+                    <h1>
                         <!-- https://commons.wikimedia.org/wiki/File:Feed-icon.svg -->
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                              class="mr-5"

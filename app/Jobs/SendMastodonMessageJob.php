@@ -28,7 +28,7 @@ class SendMastodonMessageJob implements ShouldQueue
 
         $tags = [];
         foreach ($this->article->tags as $tag){
-            $tags[] = "#".$tag->slug;
+            $tags[] = "#".str($tag->name)->replace(' ', '');
         }
 
         if(count($tags) > 0){

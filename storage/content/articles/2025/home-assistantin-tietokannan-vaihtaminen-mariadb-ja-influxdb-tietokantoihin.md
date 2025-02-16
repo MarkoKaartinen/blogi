@@ -21,8 +21,6 @@ series:
 {: class="lead"}
 Nyt mennään hieman nörtimpään suuntaan ja lähdetään käymään läpi miten vaihdoin Home Assistantin tietokannan oletusarvoisesta SQLite tietokannasta MariaDB ja InfluxDB tietokantoihin. Näin jälkiviisaana tämä olisi ollut hyvä tehdä alusta asti.
 
-**HUOM!** Tämän artikkelin tiedostojen näytöt on jotenkin rikki ja korjaan kun kerkeän. Sillä välin voit vilkuilla [GitHubista nuo konffit](https://github.com/MarkoKaartinen/blogi/blob/main/storage/content/articles/2025/home-assistantin-tietokannan-vaihtaminen-mariadb-ja-influxdb-tietokantoihin.md).
-
 Tavoitteena on saada Home Assistant käyttämään MariaDB tietokantaa jossa olisi 7 tai 14 päivän verran dataa (en ole vielä päättänyt). Sitten pitkäaikainen data olisi InfluxDB tietokannassa ja Grafanan kautta selattavissa. 
 
 Harvemmin tulee Home Assistantin kautta historiadataa katseltua ja nyt voin määritellä InfluxDB tietokantaan vain sen datan mitä haluan selata eli käytännössä lämpötiloja ja sähkön kulutustietoja. Tällä hetkellä pääkiinnostus on lämpötiloissa. Tätä voi kuitenkin säätää tulevaisuudessa jos tulee laitteita joiden arvoa haluan seurata.

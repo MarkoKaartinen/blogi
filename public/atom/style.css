@@ -3,13 +3,27 @@ body {
     color:#eceff4;
 }
 
-.layout-content {
+.layout-content,
+.notice-content {
     max-width: 640px;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
 
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.notice-content {
+    padding:15px 0;
+}
+
+.notice-content div {
+    background: #3b4252;
+    padding:10px 20px;
+}
+
+.notice-content a {
+    color: #a3be8c;
 }
 
 h1 {

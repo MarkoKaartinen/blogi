@@ -10,9 +10,23 @@
                 <meta charset="utf-8"/>
                 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <link rel="stylesheet" href="/atom/style.css"/>
+                <link rel="stylesheet" href="/atom/style.css?v=1"/>
             </head>
             <body>
+                <nav class="notice-content">
+                    <div>
+                        <p>
+                            Tämä on atom muotoinen syöte tästä blogista. Tämän sivun osoitteen voit lisätä omaan RSS/Atom syötteenlukijaan ja tilata sivuston artikkelit.
+                        </p>
+                        <p><code><xsl:value-of select="/rss/channel/docs"/><xsl:value-of select="/atom:feed/atom:id"/></code></p>
+                        <p>
+
+                        </p>
+                        <p>
+                            Lisää tietoja syötteistä saat <a href="https://aboutfeeds.com">aboutfeeds.com</a> sivustolta.
+                        </p>
+                    </div>
+                </nav>
                 <main class="layout-content">
                     <h1>
                         <!-- https://commons.wikimedia.org/wiki/File:Feed-icon.svg -->

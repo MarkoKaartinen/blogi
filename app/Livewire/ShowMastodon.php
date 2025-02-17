@@ -17,7 +17,7 @@ class ShowMastodon extends Component
     #[Computed]
     public function getPosts()
     {
-        return Cache::remember('mastodon_posts', 1800, function(){
+        return Cache::remember('mastodon_posts_v2', 1800, function(){
             $url = config('services.mastodon.instance').'/api/v1/accounts/'.config('services.mastodon.user_id').'/statuses?exclude_replies=true';
             $response = Http::get($url);
 
@@ -26,7 +26,7 @@ class ShowMastodon extends Component
                 ->whereNull('in_reply_to_id')
                 ->where('content', '!=', '')
                 ->where('sensitive', false)
-                ->take(5);
+                ->take(6);
         });
     }
 

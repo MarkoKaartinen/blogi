@@ -9,18 +9,18 @@
 
         <div class="h-1 w-20 rounded-full bg-nord-9 mb-6 md:mb-12"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="grid grid-cols-1 gap-12">
             <div>
-                <div><h2 class="font-extrabold text-3xl">Mastodonissa</h2></div>
+                <div><h2 class="font-extrabold text-3xl">Blogissa</h2></div>
                 <div class="mt-6">
-                    <livewire:show-mastodon />
+                    <livewire:show-articles cols="grid-cols-1 md:grid-cols-2" limit="4" :paginate="false" heading="h3" spacing="small" />
                 </div>
             </div>
 
             <div>
-                <div><h2 class="font-extrabold text-3xl">Blogissa</h2></div>
+                <div><h2 class="font-extrabold text-3xl">Mastodonissa</h2></div>
                 <div class="mt-6">
-                    <livewire:show-articles limit="6" :paginate="false" heading="h3" spacing="small" />
+                    <livewire:show-mastodon />
                 </div>
             </div>
         </div>

@@ -19,6 +19,7 @@ class ShowArticles extends Component
     public bool $paginate = true;
     public string $heading = 'h2';
     public string $spacing = 'normal';
+    public string $cols = 'grid-cols-1';
 
     public function render()
     {

@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     @foreach($this->getPosts() as $post)
         <div class="bg-nord-1 border-2 border-nord-10 p-4 rounded-2xl flex flex-col">
             @if(is_array($post->media_attachments) && count($post->media_attachments) > 0)

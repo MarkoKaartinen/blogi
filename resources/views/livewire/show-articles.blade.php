@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 {{ $spacing == 'small' ? 'gap-6' : 'gap-6 md:gap-12' }} scroll-mt-20" id="articles">
+<div class="grid {{ $cols }} {{ $spacing == 'small' ? 'gap-6' : 'gap-6 md:gap-12' }} scroll-mt-20" id="articles">
     @foreach($this->getArticles() as $article)
         <div class="" wire:key="article-list-{{ $article->year }}-{{ $article->slug }}">
             @if($heading == 'h3')

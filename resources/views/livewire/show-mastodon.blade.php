@@ -1,10 +1,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     @foreach($this->getPosts() as $post)
         <div class="bg-nord-1 border-2 border-nord-10 p-4 rounded-2xl flex flex-col">
-            @if(is_array($post->media_attachments) && count($post->media_attachments) > 0)
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
-                    <div class="sm:col-span-3 flex flex-col">
-            @endif
+
 
             <h3 class="text-lg md:text-xl font-bold">
                 <a href="{{ $post->account->url }}" class="text-nord-11 hover:text-nord-12 transition-colors duration-300">
@@ -38,6 +35,21 @@
                     </button>
                 </div>
             </div>
+
+            @if(is_array($post->media_attachments) && count($post->media_attachments) > 0)
+                <div class="mt-2 mb-1">
+                    <div class="grid grid-cols-2 sm:grid-cols-1 gap-4">
+                        @foreach($post->media_attachments as $attachment)
+                            <div>
+                                <a href="{{ $attachment->url }}" class="glightbox">
+                                    <img class="rounded-xl border-2 border-nord-10 aspect-square object-cover object-center" src="{{ $attachment->preview_url }}" alt="{{ $attachment->description }}" />
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
             @if(isset($post->poll))
                 <div class="mt-2 space-y-1">
                     @foreach($post->poll->options as $option)
@@ -88,21 +100,6 @@
                     </span>
                 </div>
             </div>
-            @if(is_array($post->media_attachments) && count($post->media_attachments) > 0)
-                </div>
-                <div>
-                    <div class="grid grid-cols-2 sm:grid-cols-1 gap-4">
-                        @foreach($post->media_attachments as $attachment)
-                            <div>
-                                <a href="{{ $attachment->url }}" class="glightbox">
-                                    <img class="rounded-xl border-2 border-nord-10 aspect-square object-cover object-center" src="{{ $attachment->preview_url }}" alt="{{ $attachment->description }}" />
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                </div>
-            @endif
         </div>
     @endforeach
 </div>

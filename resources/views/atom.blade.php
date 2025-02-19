@@ -22,7 +22,7 @@
             </author>
             <summary type="html">{!! mrkCdata($article->seo_description) !!}</summary>
             <content type="html">{!! mrkCdata(app(Spatie\LaravelMarkdown\MarkdownRenderer::class)->toHtml($article->content())) !!}</content>
-            <published>{{ $article->created_at->toRfc3339String() }}</published>
+            <published>{{ $article->published_at->toRfc3339String() }}</published>
             <updated>{{ $article->updated_at !== null ? $article->updated_at->toRfc3339String() : $article->created_at->toRfc3339String() }}</updated>
             @foreach($article->tagsWithType('category') as $category)
                 <category term="{{ $category->slug }}" label="{{ $category->name }}" />

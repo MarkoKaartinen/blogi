@@ -5,6 +5,7 @@ use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ShowFeedController;
 use App\Http\Controllers\ShowOgImageController;
 use App\Livewire\Blog;
+use App\Livewire\CoffeeCalc;
 use App\Livewire\Guestbook;
 use App\Livewire\ShowAllCategories;
 use App\Livewire\ShowAllSeries;
@@ -23,6 +24,7 @@ Route::get('/', Home::class)->name('home');
 Route::get('/haku', Search::class)->name('search');
 Route::get('/blogi', Blog::class)->name('blog');
 Route::get('/vieraskirja', Guestbook::class)->name('guestbook');
+Route::get('/kahvilaskuri', CoffeeCalc::class)->name('coffee-calc');
 
 Route::get('/kategoria/{slug}', ShowCategory::class)->name('category');
 Route::get('/avainsana/{slug}', ShowTag::class)->name('tag');

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Support\MarkdownHandler;
 use App\Support\SEO;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -47,12 +48,14 @@ class Changelog extends Component
 
         $cacheKey = 'show_changelogs_'.$year;
 
-        return Log::whereYear('created_at', $year)
-            ->orderBy('created_at', 'desc')
-            ->get()
-            ->groupBy(function (Log $log) {
-                return $log->created_at->format('Y-m-d');
-            });
+        return Cache::remember($cacheKey, 3600, function() use ($year) {
+            return Log::whereYear('created_at', $year)
+                ->orderBy('created_at', 'desc')
+                ->get()
+                ->groupBy(function (Log $log) {
+                    return $log->created_at->format('Y-m-d');
+                });
+        });
     }
 
     public function getContent($file)

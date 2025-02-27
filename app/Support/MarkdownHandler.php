@@ -20,6 +20,17 @@ class MarkdownHandler
             ->toArray();
     }
 
+    public static function getChangelogs($year, $month): array
+    {
+        $filepath = 'changelogs/'.$year.'/'.$month;
+        return collect(Storage::disk('content')
+            ->allFiles($filepath))
+            ->filter(function($value, $key){
+                return !str($value)->contains(['.DS_Store']);
+            })
+            ->toArray();
+    }
+
     public static function getFile($file)
     {
         if(!Storage::disk('content')->exists($file)){

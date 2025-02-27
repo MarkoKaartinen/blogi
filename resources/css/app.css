@@ -10,10 +10,12 @@
         @apply prose-pre:bg-theme-0 prose-a:break-words !important;
     }
 
-    .mastodoncontent p:first-child {
+    .mastodoncontent p:first-child,
+    .changelogcontent p:first-child {
         @apply mt-0;
     }
-    .mastodoncontent p:last-child {
+    .mastodoncontent p:last-child,
+    .changelogcontent p:last-child {
         @apply mb-0;
     }
 

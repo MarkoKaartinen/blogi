@@ -22,6 +22,8 @@ class GenerateSitemapCommand extends Command
         $pages_sitemap->add(route('home'))
             ->add(route('blog'))
             ->add(route('search'))
+            ->add(route('guestbook'))
+            ->add(route('coffee-calc'))
             ->add(route('series.all'))
             ->add(route('categories.all'))
             ->add(route('tags.all'));

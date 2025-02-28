@@ -75,4 +75,8 @@
     @apply bg-nord-0 text-nord-6;
 }
 
+.mastodoncontent .invisible {
+    @apply hidden;
+}
+
 [x-cloak] { display: none !important; }

@@ -1,8 +1,8 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
     @foreach($this->getPosts() as $post)
         <div>
-            <div class="bg-nord-1 border-2 border-nord-10 p-4 rounded-2xl flex flex-col">
-                <div class="mt-1 text-xs uppercase text-nord-8 mb-2">
+            <div class="flex flex-col">
+                <div class="mt-1 text-sm uppercase text-nord-8 mb-2">
                     <a href="{{ $post->url }}" class="hover:underline">
                         {{ \Carbon\Carbon::parse($post->created_at)->setTimezone('Europe/Helsinki')->format('j.n.Y \k\l\o H:i') }}
                     </a>
@@ -36,7 +36,7 @@
                             @foreach($post->media_attachments as $attachment)
                                 <div>
                                     <a href="{{ $attachment->url }}" class="glightbox">
-                                        <img class="rounded-xl border-2 border-nord-10 aspect-square object-cover object-center w-1/2" src="{{ $attachment->preview_url }}" alt="{{ $attachment->description }}" />
+                                        <img class="rounded-xl border-2 border-nord-10 aspect-square object-cover object-center" src="{{ $attachment->preview_url }}" alt="{{ $attachment->description }}" />
                                     </a>
                                 </div>
                             @endforeach

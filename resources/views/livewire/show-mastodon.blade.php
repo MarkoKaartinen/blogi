@@ -1,6 +1,6 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
+<div class="columns-1 md:columns-2 lg:columns-3 gap-6 md:gap-12">
     @foreach($this->getPosts() as $post)
-        <div>
+        <div class="break-inside-avoid pb-6 md:pb-12">
             <div class="flex flex-col">
                 <div class="mt-1 text-sm uppercase text-nord-8 mb-2">
                     <a href="{{ $post->url }}" class="hover:underline">

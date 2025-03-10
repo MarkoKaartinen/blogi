@@ -17,6 +17,7 @@ export default {
             colors: {
                 brand: {
                     mastodon: '#6364FF',
+                    pixelfed: '#6366F1',
                     rss: '#FFA500',
                     igdb: '#9147FF',
                 },

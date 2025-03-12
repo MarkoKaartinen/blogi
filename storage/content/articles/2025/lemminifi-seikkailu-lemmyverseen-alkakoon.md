@@ -25,6 +25,8 @@ Lemmy on siis avoimen lähdekoodin korvike Redditille.
 
 Samoin kuin Mastodon ja [Pixelfed](https://markokaartinen.net/2025/pixelfed-vinkkeja) Lemmy on osa fediversumia ja voit seurata ristiin rastiin.
 
+[Sopuli](https://sopuli.xyz/) instanssin ylläpitäjä kirjoitti hyvän oppaan Lemmystä: [https://paper.wf/rynach/lemmy-opas](https://paper.wf/rynach/lemmy-opas)
+
 ## Lemmini.fi
 
 Tämä on siis minun ylläpitämä Lemmy instanssi ja on uusi lisä niihin softiin mitä ylläpidän. Ajatus on lähteä kokeilla tekemään suomalaisille suunnattua instanssia ja luoda sinne suomalaisia yhteisöjä - sellaisia mitä ei muilla vielä ole

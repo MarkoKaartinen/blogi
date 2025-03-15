@@ -18,6 +18,7 @@ export default {
                 brand: {
                     mastodon: '#6364FF',
                     pixelfed: '#6366F1',
+                    lemmy: '#000000',
                     rss: '#FFA500',
                     igdb: '#9147FF',
                 },

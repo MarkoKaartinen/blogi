@@ -2,6 +2,7 @@
 $navItems = [
     ['name' => 'blogi', 'url' => route('blog')],
     ['name' => 'vieraskirja', 'url' => route('guestbook')],
+    ['name' => 'linkit', 'url' => route('links')],
     ['name' => 'haku', 'url' => route('search')],
 ];
 $secondaryNavItems = [

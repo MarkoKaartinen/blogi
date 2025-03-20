@@ -8,6 +8,7 @@ use App\Livewire\Blog;
 use App\Livewire\Changelog;
 use App\Livewire\CoffeeCalc;
 use App\Livewire\Guestbook;
+use App\Livewire\Links;
 use App\Livewire\ShowAllCategories;
 use App\Livewire\ShowAllSeries;
 use App\Livewire\ShowAllTags;
@@ -27,6 +28,7 @@ Route::get('/blogi', Blog::class)->name('blog');
 Route::get('/vieraskirja', Guestbook::class)->name('guestbook');
 Route::get('/kahvilaskuri', CoffeeCalc::class)->name('coffee-calc');
 Route::get('/muutosloki', Changelog::class)->name('changelog');
+Route::get('/linkit', Links::class)->name('links');
 
 Route::get('/kategoria/{slug}', ShowCategory::class)->name('category');
 Route::get('/avainsana/{slug}', ShowTag::class)->name('tag');

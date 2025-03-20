@@ -25,6 +25,7 @@ class GenerateSitemapCommand extends Command
             ->add(route('guestbook'))
             ->add(route('changelog'))
             ->add(route('coffee-calc'))
+            ->add(route('links'))
             ->add(route('series.all'))
             ->add(route('categories.all'))
             ->add(route('tags.all'));

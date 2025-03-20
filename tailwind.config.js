@@ -21,6 +21,11 @@ export default {
                     lemmy: '#000000',
                     rss: '#FFA500',
                     igdb: '#9147FF',
+                    kofi: '#FF6433',
+                    spottihinta: '#1e293b',
+                    saunotaanko: '#002F6C',
+                    bbqblogi: '#a10100',
+                    tapaaminen: '#15803d',
                 },
                 theme: {
                     0: '#232730',

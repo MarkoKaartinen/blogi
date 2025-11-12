@@ -37,7 +37,7 @@ class GenerateSitemapCommand extends Command
         $pages_sitemap->writeToFile(public_path($pages_sitemap_name));
 
         //artikkelit
-        $articles = Article::published()->get();
+        $articles = Article::published()->orderBy('published_at', 'desc')->get();
         $articles_sitemap_name = "articles_sitemap.xml";
         $articles_sitemap = Sitemap::create();
         foreach ($articles as $article) {

@@ -33,6 +33,7 @@ class Article extends Model
         'seo_description',
         'url',
         'igdb_id',
+        'post_to_mastodon',
     ];
 
     protected static function booted(): void

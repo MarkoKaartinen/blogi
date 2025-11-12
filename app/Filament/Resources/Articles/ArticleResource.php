@@ -64,6 +64,7 @@ class ArticleResource extends Resource
                     ->required(),
 
                 Checkbox::make('legacy'),
+                Checkbox::make('post_to_mastodon'),
 
                 TextInput::make('mastodon_post_id'),
 
@@ -96,6 +97,7 @@ class ArticleResource extends Resource
                 TextColumn::make('status'),
 
                 TextColumn::make('legacy'),
+                TextColumn::make('post_to_mastodon'),
 
                 TextColumn::make('mastodon_post_id'),
 

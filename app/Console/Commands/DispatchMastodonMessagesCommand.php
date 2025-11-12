@@ -15,6 +15,7 @@ class DispatchMastodonMessagesCommand extends Command
     public function handle(): void
     {
         $articles = Article::published()
+            ->where('post_to_mastodon', true)
             ->whereNull('mastodon_post_id')
             ->where('legacy', false)
             ->get();

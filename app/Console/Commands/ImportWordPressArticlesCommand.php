@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
 use App\Models\Article;
 use App\Models\LegacyComment;
 use App\Models\Redirect;
@@ -74,8 +75,8 @@ class ImportWordPressArticlesCommand extends Command
             if(isset($post->yoast_head_json->og_description)){
                 $description = html_entity_decode($post->yoast_head_json->og_description);
             }
-            $published_at = \Carbon\Carbon::parse($post->date);
-            $updated_at = \Carbon\Carbon::parse($post->modified);
+            $published_at = Carbon::parse($post->date);
+            $updated_at = Carbon::parse($post->modified);
             $year = $published_at->format('Y');
 
             $content = $post->content->rendered;

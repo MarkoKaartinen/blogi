@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+
 class Tag extends \Spatie\Tags\Tag
 {
-    public function articles(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    public function articles(): MorphToMany
     {
         return $this->morphedByMany(Article::class, 'taggable');
     }

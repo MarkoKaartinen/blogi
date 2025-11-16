@@ -20,6 +20,7 @@
     <link rel="alternate" type="application/atom+xml" href="{{ route("feed") }}" title="MarkoKaartinen.net">
 
     <link href="https://github.com/MarkoKaartinen" rel="me">
+    <link rel="webmention" href="https://webmention.io/markokaartinen.net/webmention" />
 
     @production
         @guest

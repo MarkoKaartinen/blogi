@@ -19,6 +19,8 @@
 
     <link rel="alternate" type="application/atom+xml" href="{{ route("feed") }}" title="MarkoKaartinen.net">
 
+    <link href="https://github.com/MarkoKaartinen" rel="me">
+
     @production
         @guest
             <script defer data-api="/pla/event" data-domain="markokaartinen.net" data-spa="auto" src="/pla/script.js"></script>

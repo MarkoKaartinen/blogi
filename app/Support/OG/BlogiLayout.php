@@ -23,7 +23,7 @@ class BlogiLayout extends AbstractLayout
             ->color($this->config->theme->getTitleColor())
             ->font($this->config->theme->getTitleFont())
             ->size(54)
-            ->box(600, 400)
+            ->box(800, 400)
             ->position(
                 x: 0,
                 y: 0,
@@ -47,7 +47,7 @@ class BlogiLayout extends AbstractLayout
                 ->color($this->config->theme->getDescriptionColor())
                 ->font($this->config->theme->getDescriptionFont())
                 ->size(28)
-                ->box(600, 240)
+                ->box(1000, 240)
                 ->position(
                     x: 0,
                     y: 50,

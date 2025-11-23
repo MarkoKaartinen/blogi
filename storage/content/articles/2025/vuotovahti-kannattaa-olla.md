@@ -13,7 +13,7 @@ tags:
 - Kotiautomaatio
 - Badring
 series:
-- Selfhosted
+- Älykoti
 ---
 {: class="lead"}
 Vuotovahti on yksi niistä laitteista, mitä en välttämättä ensimmäisenä olisi ajatellut laittaa ja en laittanutkaan. Se tuli joka paikkaan vasti pari-kolme viikkoa sitten. Nyt kuitenkin sen arvon on huomannut ja näin suosittelenkin sitä kaikille.

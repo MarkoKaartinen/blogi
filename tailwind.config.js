@@ -26,6 +26,9 @@ export default {
                     saunotaanko: '#002F6C',
                     bbqblogi: '#a10100',
                     tapaaminen: '#15803d',
+                    pelittaa: '#F8442D',
+                    kreikassa: '#0d5eaf',
+                    palstat: '#0d5eaf',
                 },
                 theme: {
                     0: '#232730',

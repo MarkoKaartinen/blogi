@@ -98,6 +98,50 @@
 
             </div>
 
+            <h2>Foorumit</h2>
+
+            <div class="not-prose flex gap-4 flex-wrap">
+
+                <div>
+                    <a href="https://bbq.palstat.fi" class="inline-flex items-center gap-2 bg-brand-bbqblogi rounded-full px-4 py-2 font-bold text-nord-4 hover:bg-nord-10 transition-colors duration-300">
+                        <span>
+                            <svg class="size-6" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#d8dee9"><path d="M8.5 14.5L5 22" stroke="#d8dee9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 6C8 6 9 4.9387 9 4C9 2.66667 8 2 8 2" stroke="#d8dee9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 6C12 6 13 4.9387 13 4C13 2.66667 12 2 12 2" stroke="#d8dee9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16 6C16 6 17 4.9387 17 4C17 2.66667 16 2 16 2" stroke="#d8dee9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16.5 17.5L7.5 17.5" stroke="#d8dee9" stroke-width="1.5" stroke-linejoin="round"></path><path d="M15.5 14.5L17.6 19" stroke="#d8dee9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18.5 22C19.3284 22 20 21.3284 20 20.5C20 19.6716 19.3284 19 18.5 19C17.6716 19 17 19.6716 17 20.5C17 21.3284 17.6716 22 18.5 22Z" stroke="#d8dee9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 15C15.664 15 18.6705 12.185 18.9747 8.59974C19.0027 8.26956 18.7314 8 18.4 8H5.6C5.26863 8 4.99732 8.26956 5.02533 8.59974C5.32955 12.185 8.33603 15 12 15Z" stroke="#d8dee9" stroke-width="1.5"></path></svg>
+                        </span>
+                        <span>BBQ Foorumi</span>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="https://markok.dev" class="inline-flex items-center gap-2 bg-nord-3 rounded-full px-4 py-2 font-bold text-nord-4 hover:bg-nord-10 transition-colors duration-300">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                            </svg>
+                        </span>
+                        <span>MarkoK.dev</span>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="https://pelittaa.fi" class="inline-flex items-center gap-2 bg-brand-pelittaa rounded-full px-4 py-2 font-bold text-nord-4 hover:bg-nord-10 transition-colors duration-300">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-6 stroke-current fill-current" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M467.51 248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5 91.5 0 0 0 352 96c-26.89 0-48.11 16-96 16s-69.15-16-96-16a99.09 99.09 0 0 0-27.2 3.66C89 112.59 61.94 165.7 43.33 248.83c-19 84.91-15.56 152 21.58 164.88 26 9 49.25-9.61 71.27-37 25-31.2 55.79-40.8 119.82-40.8s93.62 9.6 118.66 40.8c22 27.41 46.11 45.79 71.42 37.16 41.02-14.01 40.44-79.13 21.43-165.04z"/><circle cx="292" cy="224" r="20"/><path d="M336 288a20 20 0 1 1 20-19.95A20 20 0 0 1 336 288z"/><circle cx="336" cy="180" r="20"/><circle cx="380" cy="224" r="20"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M160 176v96m48-48h-96"/></svg>
+                        </span>
+                        <span>Pelittää.fi</span>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="https://kreikassa.net" class="inline-flex items-center gap-2 bg-brand-kreikassa rounded-full px-4 py-2 font-bold text-nord-4 hover:bg-nord-10 transition-colors duration-300">
+                        <span>
+                            <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480"><path fill="#0d5eaf" fill-rule="evenodd" d="M0 0h640v53.3H0z"/><path fill="#fff" fill-rule="evenodd" d="M0 53.3h640v53.4H0z"/><path fill="#0d5eaf" fill-rule="evenodd" d="M0 106.7h640V160H0z"/><path fill="#fff" fill-rule="evenodd" d="M0 160h640v53.3H0z"/><path fill="#0d5eaf" d="M0 0h266.7v266.7H0z"/><path fill="#0d5eaf" fill-rule="evenodd" d="M0 213.3h640v53.4H0z"/><path fill="#fff" fill-rule="evenodd" d="M0 266.7h640V320H0z"/><path fill="#0d5eaf" fill-rule="evenodd" d="M0 320h640v53.3H0z"/><path fill="#fff" fill-rule="evenodd" d="M0 373.3h640v53.4H0z"/><g fill="#fff" fill-rule="evenodd" stroke-width="1.3"><path d="M106.7 0H160v266.7h-53.3z"/><path d="M0 106.7h266.7V160H0z"/></g><path fill="#0d5eaf" d="M0 426.7h640V480H0z"/></svg>
+                        </span>
+                        <span>Kreikassa.net</span>
+                    </a>
+                </div>
+
+            </div>
+
             <h2>Muut projektit</h2>
 
             <div class="not-prose flex gap-4 flex-wrap">
@@ -155,17 +199,6 @@
                 </div>
 
                 <div>
-                    <a href="https://markok.dev" class="inline-flex items-center gap-2 bg-nord-3 rounded-full px-4 py-2 font-bold text-nord-4 hover:bg-nord-10 transition-colors duration-300">
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-                            </svg>
-                        </span>
-                        <span>MarkoK.dev</span>
-                    </a>
-                </div>
-
-                <div>
                     <a href="https://tapaaminen.net" class="inline-flex items-center gap-2 bg-brand-tapaaminen rounded-full px-4 py-2 font-bold text-nord-4 hover:bg-nord-10 transition-colors duration-300">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -173,6 +206,17 @@
                             </svg>
                         </span>
                         <span>Tapaaminen.net</span>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="https://palstat.fi" class="inline-flex items-center gap-2 bg-brand-palstat rounded-full px-4 py-2 font-bold text-nord-4 hover:bg-nord-10 transition-colors duration-300">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                            </svg>
+                        </span>
+                        <span>Palstat.fi</span>
                     </a>
                 </div>
             </div>

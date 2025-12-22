@@ -32,11 +32,13 @@
 
                 @if(is_array($post->media_attachments) && count($post->media_attachments) > 0)
                     <div class="mt-2 mb-1">
-                        <div class="grid grid-cols-2 sm:grid-cols-1 gap-4">
+                        <div class="grid grid-cols-2 {{ count($post->media_attachments) == 1 ? 'sm:grid-cols-1' : '' }} gap-4">
                             @foreach($post->media_attachments as $attachment)
                                 <div>
                                     <a href="{{ $attachment->url }}" class="glightbox">
-                                        <img class="rounded-xl border-2 border-nord-10 aspect-square object-cover object-center" src="{{ $attachment->preview_url }}" alt="{{ $attachment->description }}" />
+                                        <div class="aspect-square rounded-xl overflow-hidden border-2 border-nord-10">
+                                            <img class="w-full h-full object-cover object-center" src="{{ $attachment->preview_url }}" alt="{{ $attachment->description }}" />
+                                        </div>
                                     </a>
                                 </div>
                             @endforeach

@@ -3,6 +3,19 @@
 $border = 'border-nord-12';
 if($type == 'mastodon'){
     $border = 'border-brand-mastodon';
+    $commentName = $comment->account->display_name;
+    if(isset($comment->account->emojis) && is_array($comment->account->emojis)){
+        foreach($comment->account->emojis as $emoji){
+            $commentName = str_replace(':'.$emoji->shortcode.':', '<img class="inline-block size-6 align-middle" src="'.$emoji->url.'" alt="'.$emoji->shortcode.'" title="'.$emoji->shortcode.'">', $commentName);
+        }
+    }
+
+    $commentContent = $comment->content;
+    if(isset($comment->emojis) && is_array($comment->emojis)){
+        foreach($comment->emojis as $emoji){
+            $commentContent = str_replace(':'.$emoji->shortcode.':', '<img class="inline-block my-0 size-6 align-middle" src="'.$emoji->url.'" alt="'.$emoji->shortcode.'" title="'.$emoji->shortcode.'">', $commentContent);
+        }
+    }
 }
 if($type == 'legacy'){
     $border = 'border-nord-15';
@@ -27,7 +40,7 @@ if($type == 'legacy'){
                     @if($type == 'mastodon')
                         <a target="_blank" class="inline-flex flex-col" href="{{ $comment->account->url }}">
                             <span class="font-bold hover:underline">
-                                {{ $comment->account->display_name }}
+                                {!! $commentName !!}
                             </span>
                             <span class="text-xs hover:underline">
                                 {{ "@".$comment->account->acct }}{{ $comment->account->acct == 'marko' ? '@kaartinen.social' : '' }}
@@ -103,7 +116,7 @@ if($type == 'legacy'){
         @endif
 
         @if($type == 'mastodon')
-            <div class="text-sm textcontent">{!! $comment->content !!}</div>
+            <div class="text-sm textcontent">{!! $commentContent !!}</div>
 
             @if(is_array($comment->media_attachments) && count($comment->media_attachments) > 0)
                 @php

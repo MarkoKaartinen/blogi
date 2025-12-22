@@ -1,7 +1,7 @@
 ---
 title: Mitä nyt tapahtuu
 description: Tämä on Nyt -sivu, jossa kerron mitä elämässä tapahtuu tällä hetkellä.
-updated_at: 2025-01-29 15:06
+updated_at: 2025-12-22 07:51
 show_updated_at: true
 ---
 
@@ -12,43 +12,35 @@ Tämä sivu on saanut inspiraationsa [nownownow.com projektista](https://nownown
 
 ## 🏡 Koti
 
-Asustelen kahdestaan rouvan kanssa vuokrarivarissa Kuopiossa 🇫🇮.
+Mentiin ja ostettiin omakotitalo Kuopiosta 🇫🇮 ja asustellaan nyt siellä rouvan kanssa.
 
 ## 🎮 Pelit
 
-Tällä hetkellä pelailen [Red Dead Redemption 2:sta](https://www.rockstargames.com/reddeadredemption2) [PC:llä](https://markokaartinen.net/sarja/pelikone-lapparin-tilalle) sekä [Witcher 3:sta](https://www.thewitcher.com/us/en/witcher3) PS5:llä..
+Tällä hetkellä pelailen [Clair Obscur: Expedition 33](https://store.steampowered.com/app/1903340/Clair_Obscur_Expedition_33/) [PC:llä](https://markokaartinen.net/sarja/pelikone-lapparin-tilalle) sekä [Star Wars Outlaws](https://store.steampowered.com/app/2842040/Star_Wars_Outlaws/) PS5:llä..
 
-Käytössä on myös [Asus ROG Ally Z1 Extreme](https://rog.asus.com/fi/gaming-handhelds/rog-ally/rog-ally-2023/) [Bazzitella](https://bazzite.gg/), jota pelailen lähinnä sohvannurkasta ja erilaisia indiepelejä kuten [Tape to tape](https://tapetotapegame.com/), [Balatro](https://www.playbalatro.com/) ja [Stardew valley](https://www.stardewvalley.net/).
-
-Tätä kirjoittaessa olen myymässä myös pelikannettavaa ja jos sen saan myytyä niin kasaan taas pöytäkoneen.
+Uutena hankintana on tullut [Anbernic RG40XXV](https://anbernic.com/products/rg-40xxv) retrohärveli, jolla tulee pelattua tällä hetkellä pääosin GBA pelejä kuten Pokemonit.
 
 ## 🎬 Elokuvat & Sarjat
 
-Rouvan kanssa on ns. normaalien suomalaisten TV sarjojen (Farmi, Huutokauppa Keisari, Kape yms.) lisäksi menossa [Modern Family](https://www.imdb.com/title/tt1442437/) sekä [Squid Game](https://www.imdb.com/title/tt10919420/).
+Rouvan kanssa on ns. normaalien suomalaisten TV sarjojen (Farmi, Huutokauppa Keisari, Kape yms.) lisäksi menossa [Sons of Anarchy](https://www.imdb.com/title/tt1124373/).
 
-Itse olen katsonut [Boardwalk Empire](https://www.imdb.com/title/tt0979432/) sarjaa.
+Itse olen katsonut [Blue Bloods](https://www.imdb.com/title/tt1595859/) sarjaa.
 
 ## 🍕 Ruoka
 
-Kesällä tuli grillattua ahkerasti ja pitäisikin taas grillata jotain pallossa ja/tai kamadossa. Pizzan tekokin hieman tauolla ollut nyt, kun pääsi kaasu loppumaan. Sitäkin pitäisi kyllä tehdä...
+Pizzahommat on säännöllisen epäsäännöllisesti jatkunut ja pitäisi jatkaa näitä hommia. Talven myötä grilli hommia vähemmän, mutta viikonloppuna tuli kinkku paisteltua kamadossa. Samoin joulun kunniaksi tuli myös graavilohta sekä kylmäsavulohta tehtyä itse.
 
 ## 👨🏻‍💻 Omat projektit
 
-Näitähän on. Jatkuvassa aktiivisessa kehityksessä on [SpottiHinta.fi](https://spottihinta.fi) ja [Saunotaanko.fi](https://saunotaanko.fi) projektit.
+Näitähän on. Jatkuvassa aktiivisessa kehityksessä on [Pelittää.fi](https://pelittaa.fi) ja [MarkoK.dev](https://markok.dev) projektit.
 
-[Tapaaminen.net](https://tapaaminen.net/) on kanssa myös kehityksen kohteena, kun aikaa on.
-
-Samoin puuhastelen myös parin muun koodaus projun puitteissa mitkä julkaistaan joskus... 
-
-Tämä blogikin koki uudistuksen kun sai itse koodatun moottorin ja ulkoasun alleen.
-
-Samoin eri fediversumin projut pyörii vielä eli [Kaartinen.social](https://kaartinen.social) (Mastodon), [Kaartinen.photos](https://kaartinen.photos) (Pixelfed), [Pixl.fi](https://pixl.fi) (Pixelfed), [Kalakukko.social](https://kalakukko.social) (Mastodon) ja [Blogi.social](https://blogi.social) (Mastodon).
+Samoin on työn alla vanhoja projekteja, joita edistelen kun niitä joutaa ja on tarve. [Linkit](/linkit) sivulla on listausta eri projekteistakin.
 
 ## 🗺️ Matkustus
 
-Tuli käytyä Ruotsissa! Noh kai se Haaparannassa käynti lasketaan.
+Kesällä uli käytyä Ruotsissa! Noh kai se Haaparannassa käynti lasketaan.
 
-Kreikan 🇬🇷 matkakohde on jo päätetty ja siitä tuleekin [matkablogiin](https://auringonalla.fi) juttua jossain vaiheessa.
+Vuoden 2026 Kreikan 🇬🇷 matkakohde on vielä arvoitus, mutta viime vuoden makasta onkin  [matkablogin](https://auringonalla.fi) puolella kertomusta ja se pitäisi saattaa vielä finaaliin viime vuodelta.
 
 ## 💻 Työ
 

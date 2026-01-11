@@ -46,11 +46,10 @@ class Changelog extends Component
             $year = now()->format('Y');
         }
 
-        $cacheKey = 'show_changelogs_'.$year;
+        $cacheKey = 'show_changelogs_v2_'.$year;
 
         return Cache::remember($cacheKey, 3600, function() use ($year) {
-            return Log::whereYear('created_at', $year)
-                ->orderBy('created_at', 'desc')
+            return Log::orderBy('created_at', 'desc')
                 ->get()
                 ->groupBy(function (Log $log) {
                     return $log->created_at->format('Y-m-d');

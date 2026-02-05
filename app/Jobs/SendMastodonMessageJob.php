@@ -24,6 +24,7 @@ class SendMastodonMessageJob implements ShouldQueue
     {
         $message = "Julkaisin juuri uuden artikkelin blogiini!\n\n";
         $message .= $this->article->title."\n\n";
+        $message .= $this->article->description."\n\n";
         $message .= $this->article->url;
 
         $tags = [];

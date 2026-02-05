@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use App\Support\MarkdownHandler;
 use App\Support\SEO;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
-use Livewire\WithPagination;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Models\Changelog as Log;
 
@@ -49,9 +49,10 @@ class Changelog extends Component
         $cacheKey = 'show_changelogs_v2_'.$year;
 
         return Cache::remember($cacheKey, 3600, function() use ($year) {
-            return Log::orderBy('created_at', 'desc')
-                ->get()
-                ->groupBy(function (Log $log) {
+            /** @var Collection<int, Log> $logs */
+            $logs = Log::orderBy('created_at', 'desc')->get();
+
+            return $logs->groupBy(function (Log $log) {
                     return $log->created_at->format('Y-m-d');
                 });
         });

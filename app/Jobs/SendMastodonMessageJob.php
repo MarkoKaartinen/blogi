@@ -18,7 +18,7 @@ class SendMastodonMessageJob implements ShouldQueue
 
     public function __construct(
         public Article $article
-    ){}
+    ) {}
 
     public function handle(): void
     {
@@ -28,11 +28,11 @@ class SendMastodonMessageJob implements ShouldQueue
         $message .= $this->article->url;
 
         $tags = [];
-        foreach ($this->article->tags as $tag){
-            $tags[] = "#".str($tag->name)->replace(' ', '');
+        foreach ($this->article->tags as $tag) {
+            $tags[] = '#'.str($tag->name)->replace(' ', '');
         }
 
-        if(count($tags) > 0){
+        if (count($tags) > 0) {
             $message .= "\n\n".collect($tags)->implode(' ');
         }
 
@@ -44,11 +44,21 @@ class SendMastodonMessageJob implements ShouldQueue
                 'language' => 'fi',
             ]);
 
-        if($response->successful()){
+        if ($response->successful()) {
             $status_id = $response->object()->id;
             $this->article->mastodon_post_id = $status_id;
             $this->article->save();
-            Cache::flush();
+
+            // Tyhjennä vain tähän artikkeliin liittyvät välimuistit
+            Cache::forget('article_'.$this->article->year.'_'.$this->article->slug);
+            Cache::forget('article_'.$this->article->year.'_'.$this->article->slug.'_previous');
+            Cache::forget('article_'.$this->article->year.'_'.$this->article->slug.'_next');
+            Cache::forget('series_'.$this->article->year.'_'.$this->article->slug);
+
+            // Tyhjennä Mastodon-kommentit jos status_id on olemassa
+            if ($status_id) {
+                Cache::forget('mastodon_comments_'.$status_id);
+            }
         }
     }
 

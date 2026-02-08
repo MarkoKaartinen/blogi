@@ -17,6 +17,8 @@ class Article extends Model
 
     public $timestamps = false;
 
+    protected ?string $cachedFileContent = null;
+
     protected $fillable = [
         'title',
         'description',
@@ -29,9 +31,6 @@ class Article extends Model
         'legacy',
         'created_at',
         'mastodon_post_id',
-        'file_content',
-        'seo_description',
-        'url',
         'igdb_id',
         'post_to_mastodon',
     ];
@@ -55,7 +54,7 @@ class Article extends Model
     protected function url(): Attribute
     {
         return Attribute::make(
-            get: fn() => route('article', [
+            get: fn () => route('article', [
                 'year' => $this->year,
                 'slug' => $this->slug,
             ])
@@ -65,6 +64,7 @@ class Article extends Model
     public function content()
     {
         $content = YamlFrontMatter::parse($this->file_content);
+
         return str($content->body())->trim();
     }
 
@@ -82,14 +82,20 @@ class Article extends Model
     protected function fileContent(): Attribute
     {
         return Attribute::make(
-            get: fn() => MarkdownHandler::getArticle($this->year, $this->slug)
+            get: function () {
+                if ($this->cachedFileContent === null) {
+                    $this->cachedFileContent = MarkdownHandler::getArticle($this->year, $this->slug);
+                }
+
+                return $this->cachedFileContent;
+            }
         );
     }
 
     protected function body(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->content()
+            get: fn () => $this->content()
         );
     }
 
@@ -106,6 +112,7 @@ class Article extends Model
     public function toSearchableArray(): array
     {
         $this->load('tags');
+
         return [
             'id' => (int) $this->id,
             'year' => (int) $this->year,
@@ -141,7 +148,7 @@ class Article extends Model
     protected function seoDescription(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->description ?? $this->parseDescription($this->body)
+            get: fn () => $this->description ?? $this->parseDescription($this->body)
         );
     }
 
@@ -150,6 +157,7 @@ class Article extends Model
         $description = strip_tags($description);
         $description = str_replace("\n", '', $description);
         $description = str_replace("\r", '', $description);
+
         return str($description)->words(200);
     }
 }

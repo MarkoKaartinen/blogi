@@ -28,10 +28,10 @@ if($type == 'legacy'){
                 <img class="h-20 rounded-2xl" src="{{ $comment->account->avatar }}" alt="Avatar of {{ $comment->account->display_name }}" />
             @endif
             @if($type == 'blog')
-                <img class="h-16 rounded-2xl" src="https://api.dicebear.com/9.x/avataaars-neutral/png?size=200&backgroundColor=8fbcbb,88c0d0,81a1c1,5e81ac,bf616a,d08770,ebcb8b,a3be8c,b48ead&seed={{ urlencode(str($comment->nickname)->slug('')) }}" alt="Avatar of {{ $comment->nickname }}"
+                <img class="h-16 rounded-2xl" src="https://api.dicebear.com/9.x/avataaars-neutral/png?size=200&backgroundColor=8fbcbb,88c0d0,81a1c1,5e81ac,bf616a,d08770,ebcb8b,a3be8c,b48ead&seed={{ urlencode(str($comment->nickname)->slug('')) }}" alt="Avatar of {{ $comment->nickname }}" />
             @endif
             @if($type == 'legacy')
-                <img class="h-16 rounded-2xl" src="https://api.dicebear.com/9.x/avataaars-neutral/png?size=200&backgroundColor=8fbcbb,88c0d0,81a1c1,5e81ac,bf616a,d08770,ebcb8b,a3be8c,b48ead&seed={{ urlencode(str($comment->name)->slug('')) }}" alt="Avatar of {{ $comment->name }}"
+                <img class="h-16 rounded-2xl" src="https://api.dicebear.com/9.x/avataaars-neutral/png?size=200&backgroundColor=8fbcbb,88c0d0,81a1c1,5e81ac,bf616a,d08770,ebcb8b,a3be8c,b48ead&seed={{ urlencode(str($comment->name)->slug('')) }}" alt="Avatar of {{ $comment->name }}" />
             @endif
         </div>
         <div class="grow flex justify-between">

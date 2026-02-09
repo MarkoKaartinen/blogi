@@ -32,6 +32,10 @@ class Guestbook extends Component
 
     public string $message = '';
 
+    public ?int $replyingTo = null;
+
+    public string $replyText = '';
+
     public function mount()
     {
         $file = MarkdownHandler::getFile('pages/vieraskirja.md');
@@ -79,6 +83,46 @@ class Guestbook extends Component
         $this->feedback = 'Kiitos viestistäsi!';
 
         $this->resetPage();
+    }
+
+    public function startReply(int $messageId): void
+    {
+        if (! auth()->check() || ! auth()->user()->is_admin) {
+            return;
+        }
+
+        $this->replyingTo = $messageId;
+        $this->replyText = '';
+    }
+
+    public function cancelReply(): void
+    {
+        $this->replyingTo = null;
+        $this->replyText = '';
+    }
+
+    public function saveReply(int $messageId): void
+    {
+        if (! auth()->check() || ! auth()->user()->is_admin) {
+            return;
+        }
+
+        $this->validate([
+            'replyText' => 'required|min:1',
+        ]);
+
+        $message = GuestbookMessage::findOrFail($messageId);
+
+        if ($message->reply !== null) {
+            return;
+        }
+
+        $message->reply = Str::of($this->replyText)->stripTags();
+        $message->replied_at = now();
+        $message->save();
+
+        $this->replyingTo = null;
+        $this->replyText = '';
     }
 
     public function render()

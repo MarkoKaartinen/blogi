@@ -68,6 +68,27 @@
                         <div class="text-sm whitespace-pre-line">{{ $msg->message }}</div>
                     </div>
 
+                    @auth
+                        @if(auth()->user()->is_admin && !$msg->reply)
+                            @if($replyingTo === $msg->id)
+                                <div class="p-3 pt-0">
+                                    <div class="border-t-2 border-nord-10 pt-3">
+                                        <textarea wire:model="replyText" class="w-full bg-transparent border-2 rounded border-nord-12 py-2 px-2 focus:outline-none focus:border-nord-13 text-sm" rows="3" placeholder="Kirjoita vastaus..."></textarea>
+                                        <div class="flex gap-2 mt-2">
+                                            <button wire:click="saveReply({{ $msg->id }})" class="inline-block bg-nord-14 text-nord-0 font-bold uppercase px-3 py-2 leading-none border-2 border-nord-14 rounded hover:bg-transparent hover:text-nord-14 transition-colors duration-300 text-xs">Tallenna</button>
+                                            <button wire:click="cancelReply" class="inline-block bg-transparent text-nord-11 font-bold uppercase px-3 py-2 leading-none border-2 border-nord-11 rounded hover:bg-nord-11 hover:text-nord-0 transition-colors duration-300 text-xs">Peruuta</button>
+                                        </div>
+                                        @error('replyText') <div class="text-xs text-nord-11 mt-1">{{ $message }}</div> @enderror
+                                    </div>
+                                </div>
+                            @else
+                                <div class="px-3 pb-3">
+                                    <button wire:click="startReply({{ $msg->id }})" class="text-xs text-nord-14 hover:underline">Vastaa</button>
+                                </div>
+                            @endif
+                        @endif
+                    @endauth
+
                     @if($msg->reply)
                         <div class="mx-2 mb-2 border-2 border-nord-11 bg-nord-0 rounded-2xl overflow-clip">
                             <div class="py-2 px-3 bg-theme-0 flex justify-between items-center">

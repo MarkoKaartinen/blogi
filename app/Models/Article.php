@@ -104,7 +104,7 @@ class Article extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function legacy_comments(): HasMany
+    public function legacyComments(): HasMany
     {
         return $this->hasMany(LegacyComment::class)->orderBy('created_at');
     }

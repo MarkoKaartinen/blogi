@@ -1,20 +1,20 @@
 @php
 $navItems = [
-    ['name' => 'blogi', 'url' => route('blog')],
-    ['name' => 'vieraskirja', 'url' => route('guestbook')],
-    ['name' => 'linkit', 'url' => route('links')],
-    ['name' => 'haku', 'url' => route('search')],
+    ['name' => 'blogi', 'url' => route('blog'), 'navigate' => true],
+    ['name' => 'vieraskirja', 'url' => route('guestbook'), 'navigate' => true],
+    ['name' => 'linkit', 'url' => route('links'), 'navigate' => true],
+    ['name' => 'haku', 'url' => route('search'), 'navigate' => true],
 ];
 
 if (auth()->check() && auth()->user()->is_admin) {
-    $navItems[] = ['name' => 'admin', 'url' => route('filament.admin.pages.dashboard')];
+    $navItems[] = ['name' => 'admin', 'url' => route('filament.admin.pages.dashboard'), 'navigate' => false];
 }
 
 $secondaryNavItems = [
-    ['name' => 'nyt', 'url' => route('page', ['nyt'])],
-    ['name' => 'tietoa', 'url' => route('page', ['tietoa'])],
-    ['name' => 'kahvilaskuri', 'url' => route('coffee-calc')],
-    ['name' => 'muutosloki', 'url' => route('changelog')],
+    ['name' => 'nyt', 'url' => route('page', ['nyt']), 'navigate' => true],
+    ['name' => 'tietoa', 'url' => route('page', ['tietoa']), 'navigate' => true],
+    ['name' => 'kahvilaskuri', 'url' => route('coffee-calc'), 'navigate' => true],
+    ['name' => 'muutosloki', 'url' => route('changelog'), 'navigate' => true],
 ];
 @endphp
 <div class="h-6 md:h-12"></div>
@@ -29,7 +29,7 @@ $secondaryNavItems = [
             <div class="hidden md:flex space-x-4 items-center">
                 <ul class="flex space-x-4">
                     @foreach($navItems as $navItem)
-                        <li><a class="text-base hover:font-bold hover:text-nord-11 transition-colors duration-300" href="{{ $navItem['url'] }}" wire:navigate><span class="text-nord-11">/</span>{{ $navItem['name'] }}</a></li>
+                        <li><a class="text-base hover:font-bold hover:text-nord-11 transition-colors duration-300" href="{{ $navItem['url'] }}" {{ ($navItem['navigate'] ?? true) ? 'wire:navigate' : '' }}><span class="text-nord-11">/</span>{{ $navItem['name'] }}</a></li>
                     @endforeach
                 </ul>
                 <div class="hidden md:block relative" @click.outside="open = false" x-data="{ open: false }">
@@ -54,7 +54,7 @@ $secondaryNavItems = [
                          x-transition:leave-end="transform opacity-0 scale-95"
                     >
                         @foreach($secondaryNavItems as $navItem)
-                            <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ $navItem['url'] }}" wire:navigate><span class="text-nord-11">/</span>{{ $navItem['name'] }}</a>
+                            <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ $navItem['url'] }}" {{ ($navItem['navigate'] ?? true) ? 'wire:navigate' : '' }}><span class="text-nord-11">/</span>{{ $navItem['name'] }}</a>
                         @endforeach
                     </div>
                 </div>
@@ -82,10 +82,10 @@ $secondaryNavItems = [
                      x-transition:leave-end="transform opacity-0 scale-95"
                 >
                     @foreach($navItems as $navItem)
-                        <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ $navItem['url'] }}" wire:navigate><span class="text-nord-11">/</span>{{ $navItem['name'] }}</a>
+                        <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ $navItem['url'] }}" {{ ($navItem['navigate'] ?? true) ? 'wire:navigate' : '' }}><span class="text-nord-11">/</span>{{ $navItem['name'] }}</a>
                     @endforeach
                     @foreach($secondaryNavItems as $navItem)
-                        <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ $navItem['url'] }}" wire:navigate><span class="text-nord-11">/</span>{{ $navItem['name'] }}</a>
+                        <a role="menuitem" class="block px-4 py-2 hover:bg-nord-1" href="{{ $navItem['url'] }}" {{ ($navItem['navigate'] ?? true) ? 'wire:navigate' : '' }}><span class="text-nord-11">/</span>{{ $navItem['name'] }}</a>
                     @endforeach
                 </div>
             </div>

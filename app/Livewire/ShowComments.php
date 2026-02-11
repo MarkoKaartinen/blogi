@@ -6,6 +6,7 @@ use App\Models\Article;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ShowComments extends Component
@@ -18,12 +19,28 @@ class ShowComments extends Component
 
     public array $mastodonReplies;
 
+    public array $blogReplies = [];
+
+    public ?int $replyingTo = null;
+
     public function mount()
     {
         $this->getMastodonComments();
         $this->getComments();
         $this->getLegacyComments();
         $this->sortComments();
+    }
+
+    #[On('startReply')]
+    public function startReply(int $commentId): void
+    {
+        $this->replyingTo = $commentId;
+    }
+
+    #[On('cancelReply')]
+    public function cancelReply(): void
+    {
+        $this->replyingTo = null;
     }
 
     public function render()
@@ -64,9 +81,22 @@ class ShowComments extends Component
             return;
         }
 
-        // Käytetään Article-mallin comments-relaatiota
-        $comments = $article->comments()->whereNull('parent_id')->get();
-        foreach ($comments as $comment) {
+        // Hae kaikki kommentit ja rakenna vastausrakenne
+        $allComments = $article->comments;
+        $rootComments = [];
+        $replies = [];
+
+        foreach ($allComments as $comment) {
+            if ($comment->parent_id === null) {
+                $rootComments[] = $comment;
+            } else {
+                $replies[$comment->parent_id][] = $comment;
+            }
+        }
+
+        $this->blogReplies = $replies;
+
+        foreach ($rootComments as $comment) {
             $this->comments[] = [
                 'type' => 'blog',
                 'comment' => $comment,

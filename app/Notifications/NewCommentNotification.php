@@ -39,8 +39,7 @@ class NewCommentNotification extends Notification implements ShouldQueue
             ->line('**Sähköposti:** '.$this->comment->email)
             ->line('**Kommentti:**')
             ->line($this->comment->comment)
-            ->action('Näytä artikkeli', $article->url)
-            ->action('Hallinnoi kommenttia', url('/admin/comments/'.$this->comment->id.'/edit'));
+            ->action('Näytä artikkeli', $article->url);
     }
 
     /**

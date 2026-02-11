@@ -1,5 +1,5 @@
 <div class="border-2 border-nord-12 rounded-2xl p-6 bg-theme-0">
-    <h2 class="text-3xl font-extrabold mb-4">Kommentoi</h2>
+    <h2 class="text-3xl font-extrabold mb-4">{{ $replyTo ? 'Vastaa kommenttiin' : 'Kommentoi' }}</h2>
     <p class="text-sm mb-4">Voit kommentoida artikkelia alla olevan lomakkeen avulla. Roskapostin välttämiseksi kysymme sähköpostin, mutta emme julkaise sitä. Tekstikenttä ottaa vastaan vain tekstiä ja kaikki muu siivotaan pois.</p>
     <form wire:submit="postComment">
         <x-honeypot livewire-model="extraFields" />
@@ -26,9 +26,19 @@
                 <textarea wire:model="message" id="message" class="w-full bg-transparent border-2 rounded mt-1 border-nord-12 py-2 px-2 focus:outline-none focus:border-nord-13 text-base" name="message" rows="6" required></textarea>
                 <div class="text-xs text-nord-11">@error('message') {{ $message }} @enderror</div>
             </div>
+            <div>
+                <label class="inline-flex items-center cursor-pointer">
+                    <input type="checkbox" wire:model="notifyOnReply" class="form-checkbox h-5 w-5 text-nord-14 bg-transparent border-2 border-nord-12 rounded focus:ring-0 focus:ring-offset-0">
+                    <span class="ml-2 text-sm">Haluan sähköposti-ilmoituksen mahdollisesta vastauksesta</span>
+                </label>
+            </div>
             <div x-data="{}">
                 <button type="submit" class="inline-block bg-nord-14 text-nord-0 font-bold uppercase px-3 py-3 leading-none border-2 border-nord-14 rounded hover:bg-transparent hover:text-nord-14 transition-colors duration-300 text-base" >Lähetä kommentti</button>
-                <button type="button" x-on:click="$dispatch('hidecommentform')">Peruuta</button>
+                @if($replyTo)
+                    <button x-data @click="$dispatch('cancelReply')" type="button" class="inline-block bg-transparent text-nord-11 font-bold uppercase px-3 py-3 leading-none border-2 border-nord-11 rounded hover:bg-nord-11 hover:text-nord-0 transition-colors duration-300 text-base ml-2">Peruuta</button>
+                @else
+                    <button type="button" x-on:click="$dispatch('hidecommentform')" class="ml-2">Peruuta</button>
+                @endif
             </div>
 
             @if($feedback)

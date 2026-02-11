@@ -5,6 +5,11 @@ $navItems = [
     ['name' => 'linkit', 'url' => route('links')],
     ['name' => 'haku', 'url' => route('search')],
 ];
+
+if (auth()->check() && auth()->user()->is_admin) {
+    $navItems[] = ['name' => 'admin', 'url' => route('filament.admin.pages.dashboard')];
+}
+
 $secondaryNavItems = [
     ['name' => 'nyt', 'url' => route('page', ['nyt'])],
     ['name' => 'tietoa', 'url' => route('page', ['tietoa'])],

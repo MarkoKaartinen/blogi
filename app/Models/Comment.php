@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Comment extends Model
 {
-    protected $fillable = ['nickname', 'email', 'comment', 'link', 'article_id', 'parent_id', 'notify_on_reply'];
+    protected $fillable = ['nickname', 'email', 'comment', 'link', 'article_id', 'parent_id', 'notify_on_reply', 'user_id'];
 
     protected function casts(): array
     {
@@ -20,6 +20,11 @@ class Comment extends Model
     public function article(): BelongsTo
     {
         return $this->belongsTo(Article::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function replies(): HasMany

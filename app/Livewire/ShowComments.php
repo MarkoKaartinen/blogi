@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use App\Models\Comment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -41,6 +42,40 @@ class ShowComments extends Component
     public function cancelReply(): void
     {
         $this->replyingTo = null;
+    }
+
+    #[On('commentCreated')]
+    public function commentCreated(int $commentId): void
+    {
+        $comment = Comment::find($commentId);
+        if (! $comment) {
+            return;
+        }
+
+        // Add new comment to the list
+        $this->comments[] = [
+            'type' => 'blog',
+            'comment' => $comment,
+            'timestamp' => $comment->created_at->timestamp,
+        ];
+
+        // Re-sort comments by timestamp
+        $this->sortComments();
+    }
+
+    #[On('replyCreated')]
+    public function replyCreated(int $commentId, int $parentId): void
+    {
+        $comment = Comment::find($commentId);
+        if (! $comment) {
+            return;
+        }
+
+        // Add reply to the blogReplies structure
+        if (! isset($this->blogReplies[$parentId])) {
+            $this->blogReplies[$parentId] = [];
+        }
+        $this->blogReplies[$parentId][] = $comment;
     }
 
     public function render()

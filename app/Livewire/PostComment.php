@@ -109,16 +109,22 @@ class PostComment extends Component
 
         $this->reset(['nickname', 'homepage', 'message', 'email', 'notifyOnReply']);
 
-        // Restore saved data for next comment (if not logged in)
-        if (! auth()->check()) {
+        // Restore data for next comment
+        if (auth()->check()) {
+            $this->nickname = auth()->user()->name;
+            $this->email = auth()->user()->email;
+        } else {
             $this->nickname = session('comment_nickname', '');
             $this->email = session('comment_email', '');
             $this->homepage = session('comment_homepage', '');
         }
 
-        // Close reply form
+        // Close reply form and notify that comment was created
         if ($this->replyTo) {
             $this->dispatch('cancelReply');
+            $this->dispatch('replyCreated', commentId: $comment->id, parentId: $this->replyTo);
+        } else {
+            $this->dispatch('commentCreated', commentId: $comment->id);
         }
 
         $this->feedback = 'Kiitos kommentistasi!';

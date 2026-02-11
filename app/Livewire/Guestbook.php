@@ -45,6 +45,15 @@ class Guestbook extends Component
 
         $this->extraFields = new HoneypotData;
 
+        // If user is logged in, prefill with user data
+        if (auth()->check()) {
+            $this->nickname = auth()->user()->name;
+        } else {
+            // Otherwise, check if we have saved data in session (shared with comments)
+            $this->nickname = session('comment_nickname', '');
+            $this->homepage = session('comment_homepage', '');
+        }
+
         SEO::set(
             title: $this->title,
             description: $content->matter('description'),
@@ -78,7 +87,21 @@ class Guestbook extends Component
         Notification::route('mail', config('blog.notification_email'))
             ->notify(new NewGuestbookMessageNotification($guestbookMessage));
 
+        // Save data to session for future use (if not logged in)
+        if (! auth()->check()) {
+            session([
+                'comment_nickname' => $this->nickname,
+                'comment_homepage' => $this->homepage,
+            ]);
+        }
+
         $this->reset(['nickname', 'homepage', 'message']);
+
+        // Restore saved data for next message (if not logged in)
+        if (! auth()->check()) {
+            $this->nickname = session('comment_nickname', '');
+            $this->homepage = session('comment_homepage', '');
+        }
 
         $this->feedback = 'Kiitos viestistäsi!';
 

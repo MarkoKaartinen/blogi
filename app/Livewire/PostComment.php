@@ -36,6 +36,17 @@ class PostComment extends Component
     public function mount()
     {
         $this->extraFields = new HoneypotData;
+
+        // If user is logged in, prefill with user data
+        if (auth()->check()) {
+            $this->nickname = auth()->user()->name;
+            $this->email = auth()->user()->email;
+        } else {
+            // Otherwise, check if we have saved comment data in session
+            $this->nickname = session('comment_nickname', '');
+            $this->email = session('comment_email', '');
+            $this->homepage = session('comment_homepage', '');
+        }
     }
 
     public function render()
@@ -87,7 +98,23 @@ class PostComment extends Component
             }
         }
 
+        // Save comment data to session for future use (if not logged in)
+        if (! auth()->check()) {
+            session([
+                'comment_nickname' => $this->nickname,
+                'comment_email' => $this->email,
+                'comment_homepage' => $this->homepage,
+            ]);
+        }
+
         $this->reset(['nickname', 'homepage', 'message', 'email', 'notifyOnReply']);
+
+        // Restore saved data for next comment (if not logged in)
+        if (! auth()->check()) {
+            $this->nickname = session('comment_nickname', '');
+            $this->email = session('comment_email', '');
+            $this->homepage = session('comment_homepage', '');
+        }
 
         // Close reply form
         if ($this->replyTo) {

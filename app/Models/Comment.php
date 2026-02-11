@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Comment extends Model
 {
-    protected $fillable = ['nickname', 'email', 'comment', 'link', 'article_id', 'parent_id'];
+    protected $fillable = ['nickname', 'email', 'comment', 'link', 'article_id', 'parent_id', 'notify_on_reply'];
+
+    protected function casts(): array
+    {
+        return [
+            'notify_on_reply' => 'boolean',
+        ];
+    }
 
     public function article(): BelongsTo
     {

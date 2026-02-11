@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Comment;
 use App\Notifications\NewCommentNotification;
 use App\Notifications\NewCommentReplyNotification;
+use App\Rules\GuestNotImpersonatingUser;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -61,7 +62,7 @@ class PostComment extends Component
         $rules = [
             'nickname' => 'required',
             'message' => 'required',
-            'email' => 'required|email',
+            'email' => ['required', 'email', new GuestNotImpersonatingUser],
         ];
         if ($this->homepage !== null) {
             $rules['homepage'] = 'url';
@@ -78,6 +79,7 @@ class PostComment extends Component
             'article_id' => $this->articleId,
             'parent_id' => $this->replyTo,
             'notify_on_reply' => $this->notifyOnReply,
+            'user_id' => auth()->id(),
         ]);
 
         // Check if admin is commenting

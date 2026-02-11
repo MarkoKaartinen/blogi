@@ -13,7 +13,7 @@
                 <div>
                     <label for="email" class="block text-sm uppercase">Sähköposti</label>
                     <input wire:model="email" class="w-full bg-transparent border-2 rounded mt-1 border-nord-12 py-2 px-2 focus:outline-none focus:border-nord-13 text-base" type="email" name="email" />
-                    <div class="text-xs text-nord-11 mt-1">@error('homepage') {{ $message }} @enderror</div>
+                    <div class="text-xs text-nord-11 mt-1">@error('email') {{ $message }} @enderror</div>
                 </div>
                 <div>
                     <label for="homepage" class="block text-sm uppercase">Kotisivut</label>

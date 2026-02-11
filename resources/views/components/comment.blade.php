@@ -28,7 +28,11 @@ if($type == 'legacy'){
                 <img class="h-20 rounded-2xl" src="{{ $comment->account->avatar }}" alt="Avatar of {{ $comment->account->display_name }}" />
             @endif
             @if($type == 'blog')
-                <img class="h-16 rounded-2xl" src="https://api.dicebear.com/9.x/avataaars-neutral/png?size=200&backgroundColor=8fbcbb,88c0d0,81a1c1,5e81ac,bf616a,d08770,ebcb8b,a3be8c,b48ead&seed={{ urlencode(str($comment->nickname)->slug('')) }}" alt="Avatar of {{ $comment->nickname }}" />
+                @if($comment->user && $comment->user->avatar)
+                    <img class="h-16 rounded-2xl" src="{{ Storage::disk('public')->url($comment->user->avatar) }}" alt="Avatar of {{ $comment->nickname }}" />
+                @else
+                    <img class="h-16 rounded-2xl" src="https://api.dicebear.com/9.x/avataaars-neutral/png?size=200&backgroundColor=8fbcbb,88c0d0,81a1c1,5e81ac,bf616a,d08770,ebcb8b,a3be8c,b48ead&seed={{ urlencode(str($comment->nickname)->slug('')) }}" alt="Avatar of {{ $comment->nickname }}" />
+                @endif
             @endif
             @if($type == 'legacy')
                 <img class="h-16 rounded-2xl" src="https://api.dicebear.com/9.x/avataaars-neutral/png?size=200&backgroundColor=8fbcbb,88c0d0,81a1c1,5e81ac,bf616a,d08770,ebcb8b,a3be8c,b48ead&seed={{ urlencode(str($comment->name)->slug('')) }}" alt="Avatar of {{ $comment->name }}" />
@@ -48,7 +52,14 @@ if($type == 'legacy'){
                         </a>
                     @endif
                     @if($type == 'blog')
-                        {{ $comment->nickname }}
+                        <span class="inline-flex items-center gap-1">
+                            {{ $comment->nickname }}
+                            @if($comment->user && $comment->user->is_admin)
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-nord-14">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                                </svg>
+                            @endif
+                        </span>
                     @endif
                     @if($type == 'legacy')
                         {{ $comment->name }}

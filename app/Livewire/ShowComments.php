@@ -47,7 +47,7 @@ class ShowComments extends Component
     #[On('commentCreated')]
     public function commentCreated(int $commentId): void
     {
-        $comment = Comment::find($commentId);
+        $comment = Comment::with('user')->find($commentId);
         if (! $comment) {
             return;
         }
@@ -66,7 +66,7 @@ class ShowComments extends Component
     #[On('replyCreated')]
     public function replyCreated(int $commentId, int $parentId): void
     {
-        $comment = Comment::find($commentId);
+        $comment = Comment::with('user')->find($commentId);
         if (! $comment) {
             return;
         }
@@ -116,8 +116,8 @@ class ShowComments extends Component
             return;
         }
 
-        // Hae kaikki kommentit ja rakenna vastausrakenne
-        $allComments = $article->comments;
+        // Hae kaikki kommentit user-relaatiolla ja rakenna vastausrakenne
+        $allComments = $article->comments()->with('user')->get();
         $rootComments = [];
         $replies = [];
 

@@ -97,8 +97,10 @@ class Guestbook extends Component
 
         $this->reset(['nickname', 'homepage', 'message']);
 
-        // Restore saved data for next message (if not logged in)
-        if (! auth()->check()) {
+        // Restore data for next message
+        if (auth()->check()) {
+            $this->nickname = auth()->user()->name;
+        } else {
             $this->nickname = session('comment_nickname', '');
             $this->homepage = session('comment_homepage', '');
         }
@@ -150,8 +152,10 @@ class Guestbook extends Component
 
     public function render()
     {
+        $messages = GuestbookMessage::latest()->paginate(20);
+
         return view('livewire.guestbook', [
-            'messages' => GuestbookMessage::latest()->paginate(20),
+            'messages' => $messages,
         ]);
     }
 }

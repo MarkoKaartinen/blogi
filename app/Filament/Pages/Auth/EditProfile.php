@@ -22,7 +22,9 @@ class EditProfile extends BaseEditProfile
                     ->directory('avatars')
                     ->visibility('public')
                     ->imageEditor()
-                    ->circleCropper(),
+                    ->circleCropper()
+                    ->maxSize(2048)
+                    ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/gif', 'image/webp']),
                 $this->getPasswordFormComponent()
                     ->revealable()
                     ->confirmed(),

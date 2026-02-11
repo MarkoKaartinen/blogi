@@ -3,7 +3,9 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\EditProfile;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages\Dashboard;
+use Filament\Support\Icons\Heroicon;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use Filament\Http\Middleware\Authenticate;
@@ -32,6 +34,12 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->profile(EditProfile::class, isSimple: false)
+            ->navigationItems([
+                NavigationItem::make('Blogi')
+                    ->url(fn (): string => route('home'))
+                    ->icon(Heroicon::OutlinedNewspaper)
+                    ->sort(-1),
+            ])
             ->colors([
                 'primary' => Color::Amber,
             ])

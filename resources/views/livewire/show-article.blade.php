@@ -119,6 +119,38 @@
         </div>
     </div>
 
+    @if($this->relatedArticles->isNotEmpty())
+        <div>
+            <div class="h-1 w-20 rounded-full bg-nord-9 my-12"></div>
+
+            <h2 class="text-xl font-extrabold mb-4">Myös nämä saattaisi kiinnostaa</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                @foreach($this->relatedArticles->shuffle()->take(4) as $related)
+                    <div>
+                        <h3 class="text-lg font-semibold">
+                            <a class="text-nord-14 hover:text-nord-12 transition-colors duration-300" href="{{ $related->url }}" wire:navigate>{{ $related->title }}</a>
+                        </h3>
+                        <div class="text-xs uppercase text-nord-8 mt-1">
+                            {{ $related->published_at?->dayName }}na {{ $related->published_at?->format('j.n.Y \k\l\o H:i') }}
+                        </div>
+                        @if($related->description)
+                            <div class="text-xs pt-2 line-clamp-3">{{ $related->description }}</div>
+                        @endif
+                        <div class="flex pt-2">
+                            <a class="text-nord-14 text-xs hover:text-nord-12 transition-colors duration-300 inline-flex items-center" href="{{ route('article', [$article->year, $article->slug]) }}" wire:navigate>
+                                <span>Lue lisää</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="ml-1 size-4">
+                                    <path fill-rule="evenodd" d="M12.78 7.595a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06l3.25 3.25Zm-8.25-3.25 3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06Z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
+
     <div>
         <div class="h-1 w-20 rounded-full bg-nord-9 my-12"></div>
 

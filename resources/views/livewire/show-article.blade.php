@@ -138,7 +138,7 @@
                             <div class="text-xs pt-2 line-clamp-3">{{ $related->description }}</div>
                         @endif
                         <div class="flex pt-2">
-                            <a class="text-nord-14 text-xs hover:text-nord-12 transition-colors duration-300 inline-flex items-center" href="{{ route('article', [$related->year, $related->slug]) }}" wire:navigate>
+                            <a class="text-nord-14 text-xs hover:text-nord-12 transition-colors duration-300 inline-flex items-center" href="{{ $related->url }}" wire:navigate>
                                 <span>Lue lisää</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="ml-1 size-4">
                                     <path fill-rule="evenodd" d="M12.78 7.595a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06l3.25 3.25Zm-8.25-3.25 3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06Z" clip-rule="evenodd" />

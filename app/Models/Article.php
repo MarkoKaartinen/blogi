@@ -99,6 +99,15 @@ class Article extends Model
         );
     }
 
+    protected function readingTime(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => max(1, (int) round(
+                str($this->body)->stripTags()->wordCount() / config('blog.reading_speed')
+            ))
+        );
+    }
+
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);

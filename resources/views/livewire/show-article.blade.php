@@ -18,6 +18,13 @@
                 </span>
             </div>
         @endif
+        <div class="text-sm text-nord-8 uppercase mt-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 mr-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <span>~{{ $article->reading_time }} min lukuaika</span>
+        </div>
+
         @if($article->updated_at && !$article->legacy)
             <div class="text-sm text-nord-12 uppercase inline-flex items-center mt-1">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 mr-1">

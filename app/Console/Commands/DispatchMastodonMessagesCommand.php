@@ -2,26 +2,30 @@
 
 namespace App\Console\Commands;
 
+use App\Contracts\Mastodonable;
 use App\Jobs\SendMastodonMessageJob;
 use App\Models\Article;
+use App\Models\Recipe;
 use Illuminate\Console\Command;
 
 class DispatchMastodonMessagesCommand extends Command
 {
     protected $signature = 'blogi:dispatch-mastodon-messages';
 
-    protected $description = 'Dispatchs job that sends Mastodon message if article is published';
+    protected $description = 'Dispatches jobs that send Mastodon messages for published content';
+
+    /** @var array<class-string<Mastodonable>> */
+    protected array $mastodonableModels = [
+        Article::class,
+        Recipe::class,
+    ];
 
     public function handle(): void
     {
-        $articles = Article::published()
-            ->where('post_to_mastodon', true)
-            ->whereNull('mastodon_post_id')
-            ->where('legacy', false)
-            ->get();
-
-        foreach ($articles as $article){
-            SendMastodonMessageJob::dispatch($article);
+        foreach ($this->mastodonableModels as $model) {
+            foreach ($model::pendingMastodonDispatch() as $item) {
+                SendMastodonMessageJob::dispatch($item);
+            }
         }
     }
 }

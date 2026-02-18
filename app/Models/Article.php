@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
+use App\Contracts\Mastodonable;
 use App\Support\MarkdownHandler;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Cache;
 use Laravel\Scout\Searchable;
 use Spatie\Tags\HasTags;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
-class Article extends Model
+class Article extends Model implements Mastodonable
 {
     use HasTags, Searchable;
 
@@ -61,7 +64,7 @@ class Article extends Model
         );
     }
 
-    public function content()
+    public function content(): string
     {
         $content = YamlFrontMatter::parse($this->file_content);
 
@@ -108,9 +111,54 @@ class Article extends Model
         );
     }
 
-    public function comments(): HasMany
+    public static function pendingMastodonDispatch(): Collection
     {
-        return $this->hasMany(Comment::class);
+        return static::query()
+            ->published()
+            ->where('post_to_mastodon', true)
+            ->whereNull('mastodon_post_id')
+            ->where('legacy', false)
+            ->get();
+    }
+
+    public function mastodonMessage(): string
+    {
+        $message = "Julkaisin juuri uuden artikkelin blogiini!\n\n";
+        $message .= $this->title."\n\n";
+
+        if ($this->description) {
+            $message .= $this->description."\n\n";
+        }
+
+        $message .= $this->url;
+
+        $tags = [];
+        foreach ($this->tags as $tag) {
+            $tags[] = '#'.str($tag->name)->replace(' ', '');
+        }
+
+        if (count($tags) > 0) {
+            $message .= "\n\n".collect($tags)->implode(' ');
+        }
+
+        return $message;
+    }
+
+    public function saveMastodonStatus(string $statusId): void
+    {
+        $this->mastodon_post_id = $statusId;
+        $this->save();
+
+        Cache::forget('article_'.$this->year.'_'.$this->slug);
+        Cache::forget('article_'.$this->year.'_'.$this->slug.'_previous');
+        Cache::forget('article_'.$this->year.'_'.$this->slug.'_next');
+        Cache::forget('series_'.$this->year.'_'.$this->slug);
+        Cache::forget('mastodon_comments_'.$statusId);
+    }
+
+    public function comments(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function legacyComments(): HasMany

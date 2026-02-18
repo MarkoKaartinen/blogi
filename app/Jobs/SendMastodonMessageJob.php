@@ -2,14 +2,13 @@
 
 namespace App\Jobs;
 
-use App\Models\Article;
+use App\Contracts\Mastodonable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\Middleware\WithoutOverlapping;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class SendMastodonMessageJob implements ShouldQueue
@@ -17,53 +16,26 @@ class SendMastodonMessageJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public function __construct(
-        public Article $article
+        public Mastodonable $mastodonable
     ) {}
 
     public function handle(): void
     {
-        $message = "Julkaisin juuri uuden artikkelin blogiini!\n\n";
-        $message .= $this->article->title."\n\n";
-        $message .= $this->article->description."\n\n";
-        $message .= $this->article->url;
-
-        $tags = [];
-        foreach ($this->article->tags as $tag) {
-            $tags[] = '#'.str($tag->name)->replace(' ', '');
-        }
-
-        if (count($tags) > 0) {
-            $message .= "\n\n".collect($tags)->implode(' ');
-        }
-
         $url = config('services.mastodon.instance').'/api/v1/statuses';
         $response = Http::withToken(config('services.mastodon.token'))
             ->post($url, [
-                'status' => $message,
+                'status' => $this->mastodonable->mastodonMessage(),
                 'visibility' => 'public',
                 'language' => 'fi',
             ]);
 
         if ($response->successful()) {
-            $status_id = $response->object()->id;
-            $this->article->mastodon_post_id = $status_id;
-            $this->article->save();
-
-            // Tyhjennä vain tähän artikkeliin liittyvät välimuistit
-            Cache::forget('article_'.$this->article->year.'_'.$this->article->slug);
-            Cache::forget('article_'.$this->article->year.'_'.$this->article->slug.'_previous');
-            Cache::forget('article_'.$this->article->year.'_'.$this->article->slug.'_next');
-            Cache::forget('series_'.$this->article->year.'_'.$this->article->slug);
-
-            // Tyhjennä Mastodon-kommentit jos status_id on olemassa
-            if ($status_id) {
-                Cache::forget('mastodon_comments_'.$status_id);
-            }
+            $this->mastodonable->saveMastodonStatus($response->object()->id);
         }
     }
 
     public function middleware(): array
     {
-        return [new WithoutOverlapping($this->article->id)];
+        return [new WithoutOverlapping(get_class($this->mastodonable).':'.$this->mastodonable->getKey())];
     }
 }

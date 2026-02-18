@@ -30,7 +30,6 @@ description:
 image: /media/{$year}/
 servings_amount:
 servings_unit: annosta
-post_to_mastodon: true
 categories:
 - Kategoria
 tags:
@@ -56,5 +55,6 @@ ingredients:
 
         Storage::disk('content')->put($filepath, $markdown);
         info('Uusi resepti luotu! ('.$filepath.')');
+        info('Luonnos: '.route('recipe.draft', [$year, $slug]));
     }
 }

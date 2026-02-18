@@ -20,6 +20,7 @@ use App\Livewire\ShowDraft;
 use App\Livewire\ShowPage;
 use App\Livewire\ShowRecipe;
 use App\Livewire\ShowRecipeCategory;
+use App\Livewire\ShowRecipeDraft;
 use App\Livewire\ShowRecipeTag;
 use App\Livewire\ShowSeries;
 use App\Livewire\ShowTag;
@@ -55,6 +56,7 @@ Route::get('/og/sivu/{slug}.png', [ShowOgImageController::class, 'page'])->name(
 
 if (! app()->isProduction()) {
     Route::get('/luonnos/{year}/{slug}', ShowDraft::class)->name('draft');
+    Route::get('/reseptiluonnos/{year}/{slug}', ShowRecipeDraft::class)->name('recipe.draft');
 }
 
 Route::get('/{year}/{slug}', ShowArticle::class)->name('article');

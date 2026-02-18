@@ -31,9 +31,26 @@
             baseServings: {{ $recipe->servings_amount ?? 1 }},
             formatAmount(amount) {
                 if (amount === null || amount === undefined || amount === '') return '';
-                const scaled = parseFloat(amount) * this.currentServings / this.baseServings;
-                const rounded = Math.round(scaled * 100) / 100;
-                return Number.isInteger(rounded) ? rounded.toString() : rounded.toString();
+                const str = String(amount);
+                const num = str.includes('/')
+                    ? parseFloat(str.split('/')[0]) / parseFloat(str.split('/')[1])
+                    : parseFloat(str);
+                const scaled = num * this.currentServings / this.baseServings;
+                const whole = Math.floor(scaled);
+                const frac = scaled - whole;
+                if (frac < 0.01) return whole.toString();
+                if (frac > 0.99) return (whole + 1).toString();
+                const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+                let bestNum = 1, bestDen = 2, bestError = Infinity;
+                for (let den = 2; den <= 8; den++) {
+                    const n = Math.round(frac * den);
+                    if (n === 0 || n === den) continue;
+                    const error = Math.abs(frac - n / den);
+                    if (error < bestError) { bestError = error; bestNum = n; bestDen = den; }
+                }
+                const g = gcd(bestNum, bestDen);
+                const fracStr = `${bestNum / g}/${bestDen / g}`;
+                return whole === 0 ? fracStr : `${whole} ${fracStr}`;
             }
         }">
             <div class=" mb-4">
@@ -45,7 +62,9 @@
                             <button type="button" @click="currentServings = Math.max(1, currentServings - 1)" class="size-6 flex items-center justify-center rounded border border-nord-3 hover:bg-nord-2 transition-colors duration-150 font-bold">−</button>
                             <span class="font-bold min-w-[1.5rem] text-center" x-text="currentServings"></span>
                             <button type="button" @click="currentServings++" class="size-6 flex items-center justify-center rounded border border-nord-3 hover:bg-nord-2 transition-colors duration-150 font-bold">+</button>
-                            <span class="text-nord-8 uppercase text-xs">{{ str($recipe->servings_unit)->ucfirst() }}</span>
+                            @if($recipe->servings_unit)
+                                <span class="text-nord-8 uppercase text-xs">{{ str($recipe->servings_unit)->ucfirst() }}</span>
+                            @endif
                         </div>
                         <button x-show="currentServings !== baseServings" x-cloak @click="currentServings = baseServings" class="text-xs text-nord-8 hover:text-nord-4 transition-colors duration-150 ml-1">Nollaa</button>
                     </div>
@@ -58,18 +77,16 @@
                         <li class="font-bold text-nord-13 mt-4 first:mt-0">{{ $ingredient['section'] }}</li>
                     @else
                         <li class="flex gap-3">
-                            @if(isset($ingredient['amount']) || isset($ingredient['unit']))
-                                <span class="text-nord-8 min-w-[5rem] text-right">
+                                            <span class="text-nord-8 min-w-[5rem] text-right shrink-0">
                                     @if(isset($ingredient['amount']))
                                         @if($recipe->servings_amount)
-                                            <span x-text="formatAmount({{ $ingredient['amount'] }})"></span>
+                                            <span x-text="formatAmount('{{ $ingredient['amount'] }}')"></span>
                                         @else
                                             {{ $ingredient['amount'] }}
                                         @endif
                                     @endif
                                     {{ isset($ingredient['unit']) ? ' '.$ingredient['unit'] : '' }}
                                 </span>
-                            @endif
                             <span>{{ $ingredient['name'] ?? '' }}</span>
                         </li>
                     @endif

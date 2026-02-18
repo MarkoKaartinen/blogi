@@ -3,10 +3,11 @@
 namespace App\Console\Commands;
 
 use App\Models\Article;
+use App\Models\Recipe;
+use App\Models\Tag;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\SitemapIndex;
-use App\Models\Tag;
 
 class GenerateSitemapCommand extends Command
 {
@@ -16,63 +17,90 @@ class GenerateSitemapCommand extends Command
 
     public function handle(): void
     {
-        //sivut
-        $pages_sitemap_name = "pages_sitemap.xml";
+        // sivut
+        $pages_sitemap_name = 'pages_sitemap.xml';
         $pages_sitemap = Sitemap::create();
         $pages_sitemap->add(route('home'))
             ->add(route('blog'))
             ->add(route('search'))
             ->add(route('guestbook'))
-            ->add(route('changelog'))
             ->add(route('coffee-calc'))
             ->add(route('links'))
             ->add(route('series.all'))
             ->add(route('categories.all'))
+            ->add(route('recipes'))
             ->add(route('tags.all'));
 
         $pages = ['nyt', 'tietoa'];
-        foreach ($pages as $page){
+        foreach ($pages as $page) {
             $pages_sitemap->add(route('page', [$page]));
         }
         $pages_sitemap->writeToFile(public_path($pages_sitemap_name));
 
-        //artikkelit
+        // artikkelit
         $articles = Article::published()->orderBy('published_at', 'desc')->get();
-        $articles_sitemap_name = "articles_sitemap.xml";
+        $articles_sitemap_name = 'articles_sitemap.xml';
         $articles_sitemap = Sitemap::create();
         foreach ($articles as $article) {
             $articles_sitemap->add(
-                route("article", [$article->year, $article->slug])
+                route('article', [$article->year, $article->slug])
             );
         }
         $articles_sitemap->writeToFile(public_path($articles_sitemap_name));
 
-        //sarjat
+        $recipes = Recipe::published()->orderBy('published_at', 'desc')->get();
+        $recipes_sitemap_name = 'recipes_sitemap.xml';
+        $recipes_sitemap = Sitemap::create();
+        foreach ($recipes as $recipe) {
+            $recipes_sitemap->add(
+                route('recipe', [$recipe->slug])
+            );
+        }
+        $recipes_sitemap->writeToFile(public_path($recipes_sitemap_name));
+
+        // sarjat
         $series = Tag::whereType('series')->get();
-        $series_sitemap_name = "series_sitemap.xml";
+        $series_sitemap_name = 'series_sitemap.xml';
         $series_sitemap = Sitemap::create();
         foreach ($series as $serie) {
-            $series_sitemap->add(route("series", [$serie->slug]));
+            $series_sitemap->add(route('series', [$serie->slug]));
         }
         $series_sitemap->writeToFile(public_path($series_sitemap_name));
 
-        //kategoriat
         $categories = Tag::whereType('category')->get();
-        $categories_sitemap_name = "categories_sitemap.xml";
+        $categories_sitemap_name = 'categories_sitemap.xml';
         $categories_sitemap = Sitemap::create();
         foreach ($categories as $category) {
-            $categories_sitemap->add(route("category", [$category->slug]));
+            $categories_sitemap->add(route('category', [$category->slug]));
         }
         $categories_sitemap->writeToFile(public_path($categories_sitemap_name));
 
-        //avainsanat
+        // resepti kategoriat
+        $recipe_categories = Tag::whereType('recipe_category')->get();
+        $recipe_categories_sitemap_name = 'recipe_categories_sitemap.xml';
+        $recipe_categories_sitemap = Sitemap::create();
+        foreach ($recipe_categories as $recipe_category) {
+            $recipe_categories_sitemap->add(route('recipe.category', [$recipe_category->slug]));
+        }
+        $recipe_categories_sitemap->writeToFile(public_path($recipe_categories_sitemap_name));
+
+        // avainsanat
         $tags = Tag::whereType('tag')->get();
-        $tags_sitemap_name = "tags_sitemap.xml";
+        $tags_sitemap_name = 'tags_sitemap.xml';
         $tags_sitemap = Sitemap::create();
         foreach ($tags as $tag) {
-            $tags_sitemap->add(route("tag", [$tag->slug]));
+            $tags_sitemap->add(route('tag', [$tag->slug]));
         }
         $tags_sitemap->writeToFile(public_path($tags_sitemap_name));
+
+        // resepti avainsanat
+        $recipe_tags = Tag::whereType('tag')->get();
+        $recipe_tags_sitemap_name = 'tags_sitemap.xml';
+        $recipe_tags_sitemap = Sitemap::create();
+        foreach ($recipe_tags as $recipe_tag) {
+            $recipe_tags_sitemap->add(route('recipe.tag', [$recipe_tag->slug]));
+        }
+        $recipe_tags_sitemap->writeToFile(public_path($recipe_tags_sitemap_name));
 
         SitemapIndex::create()
             ->add(url($pages_sitemap_name))
@@ -80,6 +108,8 @@ class GenerateSitemapCommand extends Command
             ->add(url($series_sitemap_name))
             ->add(url($categories_sitemap_name))
             ->add(url($tags_sitemap_name))
-            ->writeToFile(public_path("sitemap_index.xml"));
+            ->add(url($recipe_categories_sitemap_name))
+            ->add(url($recipe_tags_sitemap_name))
+            ->writeToFile(public_path('sitemap_index.xml'));
     }
 }

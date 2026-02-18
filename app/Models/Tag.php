@@ -10,4 +10,9 @@ class Tag extends \Spatie\Tags\Tag
     {
         return $this->morphedByMany(Article::class, 'taggable');
     }
+
+    public function recipes(): MorphToMany
+    {
+        return $this->morphedByMany(Recipe::class, 'taggable');
+    }
 }

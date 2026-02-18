@@ -39,7 +39,7 @@ class ShowArticle extends Component
         $this->article = $article;
 
         SEO::set(
-            title: $article->title,
+            title: $article->title.' - Blogi',
             description: $article->seo_description,
             image: route('article.og', [$article->slug]),
             url: $article->url,

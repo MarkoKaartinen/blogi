@@ -24,14 +24,14 @@ class ImportArticlesCommand extends Command
             $year = str($pathinfo['dirname'])->replace('articles/', '')->toInteger();
 
             $import = true;
-            if($content->matter('legacy')){
+            if ($content->matter('legacy')) {
                 $import = false;
             }
 
-            if($import){
+            if ($import) {
                 $article = Article::updateOrCreate([
                     'year' => $year,
-                    'slug' => $content->matter('slug')
+                    'slug' => $content->matter('slug'),
                 ], [
                     'title' => $content->matter('title'),
                     'description' => $content->matter('description'),
@@ -42,15 +42,17 @@ class ImportArticlesCommand extends Command
                     'updated_at' => $content->matter('updated_at'),
                 ]);
 
-                if($content->matter('categories')){
+                if ($content->matter('categories')) {
                     $article->syncTagsWithType($content->matter('categories'), 'category');
                 }
-                if($content->matter('tags')){
+                if ($content->matter('tags')) {
                     $article->syncTagsWithType($content->matter('tags'), 'tag');
                 }
-                if($content->matter('series')){
+                if ($content->matter('series')) {
                     $article->syncTagsWithType($content->matter('series'), 'series');
                 }
+
+                $article->searchable();
             }
         }
 

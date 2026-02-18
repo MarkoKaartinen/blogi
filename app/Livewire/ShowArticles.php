@@ -12,13 +12,20 @@ class ShowArticles extends Component
 {
     use WithPagination;
 
-    public string|null $tagType = null;
-    public string|null $tag = null;
+    public ?string $tagType = null;
+
+    public ?string $tag = null;
+
     public string $order = 'desc';
+
     public int $limit = 10;
+
     public bool $paginate = true;
+
     public string $heading = 'h2';
+
     public string $spacing = 'normal';
+
     public string $cols = 'grid-cols-1';
 
     public function render()
@@ -29,8 +36,6 @@ class ShowArticles extends Component
     #[Computed]
     public function getArticles()
     {
-
-
         $tag = $this->tag;
         $tagType = $this->tagType;
         $paginate = $this->paginate;
@@ -38,29 +43,28 @@ class ShowArticles extends Component
         $order = $this->order;
 
         $cacheKey = 'show_articles';
-        if($tagType != null && $tag != null){
+        if ($tagType != null && $tag != null) {
             $cacheKey .= '_'.$tagType.'_'.$tag;
         }
         $cacheKey .= '_'.$order;
         $cacheKey .= '_'.$limit;
-        if($paginate){
+        if ($paginate) {
             $cacheKey .= '_'.$this->getPage();
         }
 
-        return Cache::remember($cacheKey, 3600, function() use ($tag, $tagType, $paginate, $limit, $order){
+        return Cache::remember($cacheKey, 3600, function () use ($tag, $tagType, $paginate, $limit, $order) {
             $articles = Article::published()
-                ->when(in_array($tagType, ['series', 'category', 'tag']) && $tag != null, function($q) use ($tag, $tagType){
+                ->when(in_array($tagType, ['series', 'category', 'tag']) && $tag != null, function ($q) use ($tag, $tagType) {
                     $q->withAnyTags([$tag], $tagType);
                 })
                 ->with(['tags'])
                 ->orderBy('published_at', $order);
 
-            if(!$paginate){
+            if (! $paginate) {
                 return $articles->limit($limit)->get();
             }
+
             return $articles->paginate($limit);
         });
-
-
     }
 }

@@ -3,6 +3,7 @@ $navItems = [
     ['name' => 'blogi', 'url' => route('blog'), 'navigate' => true],
     ['name' => 'vieraskirja', 'url' => route('guestbook'), 'navigate' => true],
     ['name' => 'linkit', 'url' => route('links'), 'navigate' => true],
+    ['name' => 'reseptit', 'url' => route('recipes'), 'navigate' => true],
     ['name' => 'haku', 'url' => route('search'), 'navigate' => true],
 ];
 

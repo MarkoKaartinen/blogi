@@ -36,16 +36,6 @@ class Home extends Component
         return view('livewire.home');
     }
 
-    #[Computed]
-    public function getRecentChanges()
-    {
-        return Cache::remember('home_changelog', 3600, function() {
-            return Log::orderBy('created_at', 'desc')
-                ->limit(10)
-                ->get();
-        });
-    }
-
     public function getContent($file)
     {
         $content = YamlFrontMatter::parse(MarkdownHandler::getFile($file));

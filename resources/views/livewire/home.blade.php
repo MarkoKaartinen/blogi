@@ -51,32 +51,9 @@
             </div>
 
             <div>
-                <div class="flex items-center">
-                    <div class="flex items-center mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-8 text-nord-9">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-                        </svg>
-                    </div>
-                    <div><h2 class="font-extrabold text-3xl">Muutosloki</h2></div>
-                </div>
-                <div class="mt-6 space-y-4">
-                    @foreach($this->getRecentChanges() as $change)
-                        <div>
-                            <div class="text-sm mb-1 uppercase text-nord-8">
-                                {{ $change->created_at->format("j.n.Y \k\l\o H:i") }}
-                            </div>
-                            <div class="text-sm textcontent changelogcontent">@markdown($this->getContent($change->file))</div>
-                        </div>
-                    @endforeach
-                </div>
-
+                <h2 class="font-extrabold text-3xl">Resepteistä</h2>
                 <div class="mt-6">
-                    <a class="text-nord-11 text-sm hover:text-nord-12 transition-colors duration-300 inline-flex items-center" href="{{ route('changelog') }}" wire:navigate>
-                        <span>Koko muutosloki</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="ml-1 size-4">
-                            <path fill-rule="evenodd" d="M12.78 7.595a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06l3.25 3.25Zm-8.25-3.25 3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06Z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
+                    <livewire:show-recipes limit="3" :paginate="false" cols="grid-cols-1 sm:grid-cols-3" />
                 </div>
             </div>
         </div>

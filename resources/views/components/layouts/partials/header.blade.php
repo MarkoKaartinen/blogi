@@ -15,7 +15,6 @@ $secondaryNavItems = [
     ['name' => 'nyt', 'url' => route('page', ['nyt']), 'navigate' => true],
     ['name' => 'tietoa', 'url' => route('page', ['tietoa']), 'navigate' => true],
     ['name' => 'kahvilaskuri', 'url' => route('coffee-calc'), 'navigate' => true],
-    ['name' => 'muutosloki', 'url' => route('changelog'), 'navigate' => true],
 ];
 @endphp
 <div class="h-6 md:h-12"></div>

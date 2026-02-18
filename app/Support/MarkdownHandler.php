@@ -19,16 +19,6 @@ class MarkdownHandler
             ->toArray();
     }
 
-    public static function getChangelogs($year, $month): array
-    {
-        $filepath = 'changelogs/'.$year.'/'.$month;
-
-        return collect(Storage::disk('content')
-            ->allFiles($filepath))
-            ->filter(fn ($value) => str($value)->endsWith('.md'))
-            ->toArray();
-    }
-
     public static function getFile($file)
     {
         if (! Storage::disk('content')->exists($file)) {

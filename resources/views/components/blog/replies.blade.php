@@ -1,4 +1,4 @@
-@props(['commentId', 'replies', 'replyingTo', 'articleId'])
+@props(['commentId', 'replies', 'replyingTo', 'commentableId', 'commentableType'])
 <div class="pl-6">
     @if(isset($replies[$commentId]))
         @foreach($replies[$commentId] as $reply)
@@ -7,12 +7,12 @@
 
                 @if($replyingTo === $reply->id)
                     <div class="pl-6 mb-6">
-                        <livewire:post-comment :article-id="$articleId" :reply-to="$reply->id" :key="'reply-'.$reply->id" />
+                        <livewire:post-comment :commentable-id="$commentableId" :commentable-type="$commentableType" :reply-to="$reply->id" :key="'reply-'.$reply->id" />
                     </div>
                 @endif
 
                 @if(isset($replies[$reply->id]))
-                    <x-blog.replies :comment-id="$reply->id" :replies="$replies" :replying-to="$replyingTo" :article-id="$articleId" />
+                    <x-blog.replies :comment-id="$reply->id" :replies="$replies" :replying-to="$replyingTo" :commentable-id="$commentableId" :commentable-type="$commentableType" />
                 @endif
             </div>
         @endforeach

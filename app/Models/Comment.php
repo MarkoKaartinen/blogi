@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Comment extends Model
 {
-    protected $fillable = ['nickname', 'email', 'comment', 'link', 'article_id', 'parent_id', 'notify_on_reply', 'user_id'];
+    protected $fillable = ['nickname', 'email', 'comment', 'link', 'commentable_type', 'commentable_id', 'parent_id', 'notify_on_reply', 'user_id'];
 
     protected function casts(): array
     {
@@ -17,9 +18,9 @@ class Comment extends Model
         ];
     }
 
-    public function article(): BelongsTo
+    public function commentable(): MorphTo
     {
-        return $this->belongsTo(Article::class);
+        return $this->morphTo();
     }
 
     public function user(): BelongsTo

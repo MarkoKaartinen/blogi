@@ -30,7 +30,9 @@ class PostComment extends Component
 
     public bool $notifyOnReply = false;
 
-    public $articleId;
+    public int $commentableId;
+
+    public string $commentableType;
 
     public ?int $replyTo = null;
 
@@ -76,7 +78,8 @@ class PostComment extends Component
             'email' => $this->email,
             'comment' => $message,
             'link' => $this->homepage,
-            'article_id' => $this->articleId,
+            'commentable_type' => $this->commentableType,
+            'commentable_id' => $this->commentableId,
             'parent_id' => $this->replyTo,
             'notify_on_reply' => $this->notifyOnReply,
             'user_id' => auth()->id(),

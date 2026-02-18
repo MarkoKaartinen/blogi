@@ -14,7 +14,9 @@ class ShowComments extends Component
 {
     public ?string $mastodonStatus;
 
-    public int $articleId;
+    public int $commentableId;
+
+    public string $commentableType;
 
     public array $comments = [];
 
@@ -92,14 +94,17 @@ class ShowComments extends Component
             ->toArray();
     }
 
-    public function getLegacyComments()
+    public function getLegacyComments(): void
     {
-        $article = Article::find($this->articleId);
+        if ($this->commentableType !== Article::class) {
+            return;
+        }
+
+        $article = Article::find($this->commentableId);
         if (! $article) {
             return;
         }
 
-        // Käytetään Article-mallin legacyComments-relaatiota
         foreach ($article->legacyComments as $comment) {
             $this->comments[] = [
                 'type' => 'legacy',
@@ -109,15 +114,12 @@ class ShowComments extends Component
         }
     }
 
-    public function getComments()
+    public function getComments(): void
     {
-        $article = Article::find($this->articleId);
-        if (! $article) {
-            return;
-        }
-
-        // Hae kaikki kommentit user-relaatiolla ja rakenna vastausrakenne
-        $allComments = $article->comments()->with('user')->get();
+        $allComments = Comment::with('user')
+            ->where('commentable_type', $this->commentableType)
+            ->where('commentable_id', $this->commentableId)
+            ->get();
         $rootComments = [];
         $replies = [];
 

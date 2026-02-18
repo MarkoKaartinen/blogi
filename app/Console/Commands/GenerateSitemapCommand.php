@@ -94,8 +94,8 @@ class GenerateSitemapCommand extends Command
         $tags_sitemap->writeToFile(public_path($tags_sitemap_name));
 
         // resepti avainsanat
-        $recipe_tags = Tag::whereType('tag')->get();
-        $recipe_tags_sitemap_name = 'tags_sitemap.xml';
+        $recipe_tags = Tag::whereType('recipe_tag')->get();
+        $recipe_tags_sitemap_name = 'recipe_tags_sitemap.xml';
         $recipe_tags_sitemap = Sitemap::create();
         foreach ($recipe_tags as $recipe_tag) {
             $recipe_tags_sitemap->add(route('recipe.tag', [$recipe_tag->slug]));

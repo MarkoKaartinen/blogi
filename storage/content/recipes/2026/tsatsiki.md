@@ -8,9 +8,14 @@ image: /media/2026/resepti_tsatsiki.jpg
 servings_amount: 1
 servings_unit: 
 categories:
-- Kategoria
+- Kastikkeet
 tags:
-- Avainsana
+- Kreikka
+- Tsatsiki
+- Kastike
+- Kastikkeet
+- Jogurtti
+- Lisuke
 ingredients:
 - amount: 850
   unit: g

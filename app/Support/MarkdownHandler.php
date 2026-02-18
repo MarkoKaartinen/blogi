@@ -50,6 +50,30 @@ class MarkdownHandler
         return self::getFile($filePath);
     }
 
+    public static function getRecipes($year = null): array
+    {
+        $filepath = 'recipes';
+        if ($year) {
+            $filepath .= '/'.$year;
+        }
+
+        return collect(Storage::disk('content')
+            ->allFiles($filepath))
+            ->filter(fn ($value) => str($value)->endsWith('.md'))
+            ->toArray();
+    }
+
+    public static function getRecipe($year, $slug)
+    {
+        if (str_contains($year, '..') || str_contains($slug, '..') || str_contains($slug, '/')) {
+            return false;
+        }
+
+        $filePath = "recipes/$year/$slug.md";
+
+        return self::getFile($filePath);
+    }
+
     public static function getPage($slug)
     {
         // Validate input to prevent directory traversal

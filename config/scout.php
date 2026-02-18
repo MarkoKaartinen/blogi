@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Article;
+use App\Models\Recipe;
 
 return [
 
@@ -140,7 +141,11 @@ return [
             Article::class => [
                 'filterableAttributes' => ['title', 'description', 'body', 'categories', 'series', 'tags'],
                 'sortableAttributes' => ['published_at'],
-            ]
+            ],
+            Recipe::class => [
+                'filterableAttributes' => ['title', 'description', 'body', 'categories', 'tags'],
+                'sortableAttributes' => ['published_at'],
+            ],
             // 'users' => [
             //     'filterableAttributes'=> ['id', 'name', 'email'],
             // ],
@@ -202,7 +207,26 @@ return [
                 'search-parameters' => [
                     'query_by' => 'title,description,body,categories,series,tags',
                 ],
-            ]
+            ],
+            Recipe::class => [
+                'collection-schema' => [
+                    'fields' => [
+                        ['name' => 'id', 'type' => 'string'],
+                        ['name' => 'slug', 'type' => 'string'],
+                        ['name' => 'title', 'type' => 'string'],
+                        ['name' => 'description', 'type' => 'string', 'optional' => true],
+                        ['name' => 'body', 'type' => 'string'],
+                        ['name' => 'url', 'type' => 'string'],
+                        ['name' => 'categories', 'type' => 'string[]'],
+                        ['name' => 'tags', 'type' => 'string[]'],
+                        ['name' => 'published_at', 'type' => 'int64'],
+                    ],
+                    'default_sorting_field' => 'published_at',
+                ],
+                'search-parameters' => [
+                    'query_by' => 'title,description,body,categories,tags',
+                ],
+            ],
             // User::class => [
             //     'collection-schema' => [
             //         'fields' => [

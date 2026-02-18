@@ -1,8 +1,8 @@
 ---
 title: Tsatsiki
 slug: tsatsiki
-status: draft
-published_at:
+status: published
+published_at: 2026-02-18 18:58
 description: Tsatsiki on perinteinen Kreikkalainen kastike, joka kuuluu omiin suosikkeihini. Se sopii mainiosti kanan, lihan ja kasvisten kanssa eli aika yleiskäyttöinen kastike. Tämä ohje on, kuin suoraan Kreikassa.
 image: /media/2026/resepti_tsatsiki.jpg
 servings_amount: 1

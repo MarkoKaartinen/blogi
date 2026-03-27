@@ -26,25 +26,25 @@ use App\Livewire\ShowSeries;
 use App\Livewire\ShowTag;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', Home::class)->name('home');
-Route::get('/haku', Search::class)->name('search');
-Route::get('/blogi', Blog::class)->name('blog');
-Route::get('/vieraskirja', Guestbook::class)->name('guestbook');
-Route::get('/kahvilaskuri', CoffeeCalc::class)->name('coffee-calc');
-Route::get('/linkit', Links::class)->name('links');
+Route::livewire('/', Home::class)->name('home');
+Route::livewire('/haku', Search::class)->name('search');
+Route::livewire('/blogi', Blog::class)->name('blog');
+Route::livewire('/vieraskirja', Guestbook::class)->name('guestbook');
+Route::livewire('/kahvilaskuri', CoffeeCalc::class)->name('coffee-calc');
+Route::livewire('/linkit', Links::class)->name('links');
 
-Route::get('/kategoria/{slug}', ShowCategory::class)->name('category');
-Route::get('/avainsana/{slug}', ShowTag::class)->name('tag');
-Route::get('/sarja/{slug}', ShowSeries::class)->name('series');
+Route::livewire('/kategoria/{slug}', ShowCategory::class)->name('category');
+Route::livewire('/avainsana/{slug}', ShowTag::class)->name('tag');
+Route::livewire('/sarja/{slug}', ShowSeries::class)->name('series');
 
-Route::get('/avainsanat', ShowAllTags::class)->name('tags.all');
-Route::get('/sarjat', ShowAllSeries::class)->name('series.all');
-Route::get('/kategoriat', ShowAllCategories::class)->name('categories.all');
+Route::livewire('/avainsanat', ShowAllTags::class)->name('tags.all');
+Route::livewire('/sarjat', ShowAllSeries::class)->name('series.all');
+Route::livewire('/kategoriat', ShowAllCategories::class)->name('categories.all');
 
-Route::get('/reseptit', Recipes::class)->name('recipes');
-Route::get('/reseptit/kategoria/{slug}', ShowRecipeCategory::class)->name('recipe.category');
-Route::get('/reseptit/avainsana/{slug}', ShowRecipeTag::class)->name('recipe.tag');
-Route::get('/resepti/{slug}', ShowRecipe::class)->name('recipe');
+Route::livewire('/reseptit', Recipes::class)->name('recipes');
+Route::livewire('/reseptit/kategoria/{slug}', ShowRecipeCategory::class)->name('recipe.category');
+Route::livewire('/reseptit/avainsana/{slug}', ShowRecipeTag::class)->name('recipe.tag');
+Route::livewire('/resepti/{slug}', ShowRecipe::class)->name('recipe');
 
 Route::get('/media/{year}/{file}', ImageController::class)->name('media');
 
@@ -55,11 +55,11 @@ Route::get('/og/resepti/{slug}.png', [ShowOgImageController::class, 'recipe'])->
 Route::get('/og/sivu/{slug}.png', [ShowOgImageController::class, 'page'])->name('page.og');
 
 if (! app()->isProduction()) {
-    Route::get('/luonnos/{year}/{slug}', ShowDraft::class)->name('draft');
-    Route::get('/reseptiluonnos/{year}/{slug}', ShowRecipeDraft::class)->name('recipe.draft');
+    Route::livewire('/luonnos/{year}/{slug}', ShowDraft::class)->name('draft');
+    Route::livewire('/reseptiluonnos/{year}/{slug}', ShowRecipeDraft::class)->name('recipe.draft');
 }
 
-Route::get('/{year}/{slug}', ShowArticle::class)->name('article');
-Route::get('/{page}', ShowPage::class)->name('page');
+Route::livewire('/{year}/{slug}', ShowArticle::class)->name('article');
+Route::livewire('/{page}', ShowPage::class)->name('page');
 
 Route::get('/{year}/{month}/{day}/{slug}', [RedirectController::class, 'yearMonthDay']);

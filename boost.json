@@ -1,16 +1,23 @@
 {
     "agents": [
         "claude_code",
-        "phpstorm"
+        "junie"
     ],
-    "editors": [
-        "claude_code",
-        "phpstorm",
-        "vscode"
-    ],
-    "guidelines": [
+    "guidelines": true,
+    "mcp": true,
+    "nightwatch_mcp": false,
+    "packages": [
         "filament/filament",
         "spatie/laravel-medialibrary"
     ],
-    "herd_mcp": true
+    "sail": false,
+    "skills": [
+        "laravel-best-practices",
+        "configuring-horizon",
+        "scout-development",
+        "livewire-development",
+        "pest-testing",
+        "tailwindcss-development",
+        "medialibrary-development"
+    ]
 }

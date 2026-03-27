@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\HumanJsonController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ShowFeedController;
 use App\Http\Controllers\ShowOgImageController;
+use App\Livewire\AI;
 use App\Livewire\Blog;
 use App\Livewire\CoffeeCalc;
 use App\Livewire\Guestbook;
@@ -32,6 +34,7 @@ Route::livewire('/blogi', Blog::class)->name('blog');
 Route::livewire('/vieraskirja', Guestbook::class)->name('guestbook');
 Route::livewire('/kahvilaskuri', CoffeeCalc::class)->name('coffee-calc');
 Route::livewire('/linkit', Links::class)->name('links');
+Route::livewire('/ai', AI::class)->name('ai');
 
 Route::livewire('/kategoria/{slug}', ShowCategory::class)->name('category');
 Route::livewire('/avainsana/{slug}', ShowTag::class)->name('tag');
@@ -53,6 +56,8 @@ Route::get('/feed', ShowFeedController::class)->name('feed');
 Route::get('/og/artikkeli/{slug}.png', [ShowOgImageController::class, 'article'])->name('article.og');
 Route::get('/og/resepti/{slug}.png', [ShowOgImageController::class, 'recipe'])->name('recipe.og');
 Route::get('/og/sivu/{slug}.png', [ShowOgImageController::class, 'page'])->name('page.og');
+
+Route::get('/human.json', HumanJsonController::class)->name('human.json');
 
 if (! app()->isProduction()) {
     Route::livewire('/luonnos/{year}/{slug}', ShowDraft::class)->name('draft');

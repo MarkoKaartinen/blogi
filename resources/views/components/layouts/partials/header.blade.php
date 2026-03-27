@@ -13,7 +13,8 @@ if (auth()->check() && auth()->user()->is_admin) {
 
 $secondaryNavItems = [
     ['name' => 'nyt', 'url' => route('page', ['nyt']), 'navigate' => true],
-    ['name' => 'tietoa', 'url' => route('page', ['tietoa']), 'navigate' => true],
+    ['name' => 'tietoa', 'url' => route('ai'), 'navigate' => true],
+    ['name' => 'ai', 'url' => route('page', ['ai']), 'navigate' => true],
     ['name' => 'kahvilaskuri', 'url' => route('coffee-calc'), 'navigate' => true],
 ];
 @endphp

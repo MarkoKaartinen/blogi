@@ -1,7 +1,7 @@
 {
     "agents": [
         "claude_code",
-        "copilot"
+        "phpstorm"
     ],
     "editors": [
         "claude_code",
@@ -9,7 +9,8 @@
         "vscode"
     ],
     "guidelines": [
-        "filament/filament"
+        "filament/filament",
+        "spatie/laravel-medialibrary"
     ],
     "herd_mcp": true
 }

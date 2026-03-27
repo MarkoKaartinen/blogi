@@ -16,14 +16,6 @@
                     <span class="p-2 bg-nord-0 rounded-xl text-nord-4 group-hover:bg-brand-mastodon group-hover:text-nord-4 transition-colors duration-300 border-brand-mastodon border-2">@marko<span class="hidden sm:inline">@kaartinen.social</span></span>
                 </a>
             </div>
-            <div>
-                <a class="rounded-xl bg-brand-mastodon text-nord-4 inline-flex items-center font-bold tracking-wider duration-300 transition-colors overflow-hidden group" rel="me" href="https://kaartinen.photos/@marko" title="Pixelfed">
-                    <span class="p-2 border-brand-mastodon border-2">
-                        <svg class="h-6 w-6 fill-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Pixelfed</title><path d="M12 24C5.3726 24 0 18.6274 0 12S5.3726 0 12 0s12 5.3726 12 12-5.3726 12-12 12m-.9526-9.3802h2.2014c2.0738 0 3.7549-1.6366 3.7549-3.6554S15.3226 7.309 13.2488 7.309h-3.1772c-1.1964 0-2.1663.9442-2.1663 2.1089v8.208z"/></svg>
-                    </span>
-                    <span class="p-2 bg-nord-0 rounded-xl text-nord-4 group-hover:bg-brand-mastodon group-hover:text-nord-4 transition-colors duration-300 border-brand-mastodon border-2">@marko<span class="hidden sm:inline">@kaartinen.photos</span></span>
-                </a>
-            </div>
         </div>
 
         <div class="h-1 w-20 rounded-full bg-nord-9 mb-6 md:mb-12"></div>

@@ -85,6 +85,10 @@
         <livewire:game-box :igdb-id="$article->igdb_id" />
     @endif
 
+    <div class="pt-6">
+        <x-share-to-mastodon :url="$article->url" :title="$article->title" />
+    </div>
+
     <div class="pt-6 flex flex-col gap-2">
         <div class="">
             @foreach($article->tagsWithType('category') as $category)

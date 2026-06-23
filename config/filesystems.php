@@ -33,21 +33,18 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
-            'serve' => true,
             'throw' => false,
         ],
 
         'content' => [
             'driver' => 'local',
             'root' => storage_path('content'),
-            'serve' => true,
             'throw' => false,
         ],
 
         'media' => [
             'driver' => 'local',
             'root' => storage_path('media'),
-            'serve' => true,
             'throw' => false,
         ],
 
@@ -81,7 +78,7 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
-            'root' => env('S3_MEDIA_ROOT', 'media')
+            'root' => env('S3_MEDIA_ROOT', 'media'),
         ],
 
     ],

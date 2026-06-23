@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Scout\Searchable;
 use Spatie\Tags\HasTags;
@@ -156,7 +157,7 @@ class Article extends Model implements Mastodonable
         Cache::forget('mastodon_comments_'.$statusId);
     }
 
-    public function comments(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
@@ -171,12 +172,12 @@ class Article extends Model implements Mastodonable
         $this->load('tags');
 
         return [
-            'id' => (int) $this->id,
+            'id' => (string) $this->id,
             'year' => (int) $this->year,
             'slug' => $this->slug,
             'title' => $this->title,
             'description' => $this->seo_description,
-            'published_at' => $this->published_at,
+            'published_at' => $this->published_at?->timestamp,
             'body' => $this->body,
             'url' => $this->url,
             'series' => $this->tagsWithType('series')->pluck('name')->toArray(),

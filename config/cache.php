@@ -94,6 +94,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Serializable Classes
+    |--------------------------------------------------------------------------
+    |
+    | This application intentionally caches Eloquent models and collections.
+    | Setting this explicitly preserves the existing behavior after upgrading
+    | to Laravel 13 instead of relying on framework defaults.
+    |
+    */
+
+    'serializable_classes' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | Cache Key Prefix
     |--------------------------------------------------------------------------
     |

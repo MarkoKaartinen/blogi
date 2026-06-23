@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Scout\Searchable;
 use Spatie\Tags\HasTags;
@@ -111,7 +112,7 @@ class Recipe extends Model implements Mastodonable
         );
     }
 
-    public function comments(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
@@ -162,11 +163,11 @@ class Recipe extends Model implements Mastodonable
         $this->load('tags');
 
         return [
-            'id' => (int) $this->id,
+            'id' => (string) $this->id,
             'slug' => $this->slug,
             'title' => $this->title,
             'description' => $this->description,
-            'published_at' => $this->published_at,
+            'published_at' => $this->published_at?->timestamp,
             'body' => $this->body,
             'url' => $this->url,
             'categories' => $this->tagsWithType('recipe_category')->pluck('name')->toArray(),

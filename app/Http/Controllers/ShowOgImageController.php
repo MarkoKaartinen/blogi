@@ -9,7 +9,6 @@ use App\Support\OG\BlogiLayout;
 use App\Support\OG\JetBrainsMono;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Colors\Rgb\Color;
 use SimonHamp\TheOg\BorderPosition;
 use SimonHamp\TheOg\Image;
 use SimonHamp\TheOg\Theme\Background;
@@ -26,14 +25,12 @@ class ShowOgImageController extends Controller
         $cacheKey = "og_article_{$slug}_{$article->updated_at?->timestamp}";
 
         $bytes = Cache::remember($cacheKey, now()->addHours(6), function () use ($article) {
-            $borderColor = Color::create('#232730');
-
             return (new Image)
                 ->theme($this->theme())
                 ->layout(new BlogiLayout)
                 ->title($article->title)
                 ->url(config('app.url'))
-                ->border(BorderPosition::All, $borderColor)
+                ->border(BorderPosition::All, '#232730')
                 ->description($article->seo_description)
                 ->toString();
         });
@@ -49,14 +46,13 @@ class ShowOgImageController extends Controller
 
         $bytes = Cache::remember($cacheKey, now()->addHours(6), function () use ($recipe) {
             $theme = $this->theme();
-            $borderColor = Color::create('#232730');
 
             $builder = (new Image)
                 ->theme($theme)
                 ->layout(new BlogiLayout)
                 ->title($recipe->title)
                 ->url(config('app.url'))
-                ->border(BorderPosition::All, $borderColor)
+                ->border(BorderPosition::All, '#232730')
                 ->description($recipe->seo_description);
 
             if ($recipe->image) {
@@ -85,14 +81,12 @@ class ShowOgImageController extends Controller
         $cacheKey = "og_page_{$slug}";
 
         $bytes = Cache::remember($cacheKey, now()->addHours(6), function () use ($content) {
-            $borderColor = Color::create('#232730');
-
             return (new Image)
                 ->theme($this->theme())
                 ->layout(new BlogiLayout)
                 ->title($content->matter('title'))
                 ->url(config('app.url'))
-                ->border(BorderPosition::All, $borderColor)
+                ->border(BorderPosition::All, '#232730')
                 ->description($content->matter('description'))
                 ->toString();
         });

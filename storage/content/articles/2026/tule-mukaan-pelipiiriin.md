@@ -9,7 +9,7 @@ categories:
 tags:
 - pelit
 - pelaaminen
-- pelittää
+- Pelittää
 - pelipiiri
 ---
 {: class="lead"}

@@ -22,7 +22,7 @@ Tänä vuonna heräsin tähän vasta näin heinäkuun alussa, joten voi tulla ki
 
 ## Pelihaaste vuosimallia 2026
 
-1. Peli, jossa olet jokin muu kuin ihminen
+1. Peli, jossa olet jokin muu kuin ihminen: [Cat Quest III](https://muistio.markokaartinen.net/pelit/cat-quest-iii)
 2. Peli, jonka maailma on luminen ja kylmä
 3. Peli, jossa rakennat kylää tai kaupunkia
 4. Peli, jossa sinulle annetaan erittäin vähän apua tai ohjeita
@@ -44,5 +44,5 @@ Tänä vuonna heräsin tähän vasta näin heinäkuun alussa, joten voi tulla ki
 20. Peli, joka sijoittuu yöhön
 21. Peli, jossa taistelut hoidetaan pelikorteilla
 22. Peli, jossa sinun pitää huolehtia muista (eläimistä, ihmisistä, kasveista)
-23. Peli, joka käsittelee ystävyyttä
+23. Peli, joka käsittelee ystävyyttä: [Sea of Stars](https://muistio.markokaartinen.net/pelit/sea-of-stars)
 24. Peli, jossa päähenkilö on lapsi tai nuori

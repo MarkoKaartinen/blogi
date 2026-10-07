@@ -54,7 +54,7 @@
                             @endphp
                             <div class="text-xs bg-theme-0/30 border border-nord-10 relative">
                                 <div class="bg-nord-10/50 h-full absolute left-0 top-0" style="width: {{ $percentage }}%;"></div>
-                                <div class="flex justify-between p-1.5 relative z-[2]">
+                                <div class="flex justify-between p-1.5 relative z-2">
                                     <div>
                                         {{ $option->title }}
                                     </div>

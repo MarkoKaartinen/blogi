@@ -4,7 +4,7 @@
             {{ $title }}
         </h1>
 
-        <input wire:model.live.debounce="keywords" type="text" class="w-full block rounded bg-transparent text-nord-13 text-base border-nord-13 border-2 focus:outline-none px-3 py-2 font-mono text-center" placeholder="Kirjoita hakusana" />
+        <input wire:model.live.debounce="keywords" type="text" class="w-full block rounded-sm bg-transparent text-nord-13 text-base border-nord-13 border-2 focus:outline-hidden px-3 py-2 font-mono text-center" placeholder="Kirjoita hakusana" />
 
         <div class="h-1 w-20 rounded-full bg-nord-9 mt-6 md:mt-12 mx-auto"></div>
     </div>
@@ -23,7 +23,7 @@
                     @endphp
                     <div wire:key="search-{{ $hit['_type'] }}-{{ $hit['slug'] }}">
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="text-xs uppercase font-bold px-1.5 py-0.5 rounded leading-none {{ $isArticle ? 'bg-nord-10 text-nord-0' : 'bg-nord-12 text-nord-0' }}">
+                            <span class="text-xs uppercase font-bold px-1.5 py-0.5 rounded-sm leading-none {{ $isArticle ? 'bg-nord-10 text-nord-0' : 'bg-nord-12 text-nord-0' }}">
                                 {{ $isArticle ? 'Artikkeli' : 'Resepti' }}
                             </span>
                             <span class="text-xs uppercase text-nord-8">

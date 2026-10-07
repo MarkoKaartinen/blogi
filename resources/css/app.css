@@ -1,35 +1,103 @@
-@import "/node_modules/glightbox/dist/css/glightbox.css";
+@import 'glightbox/dist/css/glightbox.css' layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer components {
-    .textcontent {
-        @apply prose prose-nord max-w-none prose-sm md:prose-base prose-strong:font-bold prose-pre:text-base prose-pre:rounded-xl prose-kbd:bg-nord-10 prose-kbd:text-nord-6;
-        @apply prose-pre:bg-theme-0 prose-a:break-words !important;
-    }
+@plugin '@tailwindcss/typography';
 
-    .mastodoncontent p:first-child,
-    .changelogcontent p:first-child {
-        @apply mt-0;
-    }
-    .mastodoncontent p:last-child,
-    .changelogcontent p:last-child {
-        @apply mb-0;
-    }
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
 
-    .wrapper {
-        @apply max-w-3xl mx-auto px-6 lg:px-0;
-    }
+@theme {
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
-    .searchHighlight em {
-        @apply bg-nord-13 px-1 text-nord-11;
-    }
+  --color-brand-mastodon: #6364ff;
+  --color-brand-pixelfed: #6366f1;
+  --color-brand-lemmy: #000000;
+  --color-brand-rss: #ffa500;
+  --color-brand-igdb: #9147ff;
+  --color-brand-kofi: #ff6433;
+  --color-brand-spottihinta: #1e293b;
+  --color-brand-saunotaanko: #002f6c;
+  --color-brand-bbqblogi: #a10100;
+  --color-brand-tapaaminen: #15803d;
+  --color-brand-pelittaa: #f8442d;
+  --color-brand-kreikassa: #0d5eaf;
+  --color-brand-palstat: #0d5eaf;
 
-    .mastodonprose-extras {
-        @apply max-w-none prose-li:marker:text-nord-4 prose-blockquote:border-l-nord-4 prose-a:no-underline prose-a:font-bold hover:prose-a:underline;
-    }
+  --color-theme-0: #232730;
+
+  --color-nord-0: #2e3440;
+  --color-nord-1: #3b4252;
+  --color-nord-2: #434c5e;
+  --color-nord-3: #4c566a;
+  --color-nord-4: #d8dee9;
+  --color-nord-5: #e5e9f0;
+  --color-nord-6: #eceff4;
+  --color-nord-7: #8fbcbb;
+  --color-nord-8: #88c0d0;
+  --color-nord-9: #81a1c1;
+  --color-nord-10: #5e81ac;
+  --color-nord-11: #bf616a;
+  --color-nord-12: #d08770;
+  --color-nord-13: #ebcb8b;
+  --color-nord-14: #a3be8c;
+  --color-nord-15: #b48ead;
+}
+
+@utility prose-nord {
+  --tw-prose-body: var(--color-nord-6);
+  --tw-prose-headings: var(--color-nord-6);
+  --tw-prose-lead: var(--color-nord-7);
+  --tw-prose-links: var(--color-nord-14);
+  --tw-prose-bold: var(--color-nord-7);
+  --tw-prose-counters: var(--color-nord-9);
+  --tw-prose-bullets: var(--color-nord-9);
+  --tw-prose-hr: var(--color-nord-9);
+  --tw-prose-quotes: var(--color-nord-9);
+  --tw-prose-quote-borders: var(--color-nord-3);
+  --tw-prose-captions: var(--color-nord-9);
+  --tw-prose-code: var(--color-nord-12);
+  --tw-prose-pre-code: var(--color-nord-6);
+  --tw-prose-pre-bg: var(--color-nord-1);
+  --tw-prose-th-borders: var(--color-nord-10);
+  --tw-prose-td-borders: var(--color-nord-9);
+}
+
+@utility textcontent {
+  @apply prose prose-nord max-w-none prose-sm md:prose-base prose-strong:font-bold prose-pre:text-base prose-pre:rounded-xl prose-kbd:bg-nord-10 prose-kbd:text-nord-6;
+  @apply prose-pre:bg-theme-0! prose-a:wrap-break-word!;
+}
+
+@utility mastodoncontent {
+  & p:first-child {
+    @apply mt-0;
+  }
+  & p:last-child {
+    @apply mb-0;
+  }
+}
+
+@utility changelogcontent {
+  & p:first-child {
+    @apply mt-0;
+  }
+  & p:last-child {
+    @apply mb-0;
+  }
+}
+
+@utility wrapper {
+  @apply max-w-3xl mx-auto px-6 lg:px-0;
+}
+
+@utility searchHighlight {
+  & em {
+    @apply bg-nord-13 px-1 text-nord-11;
+  }
+}
+
+@utility mastodonprose-extras {
+  @apply max-w-none prose-li:marker:text-nord-4 prose-blockquote:border-l-nord-4 prose-a:no-underline prose-a:font-bold prose-a:hover:underline;
 }
 
 .content-image {

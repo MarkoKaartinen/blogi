@@ -101,7 +101,7 @@
         <div class="overflow-clip -m-1 flex flex-wrap">
             @foreach($article->tagsWithType('tag') as $tag)
                 <div class="p-1">
-                    <a class="bg-nord-13 text-nord-0 text-sm font-bold rounded px-1.5 py-0.5 leading-none transition-colors duration-300 hover:bg-nord-12 lowercase break-inside-avoid" href="{{ route('tag', [$tag->slug]) }}" wire:navigate>#{{ $tag->name }}</a>
+                    <a class="bg-nord-13 text-nord-0 text-sm font-bold rounded-sm px-1.5 py-0.5 leading-none transition-colors duration-300 hover:bg-nord-12 lowercase break-inside-avoid" href="{{ route('tag', [$tag->slug]) }}" wire:navigate>#{{ $tag->name }}</a>
                 </div>
             @endforeach
         </div>

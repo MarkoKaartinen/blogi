@@ -10,7 +10,7 @@
     <h2 class="text-3xl font-extrabold mb-4">Keskustelu</h2>
 
     @if($slot->isNotEmpty())
-        <div class="mb-6 text-sm bg-theme-0 px-3 inline-block py-2 rounded">
+        <div class="mb-6 text-sm bg-theme-0 px-3 inline-block py-2 rounded-sm">
             {{ $slot }}
         </div>
     @endif

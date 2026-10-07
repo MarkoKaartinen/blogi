@@ -59,9 +59,9 @@
                 @if($recipe->servings_amount)
                     <div>
                         <div class="inline-flex items-center gap-2 text-sm bg-theme-0 rounded-lg px-3 py-1.5">
-                            <button type="button" @click="currentServings = Math.max(1, currentServings - 1)" class="size-6 flex items-center justify-center rounded border border-nord-3 hover:bg-nord-2 transition-colors duration-150 font-bold">−</button>
-                            <span class="font-bold min-w-[1.5rem] text-center" x-text="currentServings"></span>
-                            <button type="button" @click="currentServings++" class="size-6 flex items-center justify-center rounded border border-nord-3 hover:bg-nord-2 transition-colors duration-150 font-bold">+</button>
+                            <button type="button" @click="currentServings = Math.max(1, currentServings - 1)" class="size-6 flex items-center justify-center rounded-sm border border-nord-3 hover:bg-nord-2 transition-colors duration-150 font-bold">−</button>
+                            <span class="font-bold min-w-6 text-center" x-text="currentServings"></span>
+                            <button type="button" @click="currentServings++" class="size-6 flex items-center justify-center rounded-sm border border-nord-3 hover:bg-nord-2 transition-colors duration-150 font-bold">+</button>
                             @if($recipe->servings_unit)
                                 <span class="text-nord-8 uppercase text-xs">{{ str($recipe->servings_unit)->ucfirst() }}</span>
                             @endif
@@ -77,7 +77,7 @@
                         <li class="font-bold text-nord-13 mt-4 first:mt-0">{{ $ingredient['section'] }}</li>
                     @else
                         <li class="flex gap-3">
-                                            <span class="text-nord-8 min-w-[5rem] text-right shrink-0">
+                                            <span class="text-nord-8 min-w-20 text-right shrink-0">
                                     @if(isset($ingredient['amount']))
                                         @if($recipe->servings_amount)
                                             <span x-text="formatAmount('{{ $ingredient['amount'] }}')"></span>
@@ -120,7 +120,7 @@
                 <div class="overflow-clip -m-1 flex flex-wrap">
                     @foreach($recipeTags as $tag)
                         <div class="p-1">
-                            <a href="{{ route('recipe.tag', $tag->getTranslation('slug', 'fi')) }}" wire:navigate class="bg-nord-13 text-nord-0 text-sm font-bold rounded px-1.5 py-0.5 leading-none lowercase hover:bg-nord-12 transition-colors duration-300">#{{ $tag->name }}</a>
+                            <a href="{{ route('recipe.tag', $tag->getTranslation('slug', 'fi')) }}" wire:navigate class="bg-nord-13 text-nord-0 text-sm font-bold rounded-sm px-1.5 py-0.5 leading-none lowercase hover:bg-nord-12 transition-colors duration-300">#{{ $tag->name }}</a>
                         </div>
                     @endforeach
                 </div>

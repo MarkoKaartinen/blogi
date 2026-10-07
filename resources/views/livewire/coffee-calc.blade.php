@@ -22,7 +22,7 @@
             <label for="cups" class="block font-bold text-base text-nord-7 mb-2">Montako kuppia?</label>
             <div class="flex flex-wrap gap-2">
                 @for($i = 1; $i <= 10; $i++)
-                    <button type="button" wire:click="setCup({{ $i }})" class="inline-flex items-center justify-center text-center {{ $cups == $i ? 'bg-nord-14 text-nord-0' : '' }} font-bold uppercase size-8 leading-none border-2 border-nord-14 rounded hover:bg-nord-14/80 hover:text-nord-0 transition-colors duration-300 text-base">
+                    <button type="button" wire:click="setCup({{ $i }})" class="inline-flex items-center justify-center text-center {{ $cups == $i ? 'bg-nord-14 text-nord-0' : '' }} font-bold uppercase size-8 leading-none border-2 border-nord-14 rounded-sm hover:bg-nord-14/80 hover:text-nord-0 transition-colors duration-300 text-base">
                         {{ $i }}
                     </button>
                 @endfor

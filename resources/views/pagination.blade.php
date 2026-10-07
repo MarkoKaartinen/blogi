@@ -15,7 +15,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
             <div class="flex items-center w-1/3">
                 @if ($paginator->onFirstPage())
                 @else
-                    <button type="button" wire:click="previousPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" rel="prev" class="text-sm uppercase border border-nord-4 font-bold block leading-none px-2 py-2 text-nord-4 rounded transition-colors duration-300 hover:bg-nord-6 hover:text-nord-0">
+                    <button type="button" wire:click="previousPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" rel="prev" class="text-sm uppercase border border-nord-4 font-bold block leading-none px-2 py-2 text-nord-4 rounded-sm transition-colors duration-300 hover:bg-nord-6 hover:text-nord-0">
                         Edellinen
                     </button>
                 @endif
@@ -28,7 +28,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
             <div class="flex items-center justify-end w-1/3">
                 @if ($paginator->onLastPage())
                 @else
-                    <button type="button" wire:click="nextPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" rel="next" class="text-sm uppercase border border-nord-4 font-bold block leading-none px-2 py-2 text-nord-4 rounded transition-colors duration-300 hover:bg-nord-6 hover:text-nord-0">
+                    <button type="button" wire:click="nextPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" wire:loading.attr="disabled" rel="next" class="text-sm uppercase border border-nord-4 font-bold block leading-none px-2 py-2 text-nord-4 rounded-sm transition-colors duration-300 hover:bg-nord-6 hover:text-nord-0">
                         Seuraava
                     </button>
                 @endif

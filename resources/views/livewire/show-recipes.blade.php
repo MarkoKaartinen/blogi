@@ -6,7 +6,7 @@
                     wire:model.live.debounce="search"
                     type="search"
                     placeholder="Hae reseptejä..."
-                    class="w-full block rounded bg-transparent text-nord-13 text-base border-nord-13 border-2 focus:outline-none px-3 py-2 font-mono text-left h-12"
+                    class="w-full block rounded-sm bg-transparent text-nord-13 text-base border-nord-13 border-2 focus:outline-hidden px-3 py-2 font-mono text-left h-12"
                 />
             </div>
 
@@ -14,7 +14,7 @@
                 <div>
                     <select
                         wire:model.live="category"
-                        class="w-full block rounded bg-transparent text-nord-13 text-base border-nord-13 border-2 focus:outline-none pl-3 pr-6 py-2 font-mono text-left h-12"
+                        class="w-full block rounded-sm bg-transparent text-nord-13 text-base border-nord-13 border-2 focus:outline-hidden pl-3 pr-6 py-2 font-mono text-left h-12"
                     >
                         <option value="">Kategoria</option>
                         @foreach($this->categories as $cat)

@@ -7,35 +7,35 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div>
                     <label for="nickname" class="block text-sm uppercase">Nimimerkki</label>
-                    <input wire:model="nickname" nickname class="w-full bg-transparent border-2 rounded mt-1 border-nord-12 py-2 px-2 focus:outline-none focus:border-nord-13 text-base" type="text" name="nickname" required />
+                    <input wire:model="nickname" nickname class="w-full bg-transparent border-2 rounded-sm mt-1 border-nord-12 py-2 px-2 focus:outline-hidden focus:border-nord-13 text-base" type="text" name="nickname" required />
                     <div class="text-xs text-nord-11 mt-1">@error('nickname') {{ $message }} @enderror</div>
                 </div>
                 <div>
                     <label for="email" class="block text-sm uppercase">Sähköposti</label>
-                    <input wire:model="email" class="w-full bg-transparent border-2 rounded mt-1 border-nord-12 py-2 px-2 focus:outline-none focus:border-nord-13 text-base" type="email" name="email" />
+                    <input wire:model="email" class="w-full bg-transparent border-2 rounded-sm mt-1 border-nord-12 py-2 px-2 focus:outline-hidden focus:border-nord-13 text-base" type="email" name="email" />
                     <div class="text-xs text-nord-11 mt-1">@error('email') {{ $message }} @enderror</div>
                 </div>
                 <div>
                     <label for="homepage" class="block text-sm uppercase">Kotisivut</label>
-                    <input wire:model="homepage" class="w-full bg-transparent border-2 rounded mt-1 border-nord-12 py-2 px-2 focus:outline-none focus:border-nord-13 text-base" type="url" name="homepage" />
+                    <input wire:model="homepage" class="w-full bg-transparent border-2 rounded-sm mt-1 border-nord-12 py-2 px-2 focus:outline-hidden focus:border-nord-13 text-base" type="url" name="homepage" />
                     <div class="text-xs text-nord-11 mt-1">@error('homepage') {{ $message }} @enderror</div>
                 </div>
             </div>
             <div>
                 <label for="message" class="block text-sm uppercase">Viesti</label>
-                <textarea wire:model="message" id="message" class="w-full bg-transparent border-2 rounded mt-1 border-nord-12 py-2 px-2 focus:outline-none focus:border-nord-13 text-base" name="message" rows="6" required></textarea>
+                <textarea wire:model="message" id="message" class="w-full bg-transparent border-2 rounded-sm mt-1 border-nord-12 py-2 px-2 focus:outline-hidden focus:border-nord-13 text-base" name="message" rows="6" required></textarea>
                 <div class="text-xs text-nord-11">@error('message') {{ $message }} @enderror</div>
             </div>
             <div>
                 <label class="inline-flex items-center cursor-pointer">
-                    <input type="checkbox" wire:model="notifyOnReply" class="form-checkbox h-5 w-5 text-nord-14 bg-transparent border-2 border-nord-12 rounded focus:ring-0 focus:ring-offset-0">
+                    <input type="checkbox" wire:model="notifyOnReply" class="form-checkbox h-5 w-5 text-nord-14 bg-transparent border-2 border-nord-12 rounded-sm focus:ring-0 focus:ring-offset-0">
                     <span class="ml-2 text-sm">Haluan sähköposti-ilmoituksen mahdollisesta vastauksesta</span>
                 </label>
             </div>
             <div x-data="{}">
-                <button type="submit" class="inline-block bg-nord-14 text-nord-0 font-bold uppercase px-3 py-3 leading-none border-2 border-nord-14 rounded hover:bg-transparent hover:text-nord-14 transition-colors duration-300 text-base" >Lähetä kommentti</button>
+                <button type="submit" class="inline-block bg-nord-14 text-nord-0 font-bold uppercase px-3 py-3 leading-none border-2 border-nord-14 rounded-sm hover:bg-transparent hover:text-nord-14 transition-colors duration-300 text-base" >Lähetä kommentti</button>
                 @if($replyTo)
-                    <button x-data @click="$dispatch('cancelReply')" type="button" class="inline-block bg-transparent text-nord-11 font-bold uppercase px-3 py-3 leading-none border-2 border-nord-11 rounded hover:bg-nord-11 hover:text-nord-0 transition-colors duration-300 text-base ml-2">Peruuta</button>
+                    <button x-data @click="$dispatch('cancelReply')" type="button" class="inline-block bg-transparent text-nord-11 font-bold uppercase px-3 py-3 leading-none border-2 border-nord-11 rounded-sm hover:bg-nord-11 hover:text-nord-0 transition-colors duration-300 text-base ml-2">Peruuta</button>
                 @else
                     <button type="button" x-on:click="$dispatch('hidecommentform')" class="ml-2">Peruuta</button>
                 @endif

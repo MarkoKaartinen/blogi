@@ -10,16 +10,21 @@
     "nightwatch": false,
     "packages": [
         "filament/filament",
-        "spatie/laravel-medialibrary"
+        "spatie/laravel-medialibrary",
+        "barryvdh/laravel-debugbar"
     ],
     "sail": false,
     "skills": [
+        "infer-conventions",
         "laravel-best-practices",
+        "testing-best-practices",
         "configuring-horizon",
         "scout-development",
+        "telescope-debugging",
         "livewire-development",
-        "pest-testing",
         "tailwindcss-development",
-        "medialibrary-development"
+        "filament-development",
+        "medialibrary-development",
+        "debug-using-debugbar"
     ]
 }

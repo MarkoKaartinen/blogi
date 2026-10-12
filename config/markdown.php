@@ -1,5 +1,20 @@
 <?php
 
+use App\Support\MarkdownGalleryExtension;
+use App\Support\MarkdownImageExtension;
+use League\CommonMark\Extension\Attributes\AttributesExtension;
+use League\CommonMark\Extension\Autolink\AutolinkExtension;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
+use League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension;
+use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
+use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
+use League\CommonMark\Extension\Footnote\FootnoteExtension;
+use League\CommonMark\Extension\Strikethrough\StrikethroughExtension;
+use League\CommonMark\Extension\Table\TableExtension;
+use League\CommonMark\Extension\TaskList\TaskListExtension;
+use Spatie\LaravelMarkdown\MarkdownRenderer;
+use Wnx\CommonmarkMarkExtension\MarkExtension;
+
 return [
     'code_highlighting' => [
         /*
@@ -35,9 +50,9 @@ return [
      */
     'commonmark_options' => [
         'default_attributes' => [
-            \League\CommonMark\Extension\CommonMark\Node\Inline\Image::class => [
-                'class' => 'content-image'
-            ]
+            Image::class => [
+                'class' => 'content-image',
+            ],
         ],
         'allow_unsafe_links' => false,
         'max_nesting_level' => 10,
@@ -51,7 +66,7 @@ return [
             'nofollow' => '',
             'noopener' => 'external',
             'noreferrer' => 'external',
-        ]
+        ],
     ],
 
     /*
@@ -63,7 +78,6 @@ return [
      * caching set this value to `false`.
      */
     'cache_store' => false,
-
 
     /*
      * When cache_store is enabled, this value will be used to determine
@@ -81,7 +95,7 @@ return [
      *
      * More info: https://spatie.be/docs/laravel-markdown/v1/advanced-usage/customizing-the-rendering-process
      */
-    'renderer_class' => Spatie\LaravelMarkdown\MarkdownRenderer::class,
+    'renderer_class' => MarkdownRenderer::class,
 
     /*
      * These extensions should be added to the markdown environment. A valid
@@ -90,17 +104,18 @@ return [
      * More info: https://commonmark.thephpleague.com/2.4/extensions/overview/
      */
     'extensions' => [
-        \League\CommonMark\Extension\Autolink\AutolinkExtension::class,
-        \League\CommonMark\Extension\Strikethrough\StrikethroughExtension::class,
-        \League\CommonMark\Extension\Table\TableExtension::class,
-        \League\CommonMark\Extension\TaskList\TaskListExtension::class,
-        \League\CommonMark\Extension\Footnote\FootnoteExtension::class,
-        \League\CommonMark\Extension\Attributes\AttributesExtension::class,
-        \League\CommonMark\Extension\DescriptionList\DescriptionListExtension::class,
-        \Wnx\CommonmarkMarkExtension\MarkExtension::class,
-        \League\CommonMark\Extension\ExternalLink\ExternalLinkExtension::class,
-        \League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension::class,
-        \App\Support\MarkdownImageExtension::class,
+        AutolinkExtension::class,
+        StrikethroughExtension::class,
+        TableExtension::class,
+        TaskListExtension::class,
+        FootnoteExtension::class,
+        AttributesExtension::class,
+        DescriptionListExtension::class,
+        MarkExtension::class,
+        ExternalLinkExtension::class,
+        DefaultAttributesExtension::class,
+        MarkdownImageExtension::class,
+        MarkdownGalleryExtension::class,
     ],
 
     /*

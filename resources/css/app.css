@@ -139,6 +139,31 @@
     @apply aspect-square object-cover object-center m-0;
 }
 
+.textcontent .gallery-grid {
+    @apply grid grid-cols-2 gap-0.5 overflow-hidden rounded-xl border-2 border-nord-10 bg-nord-10;
+}
+.textcontent .gallery-grid.gallery-multi {
+    @apply lg:grid-cols-3;
+}
+.textcontent .gallery-grid a {
+    @apply relative block aspect-square overflow-hidden;
+}
+.textcontent .gallery-grid img {
+    @apply absolute inset-0 m-0 h-full w-full rounded-none border-0 object-cover object-top;
+}
+.textcontent .gallery-grid.gallery-odd a:first-child {
+    @apply row-span-2 aspect-auto;
+}
+.textcontent .gallery-grid.gallery-multi.gallery-rem-0.gallery-odd a:first-child {
+    @apply lg:col-span-2;
+}
+.textcontent .gallery-grid.gallery-multi.gallery-rem-1 a:first-child {
+    @apply lg:col-span-3 lg:row-span-1 lg:aspect-[3/2];
+}
+.textcontent .gallery-grid.gallery-multi.gallery-rem-2 a:first-child {
+    @apply lg:col-span-2 lg:row-span-1 lg:aspect-auto;
+}
+
 .glightbox-clean .gslide-description {
     @apply bg-nord-0 text-nord-6;
 }

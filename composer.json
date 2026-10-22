@@ -4,12 +4,6 @@
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/laravel-shift/igdb-laravel.git"
-        }
-    ],
     "require": {
         "php": "^8.2",
         "archtechx/laravel-seo": "^0.10.1",
@@ -23,7 +17,7 @@
         "laravel/tinker": "^3.0",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^4.0",
-        "marcreichel/igdb-laravel": "dev-l13-compatibility",
+        "marcreichel/igdb-laravel": "^6.1",
         "meilisearch/meilisearch-php": "^1.11",
         "predis/predis": "^3.2",
         "simonhamp/the-og": "^0.8.0",
